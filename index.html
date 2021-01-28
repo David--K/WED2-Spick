@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WED Zusammenfassung</title>
+  <link href="./node_modules/prismjs/themes/prism.css" rel="stylesheet" />
+  <link href="./style.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container page1">
+    <div class="item itemBig row1">
+      <h1>CSS Grid</h1>
+      <pre class="code"><code class="language-css">#grid-container {
+  display: grid; //inline-grid: inline | grid: block-level
+  width: 100px;
+  grid-template-columns: 1fr 60px minmax(10px, 200px);
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 
+    'nav nav nav nav'
+    'toc item item .'
+    'toc item item .'
+    'footer footer footer footer';
+  align-items: auto | normal | start | end |
+   center |stretch | baseline;
+  justify-items: auto | normal | start | end |
+   center |stretch | baseline;
+}
+.item {
+  //Shorthand for 'grid-row-start' and 'grid-row-end'.
+  //span Anzahl columns von 1 
+  grid-row: 1 / span 2;
+  grid-column: 1 
+  gap: 10px;
+  //Is a shorthand property for the grid-row-start,
+  //grid-column-start, grid-row-end, 
+  // and grid-column-end in that order. 
+  //Each value is separated by a /.
+  grid-area: 2 / 1 / span 2 / span 3;
+  //Es kann auch ein Name vergeben werden, der dann 
+  //in grid-template-areas gebraucht werden kann
+  grid-area: item;
+  //inherits align-items if defined overwrites align-items value
+  align-self: center; 
+  //inherits justify-items if defined overwrites justify-items value
+  justify-self: auto | normal | start
+}
+nav {grid-area: nav;}
+.side-toc {grid-area: toc;  }
+footer {grid-area: footer;}</code></pre>
+    </div>
+    <div class="item itemBig row2">
+      <h1>CSS Flexbox</h1>
+      <p><span class="subtitle">Facts:</span>Alle Elemente Verhalten sich wie "inline blocks" (erlaubt margin (left & right) und paddding,
+        erlaubt andere Elemente auf der gelichen Zeile, erlaubt <b>width</b> und <b>height</b>
+      </p>
+      <p><span class="subtitle">flex-grow:</span>
+        Entspricht dem Verhältnis wie der leere Platz verteilt wird. Default: 0 (nicht grösser werden)
+      </p>
+      <p><span class="subtitle">flex-shrink</span>
+        Entspricht dem Verhältnis wie die Elemente kleiner werden, wenn zu wenig PLatz vorhanden ist, Default: 0
+      </p>
+      <p><span class="subtitle">flex-basis</span>
+        Alternative: content | Ist initialer Wert für Grösse eines flex item. flex-direction: row -A value steht für width, 
+        column -> value steht für Breite
+      </p>
+      <p><span class="subtitle">flex-wrap:</span>
+        Problem: zuviele Elemente in einer Reihe
+      </p>
+      <p><span class="subtitle">(flex-order) order:</span>
+        Werden in aufsteigender Reihenfolge dargestellt, Default: 0
+      </p>
+      <pre class="code"><code class="language-css">.container {
+  display: flex;
+  flex-direction: row | row-reverse 
+  | column | column-reverse
+  flex-wrap: wrap;
+  flex-flow: [flex-direction] [flex-wrap]
+  align-items: stretch;
+  // nur sinvoll bei fixer Item Grösse
+  justify-content: center;
+}
+.item {
+  flex-grow: 1;
+  flex-shrink: 1; 
+  flex-basis: 20px;
+  flex: [flex-grow] [flex-shrink] [flex-basis];
+}
+.baboItem {
+  order: -1;
+} </code></pre>
+    </div>
+    <div class="item itemSmall row2">4blablablabla blablablablablabla blablablabla</div>
+    <div class="item itemSmall row2" style="min-height: 5cm;">blablablabla blablablablablabla blablablabla4blablablabla bl4blablablabla </div>
+    <div class="item itemSmall row2" style="min-height: 5cm;">blablablabla blablablablablabla blablablabla4blablablabla bl4blablablabla </div>
+    <div class="item itemSmall row3" style="min-height: 21cm;">blablablablablab lablabla blablablablablab lablabla blablablabla</div>
+    <div class="item itemSmall row4" style="min-height: 21cm;">lablablablabla bla4lablablablablabla4lablab</div>
+  </div>
+  <div class="container page2">
+    <div class="item itemSmall row1" style="min-height: 21cm;">4blablablabla blablablablablabla blablablabla</div>
+    <div class="item itemSmall row2" style="min-height: 10.5cm;">blablablabla blablablablablabla blablablabla4blablablabla bl4blablablabla </div>
+    <div class="item itemSmall row2" style="min-height: 10.5cm;">blablablabla blablablablablabla blablablabla4blablablabla bl4blablablabla </div>
+    <div class="item itemSmall row3" style="min-height: 21cm;">blablablablablab lablabla blablablablablab lablabla blablablabla</div>
+    <div class="item itemSmall row4" style="min-height: 21cm;">lablablablabla bla4lablablablablabla4lablab</div>
+  </div>
+  <script src="./node_modules/prismjs/prism.js"></script>
+  <script>
+    function titleColorAssigner(selector, colors) {
+      let colorIndex = 0;
+      document.querySelectorAll (selector).forEach(function (span) {
+        console.log(span);
+        span.style.background = colors[colorIndex];
+        if (colorIndex === colors.length - 1) {
+          colorIndex = 0;
+        } else {
+          colorIndex++;
+        }
+      });
+    }
+    window.onload = () => {
+      titleColorAssigner(".subtitle", ["yellow", "aqua", "magenta"]);
+      titleColorAssigner("h1", ["darksalmon", "burlywood", "chocolate"]);
+    };
+  </script>
+</body>
+</html>

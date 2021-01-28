@@ -1,0 +1,14 @@
+{
+  "name": "wed_zusammenfassung",
+  "version": "0.0.1",
+  "description": "WED2 Zusammenfassung 2020",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "prismjs": "1.23.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
