@@ -262,23 +262,35 @@ footer {grid-area: footer;}</code></pre>
           <li><b>Setup:</b> beforeEach Initailization, selbe Ausgangslage für alle Tests</li> 
           <li><b>Exercise:</b> Aufruf einer Funktion (mit return value)</li>
           <li><b>Verify:</b> Überprüfen von Anhahmen</li>
-          <li><b>Teardown:</b> Zurücksetzen</li>
+          <li><b>Teardown:</b> Zurücksetzen z.B. von mocks </li>
         </ul>
       </p>
       <p>
         <span class="subtitle">Beispiele</span>
         <pre class="code"><code class="language-javascript">const chai = require('chai');
+const sinon = require("sinon");
+const proxyquire = require("proxyquire");
 const expect = chai.expect;
+function stub(v) {return v*2;}
+const currencyConverter = proxyquire("../cc", { convert: stub });
 describe("A new bank account", function() {
   beforeEach(function() {
     this.account = new BankAccount();
+    // creates a stub/fake for the Date object
+    clock = sinon.useFakeTimers(constantNow);
+    this.converter = new currencyConverter("mysecret");
   });
   afterEach(function() {
-    console.log("After the Test");
+    clock.restore();
   })
   it("is initialized by a balance of 0",
   function() {
     expect(this.account.balance).to.equal(0);
+  });
+  it("should convert correct",
+  function() {
+    this.account.add(20);
+    expect(converter(this.account.balance)).to.equal(40);
   });
   it("should not allow a withdraw",
    function() {
@@ -302,8 +314,10 @@ describe("A new bank account", function() {
       </p>
       <p>
         <span class="subtitle">Test Doubles:</span>Abhängigkeiten möglichst Lose, für tests Doubles verwenden
-        Stub & Fake: liefern vorbestimmten Wert
-        --- Spy & Mock: Helfen einen überprüfbaren Content zu generieren
+        <ul>
+          <li>Stub & Fake: liefern vorbestimmten Wert</li>
+          <li>Spy & Mock: Helfen einen überprüfbaren Content zu generieren</li>
+        </ul>
       </p>
       <p>
         <span class="subtitle">Test-Smells:</span>
