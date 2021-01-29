@@ -8,8 +8,13 @@
     <link href="./style.css" rel="stylesheet"/>
 </head>
 <body>
-<div class="container page1">
-    <div class="item itemBig row1">
+
+<!--          -->
+<!--Page No. 1-->
+<!--          -->
+
+<div class="container">
+    <div class="page">
         <h1>CSS Grid</h1>
         <pre class="code"><code class="language-css">#grid-container {
   display: grid; //inline-grid: inline | grid: block-level
@@ -49,27 +54,21 @@ nav {grid-area: nav;}
 .side-toc {grid-area: toc;  }
 footer {grid-area: footer;}</code></pre>
         <h1>CSS Flexbox</h1>
-        <p><span class="subtitle">Facts:</span>Alle Elemente Verhalten sich wie "inline blocks" (erlaubt margin (left &
+        <span class="subtitle">Facts:</span>Alle Elemente Verhalten sich wie "inline blocks" (erlaubt margin (left &
             right) und paddding,
             erlaubt andere Elemente auf der gelichen Zeile, erlaubt <b>width</b> und <b>height</b>
-        </p>
-        <p><span class="subtitle">flex-grow:</span>
+        <span class="subtitle">flex-grow:</span>
             Entspricht dem Verhältnis wie der leere Platz verteilt wird. Default: 0 (nicht grösser werden)
-        </p>
-        <p><span class="subtitle">flex-shrink</span>
+        <span class="subtitle">flex-shrink</span>
             Entspricht dem Verhältnis wie die Elemente kleiner werden, wenn zu wenig PLatz vorhanden ist, Default: 0
-        </p>
-        <p><span class="subtitle">flex-basis</span>
+        <span class="subtitle">flex-basis</span>
             Alternative: content | Ist initialer Wert für Grösse eines flex item. flex-direction: row -A value steht für
             width,
             column -> value steht für Breite
-        </p>
-        <p><span class="subtitle">flex-wrap:</span>
+        <span class="subtitle">flex-wrap:</span>
             Problem: zuviele Elemente in einer Reihe
-        </p>
-        <p><span class="subtitle">(flex-order) order:</span>
+        <span class="subtitle">(flex-order) order:</span>
             Werden in aufsteigender Reihenfolge dargestellt, Default: 0
-        </p>
         <pre class="code"><code class="language-css">.container {
   display: flex;
   flex-direction: row | row-reverse | column | column-reverse;
@@ -87,7 +86,7 @@ footer {grid-area: footer;}</code></pre>
 }
 .baboItem { order: -1; }</code></pre>
         <h1>User Centered Design</h1>
-        <p><span class="subtitle">Zsm:</span>Den user befragen ist <b>nicht</b> User Centerd Design,
+        <span class="subtitle">Zsm:</span>Den user befragen ist <b>nicht</b> User Centerd Design,
             sondern beobachen was sie machen.
             <span class="subtitle">Stolze:</span> You may ask you customers, but not your users.
             Man sollte sich bewusst sein, wer der User ist.
@@ -113,7 +112,7 @@ footer {grid-area: footer;}</code></pre>
             <li>Zufriedenheit: Benutzer sind positiv gegenüber dem System eingestellt</li>
         </ul>
             <span class="subtitle">Card Sorting: </span>
-            <b>Schritt 1: </b>Content Repository Erstellen (Was sind Zielpunkte der Navigation)</p>
+            <b>Schritt 1: </b>Content Repository Erstellen (Was sind Zielpunkte der Navigation)
             <b>Schritt 2: </b>
         <ul>
             <li>"Open Card Sort" 5+ Personen aus der Zielgruppe rekrutieren</li>
@@ -191,15 +190,15 @@ footer {grid-area: footer;}</code></pre>
             <li>.to, .be, .been, .is, .that, .which, .and, .not</li>
             <li>.true, .false, .undefined, .NaN, .exist,</li>
             <li>.equal(
-                <value>), .deep.equal(
-                    <value>)
+                &ltvalue&gt), .deep.equal(
+                &ltvalue&gt)
             </li>
             <li>.includes([…
-                <values>]), .any.keys, .all.keys
+                &ltvalue&gt]), .any.keys, .all.keys
             </li>
             <li>.a(
-                <baseType>), instanceOf(
-                    <class>)
+                &ltbaseType&gt), instanceOf(
+                &ltclass&gt)
             </li>
             <li>throws()</li>
         </ul>
@@ -217,7 +216,6 @@ footer {grid-area: footer;}</code></pre>
             <li>Es gibt keine Tests</li>
         </ul>
     </div>
-    <div class="item" style="min-height: 21cm;">
         <h1>Testing Part 1</h1>
             <span class="subtitle">TDD</span>Test anything that might break, New Code is quilty until proven innocent,
             Write at least as much test code as production code
@@ -296,10 +294,16 @@ describe("A new bank account", function() {
     .throw(new NoMoneyError("No money"));
   });
 });</code></pre>
-    </div>
 </div>
-<div class="container page2">
-    <div class="item itemSmall row1" style="min-height: 21cm;">
+
+
+<!--          -->
+<!--Page No. 2-->
+<!--          -->
+
+
+<div class="container">
+    <div class="page" style="min-height: 21cm;">
         <h1>Node</h1>
         <span class="subtitle">Application - app.js:</span>
         <pre class="code"><code class="language-javascript">const express = require('express');
