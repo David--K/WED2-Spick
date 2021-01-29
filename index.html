@@ -306,7 +306,7 @@ describe("A new bank account", function() {
     this.account = new BankAccount();
     clock = sinon.useFakeTimers(constantNow); // stub/fake Date
     this.converter = new currencyConverter("mysecret");
-    this.accountAWithdrawSpy = sinon.spy(this.accountA, "withdraw");
+    this.accountAWithdrawSpy=sinon.spy(this.accountA,"withdraw");
   });
   afterEach(function() {
     clock.restore();
@@ -320,11 +320,13 @@ describe("A new bank account", function() {
     this.account.add(20);
     expect(converter(this.account.balance)).to.equal(40);
   });
-  it("correctly calls withdrawal of transactionAmount from account A",
+  it("correctly calls withdrawal",
   function() {
     this.transaction.execute();
-    sinon.assert.calledWith(this.accountAWithdrawSpy, transactionAmount);
-    //expect(this.accountAWithdrawSpy.calledWith(transactionAmount)).to.be.true;
+    sinon.assert.calledWith(this.accountAWithdrawSpy,
+     transactionAmount);
+    //expect(this.accountAWithdrawSpy
+    //.calledWith(transactionAmount)).to.be.true;
     });
   it("should not allow a withdraw",
    function() {
