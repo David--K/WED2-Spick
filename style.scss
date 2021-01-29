@@ -72,10 +72,16 @@ $row3-width: 7cm;
   width: $a4-width - $row3-width - $row2-width -$row1-width;
 }
 
+code{
+  white-space: pre-wrap!important;
+  overflow:hidden;
+}
+
 .code {
   padding: 0 !important;
   margin: 0 !important;
   font-size: 0.85em !important;
+  overflow:hidden!important;
 }
 
 .header {
