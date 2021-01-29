@@ -11,6 +11,6 @@ function titleColorAssigner(selector, colors) {
 }
 
 window.onload = () => {
-  titleColorAssigner(".subtitle", ["yellow", "aqua", "magenta"]);
+  titleColorAssigner("h2", ["yellow", "aqua", "magenta"]);
   titleColorAssigner("h1", ["darksalmon", "burlywood", "chocolate"]);
 };

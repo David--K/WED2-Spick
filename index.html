@@ -53,20 +53,20 @@ nav {grid-area: nav;}
 .side-toc {grid-area: toc;  }
 footer {grid-area: footer;}</code></pre>
     <h1>CSS Flexbox</h1>
-    <span class="subtitle">Facts:</span>Alle Elemente Verhalten sich wie "inline blocks" (erlaubt margin (left &
+    <h2>Facts:</h2>Alle Elemente Verhalten sich wie "inline blocks" (erlaubt margin (left &
     right) und paddding,
     erlaubt andere Elemente auf der gelichen Zeile, erlaubt <b>width</b> und <b>height</b>
-    <span class="subtitle">flex-grow:</span>
+    <h2>flex-grow:</h2>
     Entspricht dem Verhältnis wie der leere Platz verteilt wird. Default: 0 (nicht grösser werden)
-    <span class="subtitle">flex-shrink</span>
+    <h2>flex-shrink</h2>
     Entspricht dem Verhältnis wie die Elemente kleiner werden, wenn zu wenig PLatz vorhanden ist, Default: 0
-    <span class="subtitle">flex-basis</span>
+    <h2>flex-basis</h2>
     Alternative: content | Ist initialer Wert für Grösse eines flex item. flex-direction: row -A value steht für
     width,
     column -> value steht für Breite
-    <span class="subtitle">flex-wrap:</span>
+    <h2>flex-wrap:</h2>
     Problem: zuviele Elemente in einer Reihe
-    <span class="subtitle">(flex-order) order:</span>
+    <h2>(flex-order) order:</h2>
     Werden in aufsteigender Reihenfolge dargestellt, Default: 0
     <pre class="code"><code class="language-css">.container {
   display: flex;
@@ -85,18 +85,18 @@ footer {grid-area: footer;}</code></pre>
 }
 .baboItem { order: -1; }</code></pre>
     <h1>User Centered Design</h1>
-    <span class="subtitle">Zsm:</span>Den user befragen ist <b>nicht</b> User Centerd Design,
+    <h2>Zsm:</h2>Den user befragen ist <b>nicht</b> User Centerd Design,
     sondern beobachen was sie machen.
-    <span class="subtitle">Stolze:</span> You may ask you customers, but not your users.
+    <h2>Stolze:</h2> You may ask you customers, but not your users.
     Man sollte sich bewusst sein, wer der User ist.
-    <span class="subtitle">Features of Good User Research:</span>
+    <h2>Features of Good User Research:</h2>
     Representative Benutzer auswählen, Sinvolle und realistische Tests machen,
     momentante tools und strategies verwenden, in einem sinvollen und representativen context
-    <span class="subtitle">Information Scent:</span>
+    <h2>Information Scent:</h2>
     Links etc. sind so bennant, dass klar ist welche Ziele durch die Navigation erreich (und nicht erreicht)
     werden.
-    <span class="subtitle">Site Map: </span> Baumstruktur der Navigation
-    <span class="subtitle">Raster Design: </span> Gute "Ausschilderung" User sollten stets wissen:
+    <h2>Site Map: </h2> Baumstruktur der Navigation
+    <h2>Raster Design: </h2> Gute "Ausschilderung" User sollten stets wissen:
     <ul>
         <li>Wo bin ich im Moment: Eindeutiger Seitentitel, konsistenter Header, Icons, Seitendesign, Was kann ich
             machen
@@ -104,13 +104,13 @@ footer {grid-area: footer;}</code></pre>
         <li>Wo kann ich hin: Deutlich sichtbare Navigationselemente</li>
         <li>Was ist passiert: Navigation z.B. animiert, Browser back unterstützen</li>
     </ul>
-    <span class="subtitle">Usability: </span>
+    <h2>Usability: </h2>
     <ul>
         <li>Effektivität: Benutzer könne Ziele erreichen</li>
         <li>Effizienz: Benutzer können ihre Ziele mit angemessenem Aufwand erreichen</li>
         <li>Zufriedenheit: Benutzer sind positiv gegenüber dem System eingestellt</li>
     </ul>
-    <span class="subtitle">Card Sorting: </span>
+    <h2>Card Sorting: </h2>
     <b>Schritt 1: </b>Content Repository Erstellen (Was sind Zielpunkte der Navigation)
     <b>Schritt 2: </b>
     <ul>
@@ -125,10 +125,10 @@ footer {grid-area: footer;}</code></pre>
         <li>Gruppenname vorgeben</li>
         <li>Content Elemente den Gruppen zuordnen lassen</li>
     </ul>
-    <span class="subtitle">Tree Testing: </span>
+    <h2>Tree Testing: </h2>
     Aufgabe geben, Geh auf die Seite X. User klickt sich durch und es kann beobachtet werden wie er sich
     verhaltet.
-    <span class="subtitle">Usability Test</span> Test der die einzelnen Teile der Usability tested,
+    <h2>Usability Test</h2> Test der die einzelnen Teile der Usability tested,
     Task beinhaltet den context des Users, das Bedürfnis, das Ziel und den Auslöser
     <h1>CSS Animation</h1>
     <h2>Transition Properties</h2>
@@ -184,42 +184,42 @@ footer {grid-area: footer;}</code></pre>
   animation-duration: 1s;
 }</code></pre>
     <h1>Testing Part 1</h1>
-    <span class="subtitle">TDD</span>Test anything that might break, New Code is quilty until proven innocent,
+    <h2>TDD</h2>Test anything that might break, New Code is quilty until proven innocent,
     Write at least as much test code as production code
     Run all testc before check-in to repository
-    <span class="subtitle">Unit Tests: </span>Getestet werden einzelne "Units": Klassen, Module (meist ein File)
+    <h2>Unit Tests: </h2>Getestet werden einzelne "Units": Klassen, Module (meist ein File)
     Automation relativ einfach, <b>Herausforderung:</b> Isolation der Units, asynchrone Operationen,
     Testdatengenerierung (z.B. Fuzzing)
-    <span class="subtitle">System Tests: </span>
+    <h2>System Tests: </h2>
     Getestet wird das Zusammenspiel aller Systemkomponenten in der Zielumgebung
     Automation meist nur in Teilen möglich.
     <b>Herausforderungen</b>: Realistische aber vorhersagbare Umgebung
     <b>Weitere System Tests:</b>Load Tests, Performance Tests, Endurance Tests, Chaos Tests, Security Tests,
     Usability Tests
-    <span class="subtitle">Integration Tests: </span>Getestet wird das Zusammenspiel 2 oder mehr "Units"
+    <h2>Integration Tests: </h2>Getestet wird das Zusammenspiel 2 oder mehr "Units"
     (E2E: Integration über alle Layer), Automation meist möglich
     <b>Herausforderungen:</b> Isolation der Units, asynchrone Operationen, Simulation Browser &
     Benutzerinteraktion, Test mit Datenbank, Testdatengenerierung (z.B. Fuzzing)
-    <span class="subtitle">(Visuelle) Regression Tests: </span>
+    <h2>(Visuelle) Regression Tests: </h2>
     Getestet wird ob Veränderungen im Code zu (unerwarteten) Änderungen im Verhalten (oder UI)
     führen. Automation möglich mit speziellen Tools
-    <span class="subtitle">Test-Runner: </span>Ein Rhamen der Tests entgegennimmt, ausführt und die Resultate
+    <h2>Test-Runner: </h2>Ein Rhamen der Tests entgegennimmt, ausführt und die Resultate
     anzeigt.
     <b>Beispiele:</b> Jest, Mocha, Jasmin
-    <h2 class="subtitle">Assertion-Libraries: </h2>
+    <h2>Assertion-Libraries: </h2>
     Code zur Ausführung einzelner Tests
     <b>Beispiele: </b> Assert, Chai, Expect.js
-    <span class="subtitle">Mocking-Library: </span>
+    <h2>Mocking-Library: </h2>
     Separierung von Units / Erstellung von Mocks etc.
     <b>Beispiele: </b>Expect.js, Proxyquire, Sinon.js
-    <span class="subtitle">Phasen eines Tests</span>
+    <h2>Phasen eines Tests</h2>
     <ul>
         <li><b>Setup:</b> beforeEach Initailization, selbe Ausgangslage für alle Tests</li>
         <li><b>Exercise:</b> Aufruf einer Funktion (mit return value)</li>
         <li><b>Verify:</b> Überprüfen von Anhahmen</li>
         <li><b>Teardown:</b> Zurücksetzen z.B. von mocks</li>
     </ul>
-    <span class="subtitle">Beispiele</span>
+    <h2>Beispiele</h2>
     <pre class="code"><code class="language-javascript">const chai = require('chai');
 const sinon = require("sinon");
 const proxyquire = require("proxyquire");
@@ -261,7 +261,7 @@ describe("A new bank account", function() {
     .throw(new NoMoneyError("No money"));
   });
 });</code></pre>
-<span class="subtitle">Chai Chains:</span>
+    <h2>Chai Chains:</h2>
     <ul>
         <li>.to, .be, .been, .is, .that, .which, .and, .not</li>
         <li>.true, .false, .undefined, .NaN, .exist,</li>
@@ -278,12 +278,12 @@ describe("A new bank account", function() {
         </li>
         <li>throws()</li>
     </ul>
-    <span class="subtitle">Test Doubles:</span>Abhängigkeiten möglichst Lose, für tests Doubles verwenden
+    <h2>Test Doubles:</h2>Abhängigkeiten möglichst Lose, für tests Doubles verwenden
     <ul>
         <li>Stub & Fake: liefern vorbestimmten Wert</li>
         <li>Spy & Mock: Helfen einen überprüfbaren Content zu generieren</li>
     </ul>
-    <span class="subtitle">Test-Smells:</span>
+    <h2>Test-Smells:</h2>
     <ul>
         <li>Hard-to-Test Code: Schlecht geschreibener Code</li>
         <li>Production Bugs: Zuviele Bugs während testing oder in prod</li>
@@ -292,7 +292,7 @@ describe("A new bank account", function() {
         <li>Es gibt keine Tests</li>
     </ul>
     <h1>TypeScript</h1>
-    <span class="subtitle">Vorteile: </span>
+    <h2>Vorteile: </h2>
     <h2>TSLint und Prettier</h2>
     <h2></h2>
 </div>
@@ -305,7 +305,7 @@ describe("A new bank account", function() {
 
 <div class="container page">
     <h1>Node</h1>
-    <span class="subtitle">Application - app.js:</span>
+    <h2>Application - app.js:</h2>
     <pre class="code"><code class="language-javascript">const express = require('express');
 const path = require('path');
 const session = require('express-session');
@@ -319,7 +319,7 @@ resave: false, saveUninitialized: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', require('./routes/index'));
 module.exports = app;</code></pre>
-    <span class="subtitle">Routes - routes/index.js:</span>
+    <h2>Routes - routes/index.js:</h2>
     <pre class="code"><code class="language-javascript">const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/shopController')
@@ -328,7 +328,7 @@ router.post('/add', controller.add);
 router.post('/remove', controller.remove);
 router.post('/bestellung', controller.bestellung);
 module.exports = router;</code></pre>
-    <span class="subtitle">Services - services/shopService.js</span>
+    <h2>Services - services/shopService.js</h2>
     <pre class="code"><code class="language-javascript">const Datastore = require('nedb');
 const db = new Datastore({filename: './data/shop.db',
             autoload: true});
@@ -346,7 +346,7 @@ function get(id, callback) {
 }
 module.exports = {all, get};
         </code></pre>
-    <span class="subtitle">Controllers - controllers/noteController.js</span>
+    <h2>Controllers - controllers/noteController.js</h2>
     <pre class="code"><code class="language-javascript">function index(req, res) {
  ensureSession(req.session);
  shop.all((err, items)
@@ -390,7 +390,7 @@ function ensureSession(session) {
  }
 }
 module.exports = {index, add, remove, bestellung};</code></pre>
-    <span class="subtitle">Handlebars: </span>
+    <h2>Handlebars: </h2>
 </div>
 
 <script src="./node_modules/prismjs/prism.js"></script>

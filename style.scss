@@ -14,55 +14,77 @@ body {
 }
 
 .container {
-  overflow:hidden;
+  overflow: hidden;
   column-count: 4;
   column-fill: auto;
   column-gap: 0.1em;
   max-width: $a4-width;
   height: $a4-height;
-  box-sizing:border-box;
+  box-sizing: border-box;
 
   //TODO Remove me before printing!
   border: 0.1px solid black;
 }
 
-.page * {
-  margin-block-start:0;
-  margin-block-end:0;
+@mixin noLineBreak{
+  + h2::before {
+    content: '';
+    white-space: normal;
+  }
 }
 
-.page > h1 {
-  font-size: 10px;
-  font-weight: bold;
-  color: black;
-  background-color: darksalmon;
-  width: 100%;
+.page {
+
+  * {
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+
+  > h1 {
+    font-size: 10px;
+    font-weight: bold;
+    color: black;
+    background-color: darksalmon;
+    width: 100%;
+  }
+
+  > h2 {
+    font-size: 9px;
+    font-weight: bolder;
+    justify-self: center;
+    color: black;
+    background-color: rosybrown;
+    width: 100%;
+    display: inline;
+  }
+
+  h2::before {
+    content: '\A';
+    white-space: pre;
+  }
+
+  > h1{
+    @include noLineBreak
+  }
+  > ul{
+    @include noLineBreak
+  }
+  > pre{
+    @include noLineBreak
+  }
+
 }
 
-.page > h2 {
-  font-size: 9px;
-  font-weight: bolder;
-  justify-self: center;
-  color: black;
-  background-color: rosybrown;
-  width: 100%;
-  display: inline; 
-}
-.subtitle::before {
-  content: '\A';
-  white-space: pre;
-}
-
-code{
-  white-space: pre-wrap!important;
-  overflow:hidden;
+code {
+  white-space: pre-wrap !important;
+  overflow: hidden;
 }
 
 .code {
   padding: 0 !important;
   margin: 0 !important;
   font-size: 0.85em !important;
-  overflow:hidden!important;
+  overflow: hidden !important;
 }
 
 .header {
