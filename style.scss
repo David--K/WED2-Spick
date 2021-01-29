@@ -15,7 +15,9 @@ body {
 
 .container {
   overflow:hidden;
-  column-width:calc((#{$a4-width} / 5));
+  column-count: 4;//calc((#{$a4-width} / 5));
+  column-fill: auto;
+  column-gap: 0.1em;
   max-width: $a4-width;
   height: $a4-height;
   box-sizing:border-box;
