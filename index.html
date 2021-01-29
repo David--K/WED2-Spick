@@ -301,7 +301,7 @@ describe("A new bank account", function() {
 <div class="container page2">
     <div class="item itemSmall row1" style="min-height: 21cm;">
         <h1>Node</h1>
-        <span class="subtitle">Application<span class="tab">app.js:</span></span>
+        <span class="subtitle">Application - app.js:</span>
         <pre class="code"><code class="language-javascript">const express = require('express');
 const path = require('path');
 const session = require('express-session');
@@ -315,7 +315,7 @@ resave: false, saveUninitialized: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', require('./routes/index'));
 module.exports = app;</code></pre>
-        <span class="subtitle">Routes<span class="tab">routes/index.js:</span></span>
+        <span class="subtitle">Routes - routes/index.js:</span>
         <pre class="code"><code class="language-javascript">const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/shopController')
@@ -324,7 +324,7 @@ router.post('/add', controller.add);
 router.post('/remove', controller.remove);
 router.post('/bestellung', controller.bestellung);
 module.exports = router;</code></pre>
-        <span class="subtitle">Services<span class="tab">services/shopService.js</span></span>
+        <span class="subtitle">Services - services/shopService.js</span>
         <pre class="code"><code class="language-javascript">const Datastore = require('nedb');
 const db = new Datastore({filename: './data/shop.db',
             autoload: true});
@@ -342,7 +342,7 @@ function get(id, callback) {
 }
 module.exports = {all, get};
         </code></pre>
-        <span class="subtitle">Controllers<span class="tab">controllers/noteController.js</span></span>
+        <span class="subtitle">Controllers - controllers/noteController.js</span>
         <pre class="code"><code class="language-javascript">function index(req, res) {
  ensureSession(req.session);
  shop.all((err, items)
@@ -389,7 +389,7 @@ module.exports = {index, add, remove, bestellung};</code></pre>
         <span class="subtitle">Handlebars: </span>
     </div>
 </div>
-</div>
+
 <script src="./node_modules/prismjs/prism.js"></script>
 <script>
   function titleColorAssigner(selector, colors) {

@@ -21,9 +21,6 @@ body {
 }
 
 .item * {
-  //list-style: none;
-  white-space: pre-line;
-  margin: 0;
   margin-block-start:0;
   margin-block-end:0;
 }
@@ -79,13 +76,6 @@ code{
 .subtitle {
   font-weight: bold;
   background-color: yellow;
-}
-
-.tab {
-  background-color: inherit;
-  font-weight:bold;
-  position: sticky;
-  left: 7em;
 }
 
 ul {
