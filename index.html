@@ -291,10 +291,6 @@ describe("A new bank account", function() {
         <li>Errativ Test: Test funktionieren manchmal und manchmal nicht</li>
         <li>Es gibt keine Tests</li>
     </ul>
-    <h1>TypeScript</h1>
-    <h2>Vorteile: </h2>
-    <h2>TSLint und Prettier</h2>
-    <h2></h2>
 </div>
 
 
@@ -391,6 +387,98 @@ function ensureSession(session) {
 }
 module.exports = {index, add, remove, bestellung};</code></pre>
     <h2>Handlebars: </h2>
+    <h1>TypeScript</h1>
+    TypeScript hilft mittels "Statischer Analyse"
+    <ul>
+      <li>Typos zu entdecken</li>
+      <li>Static Typing</li>
+      <li>Erlaubt Spezifikation von Typen für Variablen, Funktionsparameter, Funktionswerten</li>
+      <li>erweitern der JS Syntax um optionale Typ-Annotation und mehr (z.B. Decorators)</li>
+      <li>Intelisense und Checking in Editoren</li>
+      <li>Pre-Processor der JavaScript generiert</li>
+    </ul>
+    <h2>Vorteile: </h2>
+    <h2>TSLint und Prettier</h2>
+    <b>TSLint:</b> Tool für die statische analyse von TypeScript, ist deprecated durch ESLint ersetzten
+    <b>Prettier: </b> Ist ein Code Formator, hilft einen konsistenten Code Style im gesamten Projekt durchzusetzen, z.B. Semicolons, Quotes oder Tab size
+    <h2>Syntax</h2>
+    <b>Basis-Typen:</b> boolean, number, string (sowie null und undefined)
+    <pre class="code"><code class="language-javascript">// Array declaration
+let myNumArray: number[] = [1, 2, 3];
+let myTupel: [number, string] = [1, 'abcd']
+// jedem value kann ein value mit 
+// einem beliebigen Typ zugeweisen werden
+let myNotInferredTupel = [1, 'abcd'];
+// enum declaration
+enum Color {Red, Green, Blue};
+enum StrColor {Red = "red", Green = "green"};
+type StrLitColor = "red" | "green";
+// enum verwenden
+let c: Color = Color.Green;
+let myTupel2: [Color, number] = [Color.Green, 1];
+function add(n1: number, n2: number): number;
+//function Parameter
+numFun: (prevRes: number, current: number) => number
+class Counter {
+  private _doors: number;
+  public static readonly WOOD_FACTORS = {'oak': 80, 'pine': 20};
+  constructor({doors = 2}: {doors?: number} = {}) {
+    this.doors = doors; // Fehler wenn doors nicht gesetzt wird, wäre korrekt in JS
+  }
+  set doors(newDoorCount: number) {
+    this._doors = newDoorCount;
+  }
+  get doors() {
+  return this._doors;
+  }
+}
+class SportsCar {
+  //Verkürzte Syntax zu Initialisierung von Properties im Konstruktor
+  constructor(
+  public make: string,
+  public color: SportsCarColor,
+  public gears: number,
+  ) { //kein code nötig }
+}
+interface IPoint {
+  readonly x: number;
+  readonly y: number;
+}
+  interface ILikableItem {
+  likes?: number;
+}
+class DescribableItem {
+  constructor(
+    public description: string
+  ){}
+}
+class PointOfInterest extends DescribableItem implements IPoint, ILikableItem {
+  constructor(public x: number, public y: number, description: string, public likes?:number) {
+    super(description);
+  }
+}
+// Express types
+interface CalcRequest extends Request {
+  body: {num1?: string; num2?: string}
+}</code></pre>
+    <h2>Regeln</h2>
+    <ul>
+      <li>any kann beliebiger Wert zugewiesen werden</li>
+      <li>
+        TypeScript findet Type heraus, falls Typ nicht deklariert, 
+        es kann nur noch der Typ des ersten zugewiesenen value verwendet werden.
+      </li>
+      <li>StrictNullChecks: 
+        <ul>
+          <li>Fehler wenn nonnullable value null zugewiesen wird, ohne strict mode kein Fehler</li>
+          <li><b>Kein</b> Fehler wenn nullable value undefined zugewiesen wird aber falls null zugewiesen wird schon</li>
+          <li>Fehler bei zuvielen Parametern in strict und in nicht strict mode</li>
+          <li>Fehler bei falschem Typ von zugewiesenem Wert in strict und in nicht strict mode</li>
+        </ul>
+    </ul>
+    <h2>Interfaces</h2> Eine Klasse darf mehr als ein Interface implementieren
+    <h2>Structural Typing</h2>
+    
 </div>
 
 <script src="./node_modules/prismjs/prism.js"></script>
