@@ -27,23 +27,23 @@
    center |stretch | baseline;
 }
 .item {
-  //Shorthand for 'grid-row-start' and 'grid-row-end'.
-  //span Anzahl columns von 1 
+/*Shorthand for 'grid-row-start' and 'grid-row-end'.
+  span Anzahl columns von 1*/
   grid-row: 1 / span 2;
   grid-column: 1 
   gap: 10px;
-  //Is a shorthand property for the grid-row-start,
-  //grid-column-start, grid-row-end, 
-  // and grid-column-end in that order. 
-  //Each value is separated by a /.
+/*Is a shorthand property for the grid-row-start,
+  grid-column-start, grid-row-end, 
+  and grid-column-end in that order. 
+  Each value is separated by a /.*/
   grid-area: 2 / 1 / span 2 / span 3;
-  //Es kann auch ein Name vergeben werden, der dann 
-  //in grid-template-areas gebraucht werden kann
+/*Es kann auch ein Name vergeben werden, der dann 
+  in grid-template-areas gebraucht werden kann*/
   grid-area: item;
-  //inherits align-items if defined overwrites align-items value
+/*inherits align-items if defined overwrites align-items value*/
   align-self: center; 
-  //inherits justify-items if defined overwrites justify-items value
-  justify-self: auto | normal | start
+/*inherits justify-items if defined overwrites justify-items value*/
+  justify-self: auto | normal | start;
 }
 nav {grid-area: nav;}
 .side-toc {grid-area: toc;  }
@@ -77,7 +77,7 @@ footer {grid-area: footer;}</code></pre>
   flex-wrap: wrap;
   flex-flow: [flex-direction] [flex-wrap]
   align-items: stretch;
-  // nur sinvoll bei fixer Item Grösse
+/*nur sinvoll bei fixer Item Grösse*/
   justify-content: center;
 }
 .item {
@@ -158,7 +158,62 @@ footer {grid-area: footer;}</code></pre>
         Task beinhaltet den context des Users, das Bedürfnis, das Ziel und den Auslöser
       </p>
     </div>
-    <div class="item itemSmall row3" style="min-height: 21cm;">blablablablablab lablabla blablablablablab lablabla blablablabla</div>
+    <div class="item itemSmall row3" style="min-height: 21cm;">
+      <h1>CSS Animation</h1>
+      <h2>Transition Properties</h2>
+      <pre class="code"><code class="language-css">.ex{
+/*which property to change */
+  transition-property: prop-name | all | none;
+/*how long the transition should take in s or ms*/
+  transition-duration: 5ms | 3s;
+/*manner in which the transition accelerates*/
+  transition-timing-function: ease | linear 
+    | ease-in | ease-out 
+    | ease-in-out | step-start
+    | step-end | steps(...) | cubic-bezier(#,#,#,#);
+/*whether there should be apause before starting
+  and the duration of said pause*/
+  transition-delay: 0.2s;
+/*shorthand transition property
+  property duration timing-function delay*/
+  transition: background-color .3s ease-in 0.2s;
+/*transitioning multiple properties*/
+  transition: background-color .3s ease-out 1s,
+              color 2s ease-in,
+              letter-spacing .2s ease-out;
+/*defining same duration, timing and
+  delay for all transitions*/
+  transition: all .2s ease-in-out;
+}</code></pre>
+      <h2>Transforms</h2>
+      <pre class="code"><code class="language-css">.ex{
+/*changes shape and rotation of an element*/
+  transform: rotate() | rotateX() | rotateY()
+    | translate() | translateX() | translateY()
+    | scale() | scaleX() | scaleY() 
+    | skew() | skewX() |skewY() | none;
+/*point ardound which an element is transformed,
+  defined by horizontal and vertical offsets*/
+  transform-origin: percentage | length | left 
+    | center | right | top | bottom;
+/*translate() function is used as the value of
+  transform to render an element at a new location*/
+  transform: translate(90px, 60px) | translate(20%);
+}</code></pre>
+  <h2>Keyframes</h2>
+  <pre class="code"><code class="language-css">@keyframes wiggleAnimation {
+  0% { transform: skewX(9deg); }
+  10% { transform: skewX(-8deg); }
+  20% { transform: skewX(7deg); }
+  30% { transform: skewX(-6deg); }
+  ...
+  90% { transform: skewX(0deg);}
+  100% { transform: skewX(0deg); }
+}    
+.wiggle {
+  animation-name: wiggleAnimation;
+  animation-duration: 1s;
+}</code></pre>
     <div class="item itemSmall row4" style="min-height: 21cm;">lablablablabla bla4lablablablablabla4lablab</div>
   </div>
   <div class="container page2">
