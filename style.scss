@@ -1,8 +1,8 @@
-
 @page {
   size: A4 landscape;
   margin: 0 0 0 0;
 }
+
 $a4-width: 29.7cm;
 $a4-height: 21cm;
 body {
@@ -11,70 +11,93 @@ body {
   margin-bottom: 0;
   font-size: 9px;
 }
+
 .container {
   display: flex;
   width: $a4-width;
   height: $a4-height;
   flex-flow: column wrap;
 }
+
 .itemSmall {
   border: 1px solid;
   box-sizing: border-box;
   flex: 0 1;
 }
+
 .itemBig {
   border: 1px solid;
   box-sizing: border-box;
   flex: 0 1;
 }
+
 .item * {
   margin: 0;
 }
+
 .item > h1 {
-  font-size: 10px; 
+  font-size: 10px;
   font-weight: bold;
   justify-self: center;
   color: black;
   background-color: darksalmon;
   width: 100%;
 }
+
 $row1-width: 9cm;
 .row1 {
   width: $row1-width;
 }
+
 $row2-width: 7.7cm;
 .row2 {
   width: $row2-width;
 }
+
 $row3-width: 7cm;
 .row3 {
   width: $row3-width;
 }
+
 .row4 {
   width: $a4-width - $row3-width - $row2-width -$row1-width;
 }
+
 .code {
   padding: 0 !important;
   margin: 0 !important;
 }
+
 .header {
   align-self: flex-start;
   justify-self: flex-start;
 }
+
 .footer {
   align-self: flex-end;
   justify-self: flex-end;
 }
+
 .page1 {
   background-color: white;
 }
+
 .page2 {
-  background-color: aqua;
+  background-color: white;
 }
+
 .subtitle {
   font-weight: bold;
   background-color: yellow;
 }
+
+.tab {
+  background-color: inherit;
+  font-weight:bold;
+  position: sticky;
+  left: 7em;
+}
+
 ul {
   padding-left: 1.5em;
 }

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WED Zusammenfassung</title>
-  <link href="./node_modules/prismjs/themes/prism.css" rel="stylesheet" />
-  <link href="./style.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WED Zusammenfassung</title>
+    <link href="./node_modules/prismjs/themes/prism.css" rel="stylesheet"/>
+    <link href="./style.css" rel="stylesheet"/>
 </head>
 <body>
-  <div class="container page1">
+<div class="container page1">
     <div class="item itemBig row1">
-      <h1>CSS Grid</h1>
-      <pre class="code"><code class="language-css">#grid-container {
+        <h1>CSS Grid</h1>
+        <pre class="code"><code class="language-css">#grid-container {
   display: grid; //inline-grid: inline | grid: block-level
   width: 100px;
   grid-template-columns: 1fr 60px minmax(10px, 200px);
@@ -50,27 +50,29 @@ nav {grid-area: nav;}
 footer {grid-area: footer;}</code></pre>
     </div>
     <div class="item itemBig row2">
-      <h1>CSS Flexbox</h1>
-      <p><span class="subtitle">Facts:</span>Alle Elemente Verhalten sich wie "inline blocks" (erlaubt margin (left & right) und paddding,
-        erlaubt andere Elemente auf der gelichen Zeile, erlaubt <b>width</b> und <b>height</b>
-      </p>
-      <p><span class="subtitle">flex-grow:</span>
-        Entspricht dem Verhältnis wie der leere Platz verteilt wird. Default: 0 (nicht grösser werden)
-      </p>
-      <p><span class="subtitle">flex-shrink</span>
-        Entspricht dem Verhältnis wie die Elemente kleiner werden, wenn zu wenig PLatz vorhanden ist, Default: 0
-      </p>
-      <p><span class="subtitle">flex-basis</span>
-        Alternative: content | Ist initialer Wert für Grösse eines flex item. flex-direction: row -A value steht für width, 
-        column -> value steht für Breite
-      </p>
-      <p><span class="subtitle">flex-wrap:</span>
-        Problem: zuviele Elemente in einer Reihe
-      </p>
-      <p><span class="subtitle">(flex-order) order:</span>
-        Werden in aufsteigender Reihenfolge dargestellt, Default: 0
-      </p>
-      <pre class="code"><code class="language-css">.container {
+        <h1>CSS Flexbox</h1>
+        <p><span class="subtitle">Facts:</span>Alle Elemente Verhalten sich wie "inline blocks" (erlaubt margin (left &
+            right) und paddding,
+            erlaubt andere Elemente auf der gelichen Zeile, erlaubt <b>width</b> und <b>height</b>
+        </p>
+        <p><span class="subtitle">flex-grow:</span>
+            Entspricht dem Verhältnis wie der leere Platz verteilt wird. Default: 0 (nicht grösser werden)
+        </p>
+        <p><span class="subtitle">flex-shrink</span>
+            Entspricht dem Verhältnis wie die Elemente kleiner werden, wenn zu wenig PLatz vorhanden ist, Default: 0
+        </p>
+        <p><span class="subtitle">flex-basis</span>
+            Alternative: content | Ist initialer Wert für Grösse eines flex item. flex-direction: row -A value steht für
+            width,
+            column -> value steht für Breite
+        </p>
+        <p><span class="subtitle">flex-wrap:</span>
+            Problem: zuviele Elemente in einer Reihe
+        </p>
+        <p><span class="subtitle">(flex-order) order:</span>
+            Werden in aufsteigender Reihenfolge dargestellt, Default: 0
+        </p>
+        <pre class="code"><code class="language-css">.container {
   display: flex;
   flex-direction: row | row-reverse 
   | column | column-reverse
@@ -91,101 +93,205 @@ footer {grid-area: footer;}</code></pre>
 } </code></pre>
     </div>
     <div class="item itemSmall row2">
-      <h1>User Centered Design</h1>
-      <p><span class="subtitle">Zsm:</span>Den user befragen ist <b>nicht</b> User Centerd Design, 
-        sondern beobachen was sie machen.
-      </p>
-      <p>
-        <span class="subtitle">Stolze:</span> You may ask you customers, but not your users.
-        Man sollte sich bewusst sein, wer der User ist.
-      </p>
-      <p>
-        <span class="subtitle">Features of Good User Research:</span>
-        Representative Benutzer auswählen, Sinvolle und realistische Tests machen, 
-        momentante tools und strategies verwenden, in einem sinvollen und representativen context
-      </p>
-      <p>
-        <span class="subtitle">Information Scent:</span> 
-        Links etc. sind so bennant, dass klar ist welche Ziele durch die Navigation erreich (und nicht erreicht) werden.
-      </p>
-      <p>
-        <span class="subtitle">Site Map: </span> Baumstruktur der Navigation
-      </p>
-      <p>
-        <span class="subtitle">Raster Design: </span> Gute "Ausschilderung" User sollten stets wissen: 
+        <h1>User Centered Design</h1>
+        <p><span class="subtitle">Zsm:</span>Den user befragen ist <b>nicht</b> User Centerd Design,
+            sondern beobachen was sie machen.
+        </p>
+        <p>
+            <span class="subtitle">Stolze:</span> You may ask you customers, but not your users.
+            Man sollte sich bewusst sein, wer der User ist.
+        </p>
+        <p>
+            <span class="subtitle">Features of Good User Research:</span>
+            Representative Benutzer auswählen, Sinvolle und realistische Tests machen,
+            momentante tools und strategies verwenden, in einem sinvollen und representativen context
+        </p>
+        <p>
+            <span class="subtitle">Information Scent:</span>
+            Links etc. sind so bennant, dass klar ist welche Ziele durch die Navigation erreich (und nicht erreicht)
+            werden.
+        </p>
+        <p>
+            <span class="subtitle">Site Map: </span> Baumstruktur der Navigation
+        </p>
+        <p>
+            <span class="subtitle">Raster Design: </span> Gute "Ausschilderung" User sollten stets wissen:
         <ul>
-          <li>Wo bin ich im Moment: Eindeutiger Seitentitel, konsistenter Header, Icons, Seitendesign, Was kann ich machen</li>
-          <li>Wo kann ich hin: Deutlich sichtbare Navigationselemente</li>
-          <li>Was ist passiert: Navigation z.B. animiert, Browser back unterstützen</li>
+            <li>Wo bin ich im Moment: Eindeutiger Seitentitel, konsistenter Header, Icons, Seitendesign, Was kann ich
+                machen
+            </li>
+            <li>Wo kann ich hin: Deutlich sichtbare Navigationselemente</li>
+            <li>Was ist passiert: Navigation z.B. animiert, Browser back unterstützen</li>
         </ul>
-      </p>
-      <p>
-        <span class="subtitle">Usability: </span>
+        </p>
+        <p>
+            <span class="subtitle">Usability: </span>
         <ul>
-          <li>Effektivität: Benutzer könne Ziele erreichen</li>
-          <li>Effizienz: Benutzer können ihre Ziele mit angemessenem Aufwand erreichen</li>
-          <li>Zufriedenheit: Benutzer sind positiv gegenüber dem System eingestellt</li>
+            <li>Effektivität: Benutzer könne Ziele erreichen</li>
+            <li>Effizienz: Benutzer können ihre Ziele mit angemessenem Aufwand erreichen</li>
+            <li>Zufriedenheit: Benutzer sind positiv gegenüber dem System eingestellt</li>
         </ul>
-      </p>
-      <p>
-        <span class="subtitle">Card Sorting: </span>
-        <b>Schritt 1: </b>Content Repository Erstellen (Was sind Zielpunkte der Navigation)</p>
-      <p>
-        <b>Schritt 2: </b>
+        </p>
+        <p>
+            <span class="subtitle">Card Sorting: </span>
+            <b>Schritt 1: </b>Content Repository Erstellen (Was sind Zielpunkte der Navigation)</p>
+        <p>
+            <b>Schritt 2: </b>
         <ul>
-          <li>"Open Card Sort" 5+ Personen aus der Zielgruppe rekrutieren</li> 
-          <li>Content Elemente in disjunkte (Elemente haben nichts gemeinsam) Gruppen ordnen lassen</li>
-          <li>Gruppen benennen lassen</li>
+            <li>"Open Card Sort" 5+ Personen aus der Zielgruppe rekrutieren</li>
+            <li>Content Elemente in disjunkte (Elemente haben nichts gemeinsam) Gruppen ordnen lassen</li>
+            <li>Gruppen benennen lassen</li>
         </ul>
-      </p>
-      <p>
-        <b>Schritt 3: </b>Gute Gruppennamen identifizieren (Hypothese)
-      </p>
-      <p>
-        <b>Schritt 4: </b>Gruppennamen mittels "Closed Card Sort" Validieren
+        </p>
+        <p>
+            <b>Schritt 3: </b>Gute Gruppennamen identifizieren (Hypothese)
+        </p>
+        <p>
+            <b>Schritt 4: </b>Gruppennamen mittels "Closed Card Sort" Validieren
         <ul>
-          <li>5+ Neue Personen aus der Zielgruppe rekrutieren</li>
-          <li>Gruppenname vorgeben</li>
-          <li>Content Elemente den Gruppen zuordnen lassen</li>
+            <li>5+ Neue Personen aus der Zielgruppe rekrutieren</li>
+            <li>Gruppenname vorgeben</li>
+            <li>Content Elemente den Gruppen zuordnen lassen</li>
         </ul>
-      </p>
-      <p>
-        <span class="subtitle">Tree Testing: </span>
-        Aufgabe geben, Geh auf die Seite X. User klickt sich durch und es kann beobachtet werden wie er sich verhaltet.
-      </p>
-      <p>
-        <span class="subtitle">Usability Test</span> Test der die einzelnen Teile der Usability tested, 
-        Task beinhaltet den context des Users, das Bedürfnis, das Ziel und den Auslöser
-      </p>
+        </p>
+        <p>
+            <span class="subtitle">Tree Testing: </span>
+            Aufgabe geben, Geh auf die Seite X. User klickt sich durch und es kann beobachtet werden wie er sich
+            verhaltet.
+        </p>
+        <p>
+            <span class="subtitle">Usability Test</span> Test der die einzelnen Teile der Usability tested,
+            Task beinhaltet den context des Users, das Bedürfnis, das Ziel und den Auslöser
+        </p>
     </div>
-    <div class="item itemSmall row3" style="min-height: 21cm;">blablablablablab lablabla blablablablablab lablabla blablablabla</div>
+    <div class="item itemSmall row3" style="min-height: 21cm;">blablablablablab lablabla blablablablablab lablabla
+        blablablabla
+    </div>
     <div class="item itemSmall row4" style="min-height: 21cm;">lablablablabla bla4lablablablablabla4lablab</div>
-  </div>
-  <div class="container page2">
-    <div class="item itemSmall row1" style="min-height: 21cm;">blablablabla blablablablablabla blablablabla</div>
-    <div class="item itemSmall row2" style="min-height: 10.5cm;">blablablabla blablablablablabla blablablabla blablablabla bl4blablablabla </div>
-    <div class="item itemSmall row2" style="min-height: 10.5cm;">blablablabla blablablablablabla blablablabla blablablabla bl4blablablabla </div>
-    <div class="item itemSmall row3" style="min-height: 21cm;">blablablablablab lablabla blablablablablab lablabla blablablabla</div>
+</div>
+<div class="container page2">
+    <div class="item itemSmall row1" style="min-height: 21cm;">
+        <h1>Node</h1>
+        <span class="subtitle">Application<span class="tab">app.js:</span></span>
+        <pre class="code"><code class="language-javascript">const express = require('express');
+const path = require('path');
+const session = require('express-session');
+const app = express();
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+app.use(express.urlencoded({ extended: false }));
+app.use(session({secret: 'abcdefg',
+resave: false, saveUninitialized: true}));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/', require('./routes/index'));
+module.exports = app;</code></pre>
+        <span class="subtitle">Routes<span class="tab">routes/index.js:</span></span>
+        <pre class="code"><code class="language-javascript">const express = require('express');
+const router = express.Router();
+const controller = require('../controllers/shopController')
+router.get('/', controller.index);
+router.post('/add', controller.add);
+router.post('/remove', controller.remove);
+router.post('/bestellung', controller.bestellung);
+module.exports = router;</code></pre>
+        <span class="subtitle">Services<span class="tab">services/shopService.js</span></span>
+        <pre class="code"><code class="language-javascript">const Datastore = require('nedb');
+const db = new Datastore({filename: './data/shop.db',
+            autoload: true});
+class Item {
+ constructor(name, preis) {
+ this.name = name;
+ this.preis = preis;
+ }
+}
+function all(callback) {
+ db.find({}, callback);
+}
+function get(id, callback) {
+ db.find({_id: id}, callback);
+}
+module.exports = {all, get};
+        </code></pre><span class="subtitle">Controllers<span class="tab">controllers/noteController.js</span></span>
+        <pre class="code"><code class="language-javascript">function index(req, res) {
+ ensureSession(req.session);
+ shop.all((err, items)
+ const warenkorb = req.session.warenkorb;
+ items.forEach(item => {
+ item.count = warenkorb[item._id] || 0;
+ });
+ res.render("index", {items: items, warenkorbCount: getCountFromSession(req)});
+ })
+}
+function bestellung(req, res) {
+ shop.all((err, items) => {
+ const selectedItems = Object.keys(req.session.warenkorb).map(key => {
+ return {item: items.find(x => x._id === key), count:
+req.session.warenkorb[key]};
+ });
+ const preis = selectedItems.reduce((previousValue, currentValue) => previousValue
++ currentValue.item.preis * currentValue.count, 0);
+ req.session.warenkorb = {}; 2P (Session zurücksetzen)
+ 4P renderer, items, sum preis, count
+ res.render("bestellung", {items: selectedItems, preis: preis, warenkorbCount:
+0});
+ })
+}
+function add(req, res) {
+ req.session.warenkorb[req.body.id] = (req.session.warenkorb[req.body.id] || 0) + 1;
+ res.redirect("/");
+}
+function remove(req, res) {
+ req.session.warenkorb[req.body.id] = Math.max(0, (req.session.warenkorb[req.body.id]
+|| 0) - 1);
+ res.redirect("/");
+}
+function getCountFromSession(req) {
+ return Object.values(req.session.warenkorb).reduce((previousValue, currentValue) =>
+previousValue += currentValue, 0);
+}
+function ensureSession(session) {
+ if (!session.warenkorb) {
+ session.warenkorb = {};
+ }
+}
+module.exports = {index, add, remove, bestellung};</code></pre>
+
+
+
+        <span class="subtitle">Handlebars: </span>
+
+    </div>
+    <div class="item itemSmall row2" style="min-height: 10.5cm;">blablablabla blablablablablabla blablablabla
+        blablablabla bl4blablablabla
+    </div>
+    <div class="item itemSmall row2" style="min-height: 10.5cm;">blablablabla blablablablablabla blablablabla
+        blablablabla bl4blablablabla
+    </div>
+    <div class="item itemSmall row3" style="min-height: 21cm;">blablablablablab lablabla blablablablablab lablabla
+        blablablabla
+    </div>
     <div class="item itemSmall row4" style="min-height: 21cm;">blablablabla bla lablablablablabla lablab</div>
-  </div>
-  <script src="./node_modules/prismjs/prism.js"></script>
-  <script>
-    function titleColorAssigner(selector, colors) {
-      let colorIndex = 0;
-      document.querySelectorAll (selector).forEach(function (span) {
-        console.log(span);
-        span.style.background = colors[colorIndex];
-        if (colorIndex === colors.length - 1) {
-          colorIndex = 0;
-        } else {
-          colorIndex++;
-        }
-      });
-    }
-    window.onload = () => {
-      titleColorAssigner(".subtitle", ["yellow", "aqua", "magenta"]);
-      titleColorAssigner("h1", ["darksalmon", "burlywood", "chocolate"]);
-    };
-  </script>
+</div>
+<script src="./node_modules/prismjs/prism.js"></script>
+<script>
+  function titleColorAssigner(selector, colors) {
+    let colorIndex = 0;
+    document.querySelectorAll(selector).forEach(function (span) {
+      console.log(span);
+      span.style.background = colors[colorIndex];
+      if (colorIndex === colors.length - 1) {
+        colorIndex = 0;
+      } else {
+        colorIndex++;
+      }
+    });
+  }
+
+  window.onload = () => {
+    titleColorAssigner(".subtitle", ["yellow", "aqua", "magenta"]);
+    titleColorAssigner("h1", ["darksalmon", "burlywood", "chocolate"]);
+  };
+</script>
 </body>
 </html>
