@@ -38,6 +38,15 @@ body {
   background-color: darksalmon;
   width: 100%;
 }
+
+.item > h2 {
+  font-size: 9px; 
+  font-weight: bolder;
+  justify-self: center;
+  color: black;
+  background-color: rosybrown;
+  width: 100%;
+}
 $row1-width: 9cm;
 .row1 {
   width: $row1-width;
