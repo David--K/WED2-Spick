@@ -14,26 +14,18 @@ body {
 }
 
 .container {
-  display: flex;
-  width: $a4-width;
+  overflow:hidden;
+  column-width:calc((#{$a4-width} / 5));
+  max-width: $a4-width;
   height: $a4-height;
-  flex-flow: column wrap;
-}
-
-.itemSmall {
-  border: 1px solid;
-  box-sizing: border-box;
-  flex: 0 1;
-}
-
-.itemBig {
-  border: 1px solid;
-  box-sizing: border-box;
-  flex: 0 1;
 }
 
 .item * {
+  //list-style: none;
+  white-space: pre-line;
   margin: 0;
+  margin-block-start:0;
+  margin-block-end:0;
 }
 
 .item > h1 {
@@ -52,24 +44,6 @@ body {
   color: black;
   background-color: rosybrown;
   width: 100%;
-}
-$row1-width: 7.7cm;
-.row1 {
-  width: $row1-width;
-}
-
-$row2-width: 7.7cm;
-.row2 {
-  width: $row2-width;
-}
-
-$row3-width: 7cm;
-.row3 {
-  width: $row3-width;
-}
-
-.row4 {
-  width: $a4-width - $row3-width - $row2-width -$row1-width;
 }
 
 code{
