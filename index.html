@@ -218,6 +218,12 @@ footer {grid-area: footer;}</code></pre>
     <div class="item itemSmall row4" style="min-height: 21cm;">
       <h1>Testing</h1>
       <p>
+        <span class="subtitle">TDD</span>
+        Test anything that might break, New Code is quilty until proven innocent, 
+        Write at least as much test code as production code
+        Run all testc before check-in to repository
+      </p>
+      <p>
         <span class="subtitle">Unit Tests: </span>Getestet werden einzelne "Units": Klassen, Module (meist ein File)
         Automation relativ einfach, <b>Herausforderung:</b> Isolation der Units, asynchrone Operationen, Testdatengenerierung (z.B. Fuzzing)
       </p>
@@ -256,10 +262,10 @@ footer {grid-area: footer;}</code></pre>
       <p>
         <span class="subtitle">Phasen eines Tests</span>
         <ul>
-          <li>Setup:</li> beforeEach Initailization, selbe Ausgangslage für alle Tests
-          <li>Exercise:</li> Aufruf einer Funktion (mit return value)
-          <li>Verify:</li> Überprüfen von Anhahmen
-          <li>Teardown:</li> Zurücksetzen
+          <li><b>Setup:</b> beforeEach Initailization, selbe Ausgangslage für alle Tests</li> 
+          <li><b>Exercise:</b> Aufruf einer Funktion (mit return value)</li>
+          <li><b>Verify:</b> Überprüfen von Anhahmen</li>
+          <li><b>Teardown:</b> Zurücksetzen</li>
         </ul>
       </p>
       <p>
@@ -281,12 +287,26 @@ describe("A new bank account", function() {
    function() {
     expect(this.account.withdraw(50))
     .to.equal(false);
-    expect(this.account.balance).to.equal(0);
+    expect(this.account.balance).to
+    .throw(new NoMoneyError("No money"));
   });
 });</code></pre>
       </p>
       <p>
-        <span class="subtitle">Test Doubles:</span>
+        <span class="subtitle">Chai Chains:</span>
+        <ul>
+          <li>.to, .be, .been, .is, .that, .which, .and, .not</li>
+          <li>.true, .false, .undefined, .NaN, .exist,</li>
+          <li>.equal(<value>), .deep.equal(<value>)</li>
+          <li>.includes([…<values>]), .any.keys, .all.keys</li>
+          <li>.a(<baseType>), instanceOf(<class>)</li>
+          <li>throws()</li>
+        </ul>
+      </p>
+      <p>
+        <span class="subtitle">Test Doubles:</span>Abhängigkeiten möglichst Lose, für tests Doubles verwenden
+        Stub & Fake: liefern vorbestimmten Wert
+        --- Spy & Mock: Helfen einen überprüfbaren Content zu generieren
       </p>
       <p>
         <span class="subtitle">Test-Smells:</span>
