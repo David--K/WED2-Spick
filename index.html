@@ -163,7 +163,7 @@ footer {grid-area: footer;}</code></pre>
             Task beinhaltet den context des Users, das Bedürfnis, das Ziel und den Auslöser
         </p>
     </div>
-    <div class="item itemSmall row3" style="min-height: 21cm;">
+    <div class="item itemSmall row3">
       <h1>CSS Animation</h1>
       <h2>Transition Properties</h2>
       <pre class="code"><code class="language-css">.ex{
@@ -218,8 +218,32 @@ footer {grid-area: footer;}</code></pre>
   animation-duration: 1s;
 }</code></pre>
     </div>
+    <div class="item itemSmall row3">
+      <h1>Testing Part 2</h1>
+      <p>
+        <span class="subtitle">Chai Chains:</span>
+        <ul>
+          <li>.to, .be, .been, .is, .that, .which, .and, .not</li>
+          <li>.true, .false, .undefined, .NaN, .exist,</li>
+          <li>.equal(<value>), .deep.equal(<value>)</li>
+          <li>.includes([…<values>]), .any.keys, .all.keys</li>
+          <li>.a(<baseType>), instanceOf(<class>)</li>
+          <li>throws()</li>
+        </ul>
+      </p>
+      <p>
+        <span class="subtitle">Test Doubles:</span>Abhängigkeiten möglichst Lose, für tests Doubles verwenden
+        <ul>
+          <li>Stub & Fake: liefern vorbestimmten Wert</li>
+          <li>Spy & Mock: Helfen einen überprüfbaren Content zu generieren</li>
+        </ul>
+      </p>
+      <p>
+        <span class="subtitle">Test-Smells:</span>
+      </p>
+    </div>
     <div class="item itemSmall row4" style="min-height: 21cm;">
-      <h1>Testing</h1>
+      <h1>Testing Part 1</h1>
       <p>
         <span class="subtitle">TDD</span>
         Test anything that might break, New Code is quilty until proven innocent, 
@@ -282,9 +306,9 @@ const currencyConverter = proxyquire("../cc", { convert: stub });
 describe("A new bank account", function() {
   beforeEach(function() {
     this.account = new BankAccount();
-    // creates a stub/fake for the Date object
-    clock = sinon.useFakeTimers(constantNow);
+    clock = sinon.useFakeTimers(constantNow); // stub/fake Date
     this.converter = new currencyConverter("mysecret");
+    this.accountAWithdrawSpy = sinon.spy(this.accountA, "withdraw");
   });
   afterEach(function() {
     clock.restore();
@@ -298,6 +322,12 @@ describe("A new bank account", function() {
     this.account.add(20);
     expect(converter(this.account.balance)).to.equal(40);
   });
+  it("correctly calls withdrawal of transactionAmount from account A",
+  function() {
+    this.transaction.execute();
+    sinon.assert.calledWith(this.accountAWithdrawSpy, transactionAmount);
+    //expect(this.accountAWithdrawSpy.calledWith(transactionAmount)).to.be.true;
+    });
   it("should not allow a withdraw",
    function() {
     expect(this.account.withdraw(50))
@@ -306,27 +336,6 @@ describe("A new bank account", function() {
     .throw(new NoMoneyError("No money"));
   });
 });</code></pre>
-      </p>
-      <p>
-        <span class="subtitle">Chai Chains:</span>
-        <ul>
-          <li>.to, .be, .been, .is, .that, .which, .and, .not</li>
-          <li>.true, .false, .undefined, .NaN, .exist,</li>
-          <li>.equal(<value>), .deep.equal(<value>)</li>
-          <li>.includes([…<values>]), .any.keys, .all.keys</li>
-          <li>.a(<baseType>), instanceOf(<class>)</li>
-          <li>throws()</li>
-        </ul>
-      </p>
-      <p>
-        <span class="subtitle">Test Doubles:</span>Abhängigkeiten möglichst Lose, für tests Doubles verwenden
-        <ul>
-          <li>Stub & Fake: liefern vorbestimmten Wert</li>
-          <li>Spy & Mock: Helfen einen überprüfbaren Content zu generieren</li>
-        </ul>
-      </p>
-      <p>
-        <span class="subtitle">Test-Smells:</span>
       </p>
     </div>
 
