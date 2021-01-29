@@ -214,7 +214,85 @@ footer {grid-area: footer;}</code></pre>
   animation-name: wiggleAnimation;
   animation-duration: 1s;
 }</code></pre>
-    <div class="item itemSmall row4" style="min-height: 21cm;">lablablablabla bla4lablablablablabla4lablab</div>
+    </div>
+    <div class="item itemSmall row4" style="min-height: 21cm;">
+      <h1>Testing</h1>
+      <p>
+        <span class="subtitle">Unit Tests: </span>Getestet werden einzelne "Units": Klassen, Module (meist ein File)
+        Automation relativ einfach, <b>Herausforderung:</b> Isolation der Units, asynchrone Operationen, Testdatengenerierung (z.B. Fuzzing)
+      </p>
+      <p>
+        <span class="subtitle">System Tests: </span>
+        Getestet wird das Zusammenspiel aller Systemkomponenten in der Zielumgebung
+        Automation meist nur in Teilen möglich.
+        <b>Herausforderungen</b>: Realistische aber vorhersagbare Umgebung
+        <b>Weitere System Tests:</b>Load Tests, Performance Tests, Endurance Tests, Chaos Tests, Security Tests, Usability Tests
+      </p>
+      <p>
+        <span class="subtitle">Integration Tests: </span>Getestet wird das Zusammenspiel 2 oder mehr "Units"
+         (E2E: Integration über alle Layer), Automation meist möglich
+        <b>Herausforderungen:</b> Isolation der Units, asynchrone Operationen, Simulation Browser &
+        Benutzerinteraktion, Test mit Datenbank, Testdatengenerierung (z.B. Fuzzing)
+      </p>
+      <p>
+        <span class="subtitle">(Visuelle) Regression Tests: </span>
+        Getestet wird ob Veränderungen im Code zu (unerwarteten) Änderungen im Verhalten (oder UI)
+        führen. Automation möglich mit speziellen Tools
+      </p>
+      <p>
+        <span class="subtitle">Test-Runner: </span>Ein Rhamen der Tests entgegennimmt, ausführt und die Resultate anzeigt.
+        <b>Beispiele:</b> Jest, Mocha, Jasmin
+      </p>
+      <p>
+        <span class="subtitle">Assertion-Libraries: </span>
+        Code zur Ausführung einzelner Tests
+        <b>Beispiele: </b> Assert, Chai, Expect.js
+      </p>
+      <p>
+        <span class="subtitle">Mocking-Library: </span>
+        Separierung von Units / Erstellung von Mocks etc.
+        <b>Beispiele: </b>Expect.js, Proxyquire, Sinon.js
+      </p>
+      <p>
+        <span class="subtitle">Phasen eines Tests</span>
+        <ul>
+          <li>Setup:</li> beforeEach Initailization, selbe Ausgangslage für alle Tests
+          <li>Exercise:</li> Aufruf einer Funktion (mit return value)
+          <li>Verify:</li> Überprüfen von Anhahmen
+          <li>Teardown:</li> Zurücksetzen
+        </ul>
+      </p>
+      <p>
+        <span class="subtitle">Beispiele</span>
+        <pre class="code"><code class="language-javascript">const chai = require('chai');
+const expect = chai.expect;
+describe("A new bank account", function() {
+  beforeEach(function() {
+    this.account = new BankAccount();
+  });
+  afterEach(function() {
+    console.log("After the Test");
+  })
+  it("is initialized by a balance of 0",
+  function() {
+    expect(this.account.balance).to.equal(0);
+  });
+  it("should not allow a withdraw",
+   function() {
+    expect(this.account.withdraw(50))
+    .to.equal(false);
+    expect(this.account.balance).to.equal(0);
+  });
+});</code></pre>
+      </p>
+      <p>
+        <span class="subtitle">Test Doubles:</span>
+      </p>
+      <p>
+        <span class="subtitle">Test-Smells:</span>
+      </p>
+    </div>
+    
   </div>
   <div class="container page2">
     <div class="item itemSmall row1" style="min-height: 21cm;">blablablabla blablablablablabla blablablabla</div>
@@ -228,7 +306,6 @@ footer {grid-area: footer;}</code></pre>
     function titleColorAssigner(selector, colors) {
       let colorIndex = 0;
       document.querySelectorAll (selector).forEach(function (span) {
-        console.log(span);
         span.style.background = colors[colorIndex];
         if (colorIndex === colors.length - 1) {
           colorIndex = 0;
