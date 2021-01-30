@@ -5,9 +5,13 @@
 
 $a4-width: 29.7cm;
 $a4-height: 209.6mm;
+
+$text-font-size: 8px;
+$code-font-size: 0.85em;
+
 body {
   margin:0;
-  font-size: 9px;
+  font-size: $text-font-size;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -89,7 +93,7 @@ code {
 .code {
   padding: 0 !important;
   margin: 0 !important;
-  font-size: 0.85em !important;
+  font-size: $code-font-size !important;
   overflow: hidden !important;
 }
 
