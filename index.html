@@ -275,28 +275,58 @@ describe("A new bank account", function() {
     <h1>Sass (Syntactically Awesom Style Sheet)</h1>
     <h2>Alternativen: Less, stylus</h2>
     <h2>Aufgabe und Einsatzbereich</h2>
-    CSS Präprozessoern sind nicht an die Limitation von CSS gebunden und ermöglichen es (potentiell) 
+    CSS Präprozessoern sind nicht an die Limitation von CSS gebunden und ermöglichen es (potentiell)
     besser wartbaren Code zu schreiben. Weniger Copy & Paste, Modularisierung, Wiederverwendung
     <b>Output: </b> ist immer CSS
     <h2>Einheiten</h2>Können mit folgenden Operatoren <b>+, -, *, /, und %</b> verwendet werden.
     <h2>PostCSS</h2>
     <h2>Webbuildtools Context und Features</h2>
     <h2>Kategorien</h2>
-    <h2>Beispiele</h2> <b>.scss</b> files verwenden {} und ; <b>.sass</b> Files nicht
-    <h2>@use, @import</h2> 
-    <pre class="code"><code class="language-css">@use 'colors'; /*erlaubt es alle Variabeln aus diesem File zu verwenden*/ 
-@import "normalize"; /*importiert/merged normalize mit diesem File normalize on top*/</code></pre>
+    <h2>Beispiele</h2> <b>.scss</b> files müssen <b>{}</b> und <b>;</b> verwenden <b>.sass</b> Files nicht
+    <h2>Spezielle Zeichen: </h2> <b>$</b> Variablen, <b>&</b> Referezn auf Parent, <b>%</b>
+    <h2>@use, @import</h2> immer zuoberst von File
+    <pre class="code"><code class="language-css">@use 'colors'; /*erlaubt alle Variabeln aus diesem File*/ 
+@import "normalize"; /*importiert/merged, normalize oben*/</code></pre>
     <h2>@extend</h2>
-    <pre class="code"><code class="language-css">%shared
-  padding: 10px
-.message 
-  @extend %shared
-  color: green</code></pre>
+    <pre class="code"><code class="language-css">%shared {
+  padding: 10px;}
+.text {
+  font-size: 1.5em;}
+.message {
+  @extend %shared;
+  @extend .text;
+  color: green;}</code></pre>
     daraus wird folgendes css:
     <pre class="code"><code class="language-css">.message /*any other selector extending shared*/
   padding: 10px
 .message   
   color: green</code></pre>
+    <h2>@mixin und @include</h2> immer zuoberst
+    <pre class="code"><code class="language-css">@mixin babo {
+  color: blue
+}
+@mixin bratte {
+  @include babo
+  li {
+    color: red}}
+@mixin rtl($property, $ltr-value, $rtl-value) {
+  #{$property}: $ltr-value;
+  [dir=rtl] & {
+    #{$property}: $rtl-value;}
+nav ul {
+  @include bratte;}
+.sidebar {
+  @include rtl(float, left, right)}
+</code></pre>
+    wird in folgendes CSS umgewandelt
+    <pre class="code"><code class="language-css">nav ul {
+  color: blue;}
+nav ul li {
+  color: red;}
+.sidebar {
+  float: left;}
+[dir=rtl] .sidebar {
+  float: right;}</code></pre>
 </div>
 
 
@@ -349,7 +379,9 @@ function get(id, callback) {
 module.exports = {all, get};
         </code></pre>
     <h2>Controllers - controllers/noteController.js</h2>
-    <pre class="code"><code class="language-javascript">function index(req, res) {
+    <pre class="code"><code class="language-javascript">const shop = require('../services/shopService.js');
+
+function index(req, res) {
  ensureSession(req.session);
  shop.all((err, items)
  const warenkorb = req.session.warenkorb;
@@ -392,20 +424,43 @@ function ensureSession(session) {
  }
 }
 module.exports = {index, add, remove, bestellung};</code></pre>
-    <h2>Handlebars: </h2>
+    <h1>Cookies: </h1>
+    <pre class="code"><code class="language-javascript">var cookieParser = require('cookie-parser')
+app.use(cookieParser())
+/*read Cookies*/ console.log('Cookies: ', req.cookies)
+/*write Cookies*/ res.cookie('name', 'tobi', { domain: '.example.com', path: '/admin', secure: true })
+/*or*/res.cookie('rememberme', '1', { expires: new Date(Date.now() + 900000), httpOnly: true })</code></pre>
+    <h1>Handlebars: </h1>
+    <pre class="code"><code class="escapeHtml">{{#if author}}
+    <h1>{{firstName}}{{lastName}}</h1>
+{{/if}}
+{{#unless license}}
+    <h3 class="warning">WARNING no license</h3>
+{{/unless}}
+{{#each people}}
+    <li>{{this}}</li>
+{{/each}}
+{{#each array}}
+    {{@root.foo}}
+    {{#if @first}}First!{{/if}}
+    {{@index}}
+    {{@key}}
+    {{#if @last}}Last!{{/if}}
+{{/each}}</code></pre>
     <h1>TypeScript</h1>
     TypeScript hilft mittels "Statischer Analyse"
     <ul>
-      <li>Typos zu entdecken</li>
-      <li>Static Typing</li>
-      <li>Erlaubt Spezifikation von Typen für Variablen, Funktionsparameter, Funktionswerten</li>
-      <li>erweitern der JS Syntax um optionale Typ-Annotation und mehr (z.B. Decorators)</li>
-      <li>Intelisense und Checking in Editoren</li>
-      <li>Pre-Processor der JavaScript generiert</li>
+        <li>Typos zu entdecken</li>
+        <li>Static Typing</li>
+        <li>Erlaubt Spezifikation von Typen für Variablen, Funktionsparameter, Funktionswerten</li>
+        <li>erweitern der JS Syntax um optionale Typ-Annotation und mehr (z.B. Decorators)</li>
+        <li>Intelisense und Checking in Editoren</li>
+        <li>Pre-Processor der JavaScript generiert</li>
     </ul>
     <h2>TSLint und Prettier</h2>
     <b>TSLint:</b> Tool für die statische analyse von TypeScript, ist deprecated durch ESLint ersetzten
-    <b>Prettier: </b> Ist ein Code Formator, hilft einen konsistenten Code Style im gesamten Projekt durchzusetzen, z.B. Semicolons, Quotes oder Tab size
+    <b>Prettier: </b> Ist ein Code Formator, hilft einen konsistenten Code Style im gesamten Projekt durchzusetzen, z.B.
+    Semicolons, Quotes oder Tab size
     <h2>Syntax</h2>
     <b>Basis-Typen:</b> boolean, number, string (sowie null und undefined)
     <pre class="code"><code class="language-javascript">// Array declaration
@@ -468,24 +523,23 @@ interface CalcRequest extends Request {
 }</code></pre>
     <h2>Regeln</h2>
     <ul>
-      <li>any kann beliebiger Wert zugewiesen werden</li>
-      <li>
-        TypeScript findet Type heraus, falls Typ nicht deklariert, 
-        es kann nur noch der Typ des ersten zugewiesenen value verwendet werden.
-      </li>
-      <li>StrictNullChecks: 
-        <ul>
-          <li>Fehler wenn nonnullable value null zugewiesen wird, ohne strict mode kein Fehler</li>
-          <li><b>Kein</b> Fehler wenn nullable value undefined zugewiesen wird aber falls null zugewiesen wird schon</li>
-          <li>Fehler bei zuvielen Parametern in strict und in nicht strict mode</li>
-          <li>Fehler bei falschem Typ von zugewiesenem Wert in strict und in nicht strict mode</li>
-        </ul>
+        <li>any kann beliebiger Wert zugewiesen werden</li>
+        <li>
+            TypeScript findet Type heraus, falls Typ nicht deklariert,
+            es kann nur noch der Typ des ersten zugewiesenen value verwendet werden.
+        </li>
+        <li>StrictNullChecks:
+            <ul>
+                <li>Fehler wenn nonnullable value null zugewiesen wird, ohne strict mode kein Fehler</li>
+                <li><b>Kein</b> Fehler wenn nullable value undefined zugewiesen wird aber falls null zugewiesen wird schon
+                </li>
+                <li>Fehler bei zuvielen Parametern in strict und in nicht strict mode</li>
+                <li>Fehler bei falschem Typ von zugewiesenem Wert in strict und in nicht strict mode</li>
+            </ul>
     </ul>
     <h2>Interfaces</h2> Eine Klasse darf mehr als ein Interface implementieren
     <h2>Structural Typing</h2> Typ Idetifikation wird über Struktur des Typ gemacht und nicht über den Namen des Typ.
     
-
-
 
     <h1>Security</h1>
     <h2>Vokabular</h2>
@@ -508,8 +562,9 @@ interface CalcRequest extends Request {
     </ul>
 </div>
 
-<script src="./node_modules/prismjs/prism.js"></script>
 <script src="./titleColorAssigner.js"></script>
+<script src="./node_modules/prismjs/prism.js"></script>
+<script src="./htmlEscapingInCodeElement.js"></script>
 
 </body>
 </html>

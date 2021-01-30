@@ -1,0 +1,16 @@
+{{#if author}}
+    <h1>{{firstName}}{{lastName}}</h1>
+{{/if}}
+{{#unless license}}
+    <h3 class="warning">WARNING no license</h3>
+{{/unless}}
+{{#each people}}
+    <li>{{this}}</li>
+{{/each}}
+{{#each array}}
+    {{@root.foo}}
+    {{#if @first}}First!{{/if}}
+    {{@index}}
+    {{@key}}
+    {{#if @last}}Last!{{/if}}
+{{/each}}
