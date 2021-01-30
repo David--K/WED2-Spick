@@ -303,13 +303,13 @@ describe("A new bank account", function() {
     <h2>Kategorien</h2>
     <h2>Beispiele</h2> <b>.scss</b> files verwenden {} und ; <b>.sass</b> Files nicht
     <h2>@use, @import</h2> 
-    <pre class="code"><code class="language-css">@use 'colors'; /*erlaubt es alle Variabeln aus diesem File zu verwenden*/ 
-@import "normalize"; /*importiert/merged normalize mit diesem File normalize on top*/</code></pre>
+    <pre class="code"><code class="language-css">@use 'colors'; /*erlaubt alle Variabeln aus diesem File*/ 
+@import "normalize"; /*importiert/merged, normalize oben*/</code></pre>
     <h2>@extend</h2>
     <pre class="code"><code class="language-css">%shared
   padding: 10px
 .message 
-  @extend %shared
+  @extend %shared /*@extend kann mehrfach verwendet werden */
   color: green</code></pre>
     daraus wird folgendes css:
     <pre class="code"><code class="language-css">.message /*any other selector extending shared*/
