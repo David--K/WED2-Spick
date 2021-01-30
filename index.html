@@ -8,9 +8,16 @@
     <link href="./lib/prism-line-numbers.css" rel="stylesheet"/>
 
     <link href="./style.css" rel="stylesheet"/>
+    <script src="./layoutSwitch.js"></script>
 </head>
-<body>
+<body layout="print">
+<div class="noDisplay">
+    <p>Change Layout <label class="switch">
+        <input id="layoutSwitch" type="checkbox"/>
+        <span class="slider round"></span>
+    </label></p>
 
+</div>
 <!--          -->
 <!--Page No. 1-->
 <!--          -->
@@ -275,18 +282,19 @@ describe("A new bank account", function() {
     <b>Output: </b> ist immer CSS
     <h2>Einheiten</h2>Können mit folgenden Operatoren <b>+, -, *, /, und %</b> verwendet werden.
     Berechnungen werden wie in Physik, z.B. px*px = px^2 (Error), 2px / 1px = 2
-    <h2>PostCSS: </h2>besteht aus: Parser der "abstract syntax tree" erstellt, Klassen die den Baum beinhalten, 
+    <h2>PostCSS: </h2>besteht aus: Parser der "abstract syntax tree" erstellt, Klassen die den Baum beinhalten,
     Pluign Architektur, Stringifyer <b>Plugins:</b>precss (für Sass-like features variables, nesting, mixin),
     cssnano (CSS minifier), postcss-sass (erlaubt es mit Sass zu arbeiten, aber kompiliert Sass nicht)
-    <b>Einsatzbereiche: </b> Fügt automatisch vendor prefixes CSS rules hinzu (-webkit-,-ms-), 
+    <b>Einsatzbereiche: </b> Fügt automatisch vendor prefixes CSS rules hinzu (-webkit-,-ms-),
     Konvertiert modernes CSS in CSS das alle Browser verstehen
-    <h2>Webbuildtools Context und Features</h2>«Build Tools» automatisieren die Erstellung von App-Bundels für Test und Deployment
+    <h2>Webbuildtools Context und Features</h2>«Build Tools» automatisieren die Erstellung von App-Bundels für Test und
+    Deployment
     <b>Features: </b> Code Splitting ("Tree Shaking"), Hashing, Non-JS Resource loading-optimization
     <b>Tools: </b>WebPack, Rollup, Parcel
     X-Browser module-loading optimization, Transformation (minification, compression, ciritcal CSS)
     <h2>Kategorien</h2>
     <h2>Beispiele</h2> <b>.scss</b> files müssen <b>{}</b> und <b>;</b> verwenden <b>.sass</b> Files nicht
-    <h2>Spezielle Zeichen: </h2> <b>$</b> Variablen, <b>&</b> Referezen auf Parent, <b>%</b> Placeholder, 
+    <h2>Spezielle Zeichen: </h2> <b>$</b> Variablen, <b>&</b> Referezen auf Parent, <b>%</b> Placeholder,
     <b>@</b> Steuerzeichen, Directives z.B. @if @else @function, <b>#{}</b> Interpolation Einsetzen, z.B. p.#{$name}
     <h2>Nesting</h2>
     <pre class="code"><code class="language-css">nav {
@@ -304,7 +312,7 @@ describe("A new bank account", function() {
 @import "normalize"; /*importiert/merged, normalize oben*/
 h1 {
   color: colors.$header-color}</code></pre>
-    <h2>@extend</h2> weniger CSS-Code als Mixin, 
+    <h2>@extend</h2> weniger CSS-Code als Mixin,
     <pre class="code"><code class="language-css">%shared { /*abstrakte Basis-Klasse erscheint nicht im generierten CSS*/
   padding: 10px;}
 .text {
@@ -318,7 +326,8 @@ h1 {
   padding: 10px
 .message   
   color: green</code></pre>
-    <h2>@mixin und @include</h2> immer zuoberst, weniger CSS-Selektoren als @extend, Verständlicher, Falls Parameter benötigt
+    <h2>@mixin und @include</h2> immer zuoberst, weniger CSS-Selektoren als @extend, Verständlicher, Falls Parameter
+    benötigt
     <pre class="code"><code class="language-css">@mixin babo {color: blue}
 @mixin bratte {
   @include babo
@@ -344,7 +353,7 @@ nav ul li { color: red;}
     <h2>Verwendung von & (parent)</h2>
     <pre class="code"><code class="language-css">@mixin hover() {&:hover{background: red;}}
 .box {@include hover();}</code></pre>
-Wird zu folgendem CSS: 
+    Wird zu folgendem CSS:
     <pre class="code"><code class="language-css">.box:hover {background: red;}</code></pre>
     <h2>Functions</h2>
     <pre class="code"><code class="language-css">@function properWidht($para){
@@ -549,7 +558,8 @@ interface CalcRequest extends Request {
         <li>StrictNullChecks:
             <ul>
                 <li>Fehler wenn nonnullable value null zugewiesen wird, ohne strict mode kein Fehler</li>
-                <li><b>Kein</b> Fehler wenn nullable value undefined zugewiesen wird aber falls null zugewiesen wird schon
+                <li><b>Kein</b> Fehler wenn nullable value undefined zugewiesen wird aber falls null zugewiesen wird
+                    schon
                 </li>
                 <li>Fehler bei zuvielen Parametern in strict und in nicht strict mode</li>
                 <li>Fehler bei falschem Typ von zugewiesenem Wert in strict und in nicht strict mode</li>
@@ -557,56 +567,71 @@ interface CalcRequest extends Request {
     </ul>
     <h2>Interfaces</h2> Eine Klasse darf mehr als ein Interface implementieren
     <h2>Structural Typing</h2> Typ Identifikation wird über Struktur des Typ gemacht und nicht über den Namen des Typ.
-    
+
 
     <h1>Security</h1>
     <h2>Vokabular</h2>
     <ul>
-      <li><strong>Vulnerability</strong>: Verwundbarkeit</li>
-      <li><strong>Attack Vector (AV)</strong>: Angriffsvorgehen</li>
-      <li><strong>Malicious Code</strong>: Angriffcode, Schadcode</li>
-      <li><strong>Injection Attack</strong>: Code wird System zur Ausführung untergeschoben</li>
-      <li><strong>XSS: Cross Site Scripting</strong>: Im Browser des Opfers wird eingeschleustes JS ausgeführt</li>
+        <li><strong>Vulnerability</strong>: Verwundbarkeit</li>
+        <li><strong>Attack Vector (AV)</strong>: Angriffsvorgehen</li>
+        <li><strong>Malicious Code</strong>: Angriffcode, Schadcode</li>
+        <li><strong>Injection Attack</strong>: Code wird System zur Ausführung untergeschoben</li>
+        <li><strong>XSS: Cross Site Scripting</strong>: Im Browser des Opfers wird eingeschleustes JS ausgeführt</li>
     </ul>
-    
+
     <h2>XSS Mitigation</h2>
     <ul>
-      <li><strong>Input Sanitization</strong>: Bereinigung von UserInput, <i>do not implement your own sanitization</i></li>
-      <li><strong>CSP</strong>: Content Security Policy im Header setzen (e.g. nur Secure Domain + REST Service darf kontaktiert werden)</li>
-      <li><strong>HTTPOnly Flag</strong> bei Cookies setzen</li>
+        <li><strong>Input Sanitization</strong>: Bereinigung von UserInput, <i>do not implement your own
+            sanitization</i></li>
+        <li><strong>CSP</strong>: Content Security Policy im Header setzen (e.g. nur Secure Domain + REST Service darf
+            kontaktiert werden)
+        </li>
+        <li><strong>HTTPOnly Flag</strong> bei Cookies setzen</li>
     </ul>
-    
+
     <h2>JS Code Injection Mitigation</h2>
     <ul>
-      <li><strong>KEINE</strong> Verwendung von eval, setTimeOut, setInterval, besser parseInt + JSON.parse nutzen</li>
-      <li><strong>Reduzieren</strong>: Global Scopes und Variablen</li>
-      <li><strong>Node</strong> nicht als root process starten; x-powered-by header information abbestellen</li>
+        <li><strong>KEINE</strong> Verwendung von eval, setTimeOut, setInterval, besser parseInt + JSON.parse nutzen
+        </li>
+        <li><strong>Reduzieren</strong>: Global Scopes und Variablen</li>
+        <li><strong>Node</strong> nicht als root process starten; x-powered-by header information abbestellen</li>
     </ul>
-    
+
     <h2>Broken Authentication</h2>
     <ul>
-      <li><strong>Vulnerability</strong>: PW oder Token wird unverschlüsselt übertragen</li>
-      <li><strong>AV</strong>: Network Sniffing Software</li>
-      <li><strong>Mitigation</strong>: TLS, Auth-Service, <i>PW-based Auth nicht selbst implementieren</i>, keine geheimen Informationen in Query params</li>
-      <br />
-      <li><strong>Vulnerability</strong>: Session Timeout zu lange</li>
-      <li><strong>AV</strong>: Opfer nutzt public PC, vergisst Logout</li>
-      <li><strong>Mitigation</strong>: Session Timeout sinnvoll setzen</li>
-      <br />
-      <li><strong>Vulnerability</strong>: CSRF, Formular + POST handler nicht geschützt, es wird nicht sichergestellt, dass das form vom Server generiert wurde</li>
-      <li><strong>AV</strong>: Attacker brint Opfer dazu mit gültiger Session auf Seite mit gefälschtem form zu gehen & zu submitten</li>
-      <li><strong>Mitigation</strong>: forms mit CSRF Token versehen, Gültigkeit wird bei POST Req geprüft | in Express mit csurf lib: <pre class="code"><code class="language-javascript">const csrf = require("csurf"); app.use(csrf({cooke: true}));</code></pre> </li>
+        <li><strong>Vulnerability</strong>: PW oder Token wird unverschlüsselt übertragen</li>
+        <li><strong>AV</strong>: Network Sniffing Software</li>
+        <li><strong>Mitigation</strong>: TLS, Auth-Service, <i>PW-based Auth nicht selbst implementieren</i>, keine
+            geheimen Informationen in Query params
+        </li>
+        <br/>
+        <li><strong>Vulnerability</strong>: Session Timeout zu lange</li>
+        <li><strong>AV</strong>: Opfer nutzt public PC, vergisst Logout</li>
+        <li><strong>Mitigation</strong>: Session Timeout sinnvoll setzen</li>
+        <br/>
+        <li><strong>Vulnerability</strong>: CSRF, Formular + POST handler nicht geschützt, es wird nicht sichergestellt,
+            dass das form vom Server generiert wurde
+        </li>
+        <li><strong>AV</strong>: Attacker brint Opfer dazu mit gültiger Session auf Seite mit gefälschtem form zu gehen
+            & zu submitten
+        </li>
+        <li><strong>Mitigation</strong>: forms mit CSRF Token versehen, Gültigkeit wird bei POST Req geprüft | in
+            Express mit csurf lib:
+            <pre class="code"><code class="language-javascript">const csrf = require("csurf"); app.use(csrf({cooke: true}));</code></pre>
+        </li>
     </ul>
-    
+
     <h2>Broken Access Control</h2>
     <ul>
-      <li><strong>Vulnerability</strong>: User-ID ist nur über URL codiert</li>
-      <li><strong>AV</strong>: Attacker loggt sich ein & verändert URL</li>
-      <li><strong>Mitigation</strong>: bei Anzeige von Seiten sicherstellen, dass aktuell eingeloggter User berechtigt ist</li>
-      <br />
-      <li><strong>Vulnerability</strong>: Replay Attack</li>
-      <li><strong>AV</strong>: Erneutes Senden von Formularen ist möglich & werden mehrfach verarbeitet</li>
-      <li><strong>Mitigation</strong>: One-Time CSRF Token</li>
+        <li><strong>Vulnerability</strong>: User-ID ist nur über URL codiert</li>
+        <li><strong>AV</strong>: Attacker loggt sich ein & verändert URL</li>
+        <li><strong>Mitigation</strong>: bei Anzeige von Seiten sicherstellen, dass aktuell eingeloggter User berechtigt
+            ist
+        </li>
+        <br/>
+        <li><strong>Vulnerability</strong>: Replay Attack</li>
+        <li><strong>AV</strong>: Erneutes Senden von Formularen ist möglich & werden mehrfach verarbeitet</li>
+        <li><strong>Mitigation</strong>: One-Time CSRF Token</li>
     </ul>
 
     <h2>Passwordless Login</h2>
@@ -615,33 +640,50 @@ interface CalcRequest extends Request {
     </span>
 
     <h2>Should I operate my own password-based Auth-Service?</h2>
-    <img src="./assets/AuthServiceDesicionTree.PNG" alt="AuthServiceDesicionTree" />
+    <img src="./assets/AuthServiceDesicionTree.PNG" alt="AuthServiceDesicionTree"/>
 
     <h2>How to keep Express Apps secure</h2>
     <ul>
-      <li>Enable TSL / SSL</li>
-      <li>Check for known vulnerabilities</li>
-      <li>encode all untrusted data sent to an application (HTML, CSS, JS, URL)</li>
-      <li>Test for parameter pollution (ensure that app can handle array values for form query-parameters)</li>
-      <li>Add Helmet to set sane defaults</li>
-      <li>Use CSURF against CSRF</li>
-      <li>Use Safe-Regex</li>
-      <li>Don't use the default session cookie name, use generic cookie names</li>
+        <li>Enable TSL / SSL</li>
+        <li>Check for known vulnerabilities</li>
+        <li>encode all untrusted data sent to an application (HTML, CSS, JS, URL)</li>
+        <li>Test for parameter pollution (ensure that app can handle array values for form query-parameters)</li>
+        <li>Add Helmet to set sane defaults</li>
+        <li>Use CSURF against CSRF</li>
+        <li>Use Safe-Regex</li>
+        <li>Don't use the default session cookie name, use generic cookie names</li>
     </ul>
 
     <h2>Helmet</h2>
     <span>11 security modules preventing a variety of attacks against an Express application</span>
     <ul>
-      <li><strong>helmet-csp</strong>: enables content-security-policy HTTP header, defines the trusted origins of contents (scripts, images, etc.)</li>
-      <li><strong>dns-prefetch-control</strong>: DNS Prefetching = speeding up loading times, disabling it can limit potential data leakage about types of service an application uses</li>
-      <li><strong>frameguard</strong>: enables X-Frame-Options HTTP header, website cannot render another site</li>
-      <li><strong>hpkp</strong>: enables public key pinning headers, prevent man-in-the-middle attchs with fored certs</li>
-      <li><strong>hsts</strong>: enables strict-transport-security header which forces subsequent connections to the server to use HTTPS once a client has initially connected with HTTPS</li>
-      <li><strong>ienoopen</strong>: enables the x-download-options HTTP header with the configuration of noopen to prevent IE users from executing downloads within an app's context</li>
-      <li><strong>nocache</strong>: enables four HTTP headers: cache-control, pragma, expires, surrogate-control with defaults that block the client caching old versions of site resources</li>
-      <li><strong>dont-sniff-mimetype</strong>: enables the x-content-type-options HTTP header to stop clients from sniffing the MIME-type of a response outside of the content-type that is declared</li>
-      <li><strong>referrer-policy</strong>: allows for control over the referrer HTTP header from your application, allowing no referrer information, referrer information for the same origin or full referrer information</li>
-      <li><strong>x-xss-protection</strong>: enables the X-XSS-Protection HTTP header preventing some XSS attacks in modern browsers</li>      
+        <li><strong>helmet-csp</strong>: enables content-security-policy HTTP header, defines the trusted origins of
+            contents (scripts, images, etc.)
+        </li>
+        <li><strong>dns-prefetch-control</strong>: DNS Prefetching = speeding up loading times, disabling it can limit
+            potential data leakage about types of service an application uses
+        </li>
+        <li><strong>frameguard</strong>: enables X-Frame-Options HTTP header, website cannot render another site</li>
+        <li><strong>hpkp</strong>: enables public key pinning headers, prevent man-in-the-middle attchs with fored certs
+        </li>
+        <li><strong>hsts</strong>: enables strict-transport-security header which forces subsequent connections to the
+            server to use HTTPS once a client has initially connected with HTTPS
+        </li>
+        <li><strong>ienoopen</strong>: enables the x-download-options HTTP header with the configuration of noopen to
+            prevent IE users from executing downloads within an app's context
+        </li>
+        <li><strong>nocache</strong>: enables four HTTP headers: cache-control, pragma, expires, surrogate-control with
+            defaults that block the client caching old versions of site resources
+        </li>
+        <li><strong>dont-sniff-mimetype</strong>: enables the x-content-type-options HTTP header to stop clients from
+            sniffing the MIME-type of a response outside of the content-type that is declared
+        </li>
+        <li><strong>referrer-policy</strong>: allows for control over the referrer HTTP header from your application,
+            allowing no referrer information, referrer information for the same origin or full referrer information
+        </li>
+        <li><strong>x-xss-protection</strong>: enables the X-XSS-Protection HTTP header preventing some XSS attacks in
+            modern browsers
+        </li>
     </ul>
 </div>
 <script src="./htmlEscapingInCodeElement.js"></script>
