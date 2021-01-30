@@ -282,12 +282,26 @@ describe("A new bank account", function() {
     <h2>Webbuildtools Context und Features</h2>
     <h2>Kategorien</h2>
     <h2>Beispiele</h2> <b>.scss</b> files müssen <b>{}</b> und <b>;</b> verwenden <b>.sass</b> Files nicht
-    <h2>Spezielle Zeichen: </h2> <b>$</b> Variablen, <b>&</b> Referezen auf Parent, <b>%</b>
+    <h2>Spezielle Zeichen: </h2> <b>$</b> Variablen, <b>&</b> Referezen auf Parent, <b>%</b> Placeholder, 
+    <b>@</b> Steuerzeichen, Directives z.B. @if @else @function, <b>#{}</b> Interpolation Einsetzen, z.B. p.#{$name}
+    <h2>Nesting</h2>
+    <pre class="code"><code class="language-css">nav {
+  ul {
+    padding: 0;
+    > li { /*only direct child*/
+      color: red
+      &[type="link"] { /*& gets replaced with parent*/
+        color: yellow;
+      }}}}</code></pre>
     <h2>@use, @import</h2> <strong>immer</strong> zuoberst von File
-    <pre class="code"><code class="language-css">@use 'colors'; /*erlaubt alle Variabeln aus diesem File*/ 
-@import "normalize"; /*importiert/merged, normalize oben*/</code></pre>
-    <h2>@extend</h2>
-    <pre class="code"><code class="language-css">%shared {
+    <pre class="code"><code class="language-css">//file: _colors.scss
+@use 'colors'; /*erlaubt alle Variabeln aus diesem File*/ 
+//file: _normalize.scss
+@import "normalize"; /*importiert/merged, normalize oben*/
+h1 {
+  color: colors.$header-color}</code></pre>
+    <h2>@extend</h2> weniger CSS-Code als Mixin, 
+    <pre class="code"><code class="language-css">%shared { /*abstrakte Basis-Klasse erscheint nicht im generierten CSS*/
   padding: 10px;}
 .text {
   font-size: 1.5em;}
@@ -300,7 +314,7 @@ describe("A new bank account", function() {
   padding: 10px
 .message   
   color: green</code></pre>
-    <h2>@mixin und @include</h2> immer zuoberst
+    <h2>@mixin und @include</h2> immer zuoberst, weniger CSS-Selektoren als @extend, Verständlicher, Falls Parameter benötigt
     <pre class="code"><code class="language-css">@mixin babo {
   color: blue
 }
@@ -316,12 +330,30 @@ nav ul {
   @include bratte;}
 .sidebar {
   @include rtl(float, left, right)}
-</code></pre>
+@include breakpoint(30em) { /*breakpoint ist ein mixin das @content verwendet*/
+  .box {
+    @include border-radius(0px);
+  }
+}</code></pre>
     wird in folgendes CSS umgewandelt
-    <pre class="code"><code class="language-css">nav ul { color: blue;}
+    <pre class="code"><code class="language-css">/*bratte und babo*/
+nav ul { color: blue;}
 nav ul li { color: red;}
+/*rtl*/
 .sidebar { float: left;}
-[dir=rtl] .sidebar { float: right;}</code></pre>
+[dir=rtl] .sidebar { float: right;}
+/*breakpoint*/
+@media screen and (min-width: 30em) {
+  .box {border-radius: 0px;}
+}</code></pre>
+    <h2>Verwendung von & (parent)</h2>
+    <pre class="code"><code class="language-css">@mixin hover() {
+  &:hover{
+    background: red;
+  }}
+.box {@include hover();}</code></pre>
+Wird zu folgendem CSS: 
+    <pre class="code"><code class="language-css">.box:hover {background: red;}</code></pre>
 </div>
 
 
