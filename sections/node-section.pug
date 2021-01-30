@@ -33,50 +33,16 @@ h1 Node
     pre.code.line-numbers
         code.language-javascript
             |const Datastore = require('nedb');
-            |const db = new Datastore({filename: './data/shop.db', autoload: true});
+            |const db = new Datastore({filename: './shop.db', autoload: true});
             |class Item {
-            |constructor(name, preis) {
-            |this.name = name;
-            |this.preis = preis;}}
-            |function all(callback) {
-            |db.find({}, callback);}
-            |function get(id, callback) {
-            |db.find({_id: id}, callback);}
+            |   constructor(name, preis) {
+            |     this.name = name;
+            |     this.preis = preis;}}
+            |   function all(callback) {db.find({}, callback);}
+            |   function get(id, callback) {db.find({_id: id}, callback);}
             |module.exports = {all, get};
 
 +para('Controllers - controllers/shopController.js: ')
     pre.code.line-numbers
         code.language-javascript
-            |const shop = require('../services/shopService.js');
-            |function index(req, res) {
-            |ensureSession(req.session);
-            |shop.all((err, items)
-            |const warenkorb = req.session.warenkorb;
-            |items.forEach(item => {
-            |item.count = warenkorb[item._id] || 0;});
-            |res.render("index", {items: items, warenkorbCount: getCountFromSession(req)});})}
-            |function bestellung(req, res) {
-            |shop.all((err, items) => {
-            |const selectedItems = Object.keys(req.session.warenkorb).map(key => {
-            |return {item: items.find(x => x._id === key), count:
-            |req.session.warenkorb[key]};});
-            |const preis = selectedItems.reduce((previousValue, currentValue) => previousValue
-            |+ currentValue.item.preis * currentValue.count, 0);
-            |req.session.warenkorb = {}; 2P (Session zurücksetzen)
-            |4P renderer, items, sum preis, count
-            |res.render("bestellung", {items: selectedItems, preis: preis, warenkorbCount:
-            |0});})}
-            |function add(req, res) {
-            |req.session.warenkorb[req.body.id] = (req.session.warenkorb[req.body.id] || 0) + 1;
-            |res.redirect("/");}
-            |function remove(req, res) {
-            |req.session.warenkorb[req.body.id] = Math.max(0, (req.session.warenkorb[req.body.id]
-            ||| 0) - 1);
-            |res.redirect("/");}
-            |function getCountFromSession(req) {
-            |return Object.values(req.session.warenkorb).reduce((previousValue, currentValue) =>
-            |previousValue += currentValue, 0);}
-            |function ensureSession(session) {
-            |if (!session.warenkorb) {
-            |session.warenkorb = {};}}
-            |module.exports = {index, add, remove, bestellung};
+            include ./shopController.js
