@@ -484,6 +484,28 @@ interface CalcRequest extends Request {
     <h2>Interfaces</h2> Eine Klasse darf mehr als ein Interface implementieren
     <h2>Structural Typing</h2> Typ Idetifikation wird über Struktur des Typ gemacht und nicht über den Namen des Typ.
     
+
+
+
+    <h1>Security</h1>
+    <h2>Vokabular</h2>
+    <ul>
+      <li><strong>Vulnerability</strong>: Verwundbarkeit</li>
+      <li><strong>Attack Vector</strong>: Angriffsvorgehen</li>
+      <li><strong>Malicious Code</strong>: Angriffcode, Schadcode</li>
+      <li><strong>Injection Attack</strong>: Code wird System zur Ausführung untergeschoben</li>
+      <li><strong>XSS: Cross Site Scripting</strong>: Im Browser des Opfers wird eingeschleustes JS ausgeführt</li>
+    </ul>
+    <h2>XSS Mitigation</h2>
+    <ul>
+      <li><strong>Input Sanitization</strong>: Bereinigung von UserInput, <i>do not implement your own sanitization</i></li>
+      <li><strong>CSP</strong>: Content Security Policy im Header setzen (e.g. nur Secure Domain + REST Service darf kontaktiert werden)</li>
+      <li><strong>HTTPOnly Flag</strong> bei Cookies setzen</li>
+    </ul>
+    <h2>JS Code Injection Mitigation</h2>
+    <ul>
+      <li><strong>KEINE</strong> Verwendung von eval, setTimeOut, setInterval, besser parseInt + JSON.parse nutzen</li>
+    </ul>
 </div>
 
 <script src="./node_modules/prismjs/prism.js"></script>
