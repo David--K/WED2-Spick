@@ -75,6 +75,10 @@ body {
   > pre {
     @include noLineBreak;
   }
+
+  > img {
+    width: 100%;
+  }
 }
 
 code {
