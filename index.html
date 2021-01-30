@@ -291,12 +291,31 @@ describe("A new bank account", function() {
         <li>Errativ Test: Test funktionieren manchmal und manchmal nicht</li>
         <li>Es gibt keine Tests</li>
     </ul>
-    <h1>Sass</h1>
+    <h1>Sass (Syntactically Awesom Style Sheet)</h1>
+    <h2>Alternativen: Less, stylus</h2>
     <h2>Aufgabe und Einsatzbereich</h2>
-    <h2>Einheiten</h2>
+    CSS Präprozessoern sind nicht an die Limitation von CSS gebunden und ermöglichen es (potentiell) 
+    besser wartbaren Code zu schreiben. Weniger Copy & Paste, Modularisierung, Wiederverwendung
+    <b>Output: </b> ist immer CSS
+    <h2>Einheiten</h2>Können mit folgenden Operatoren <b>+, -, *, /, und %</b> verwendet werden.
     <h2>PostCSS</h2>
     <h2>Webbuildtools Context und Features</h2>
     <h2>Kategorien</h2>
+    <h2>Beispiele</h2> <b>.scss</b> files verwenden {} und ; <b>.sass</b> Files nicht
+    <h2>@use, @import</h2> 
+    <pre class="code"><code class="language-css">@use 'colors'; /*erlaubt es alle Variabeln aus diesem File zu verwenden*/ 
+@import "normalize"; /*importiert/merged normalize mit diesem File normalize on top*/</code></pre>
+    <h2>@extend</h2>
+    <pre class="code"><code class="language-css">%shared
+  padding: 10px
+.message 
+  @extend %shared
+  color: green</code></pre>
+    daraus wird folgendes css:
+    <pre class="code"><code class="language-css">.message /*any other selector extending shared*/
+  padding: 10px
+.message   
+  color: green</code></pre>
 </div>
 
 
