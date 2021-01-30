@@ -38,8 +38,7 @@
   and grid-column-end in that order.
   Each value is separated by a /.*/
   grid-area: 2 / 1 / span 2 / span 3;
-/*Es kann auch ein Name vergeben werden, der dann
-  in grid-template-areas gebraucht werden kann*/
+/*Es kann auch ein Name vergeben werden, der dann in grid-template-areas gebraucht werden kann*/
   grid-area: item;
 /*inherits align-items if defined overwrites align-items value*/
   align-self: center; 
@@ -184,7 +183,7 @@ footer {grid-area: footer;}</code></pre>
     <h2>(Visuelle) Regression Tests: </h2>
     Getestet wird ob Veränderungen im Code zu (unerwarteten) Änderungen im Verhalten (oder UI)
     führen. Automation möglich mit speziellen Tools
-    <h2>Test-Runner: </h2>Ein Rhamen der Tests entgegennimmt, ausführt und die Resultate
+    <h2>Test-Runner: </h2>Ein Rahmen der Tests entgegennimmt, ausführt und die Resultate
     anzeigt.
     <b>Beispiele:</b> Jest, Mocha, Jasmin
     <h2>Assertion-Libraries: </h2>
@@ -195,9 +194,9 @@ footer {grid-area: footer;}</code></pre>
     <b>Beispiele: </b>Expect.js, Proxyquire, Sinon.js
     <h2>Phasen eines Tests</h2>
     <ul>
-        <li><b>Setup:</b> beforeEach Initailization, selbe Ausgangslage für alle Tests</li>
+        <li><b>Setup:</b> beforeEach Initialization, selbe Ausgangslage für alle Tests</li>
         <li><b>Exercise:</b> Aufruf einer Funktion (mit return value)</li>
-        <li><b>Verify:</b> Überprüfen von Anhahmen</li>
+        <li><b>Verify:</b> Überprüfen von Annahmen</li>
         <li><b>Teardown:</b> Zurücksetzen z.B. von mocks</li>
     </ul>
     <h2>Beispiele</h2>
@@ -259,20 +258,20 @@ describe("A new bank account", function() {
         </li>
         <li>throws()</li>
     </ul>
-    <h2>Test Doubles:</h2>Abhängigkeiten möglichst Lose, für tests Doubles verwenden
+    <h2>Test Doubles:</h2>Abhängigkeiten möglichst lose, für tests Doubles verwenden
     <ul>
         <li>Stub & Fake: liefern vorbestimmten Wert</li>
         <li>Spy & Mock: Helfen einen überprüfbaren Content zu generieren</li>
     </ul>
     <h2>Test-Smells:</h2>
     <ul>
-        <li>Hard-to-Test Code: Schlecht geschreibener Code</li>
+        <li>Hard-to-Test Code: Schlecht geschriebener Code</li>
         <li>Production Bugs: Zuviele Bugs während testing oder in prod</li>
         <li>Fragile Test: Tests verhalten sich verschieden auf unterschieldichen Systemen</li>
         <li>Errativ Test: Test funktionieren manchmal und manchmal nicht</li>
         <li>Es gibt keine Tests</li>
     </ul>
-    <h1>Sass (Syntactically Awesom Style Sheet)</h1>
+    <h1>Sass (Syntactically Awesome Style Sheet)</h1>
     <h2>Alternativen: Less, stylus</h2>
     <h2>Aufgabe und Einsatzbereich</h2>
     CSS Präprozessoern sind nicht an die Limitation von CSS gebunden und ermöglichen es (potentiell)
@@ -283,8 +282,8 @@ describe("A new bank account", function() {
     <h2>Webbuildtools Context und Features</h2>
     <h2>Kategorien</h2>
     <h2>Beispiele</h2> <b>.scss</b> files müssen <b>{}</b> und <b>;</b> verwenden <b>.sass</b> Files nicht
-    <h2>Spezielle Zeichen: </h2> <b>$</b> Variablen, <b>&</b> Referezn auf Parent, <b>%</b>
-    <h2>@use, @import</h2> immer zuoberst von File
+    <h2>Spezielle Zeichen: </h2> <b>$</b> Variablen, <b>&</b> Referezen auf Parent, <b>%</b>
+    <h2>@use, @import</h2> <strong>immer</strong> zuoberst von File
     <pre class="code"><code class="language-css">@use 'colors'; /*erlaubt alle Variabeln aus diesem File*/ 
 @import "normalize"; /*importiert/merged, normalize oben*/</code></pre>
     <h2>@extend</h2>
@@ -368,7 +367,7 @@ function all(callback) {
 function get(id, callback) {
  db.find({_id: id}, callback);}
 module.exports = {all, get};</code></pre>
-    <h2>Controllers - controllers/noteController.js</h2>
+    <h2>Controllers - controllers/shopController.js</h2>
     <pre class="code"><code class="language-javascript">const shop = require('../services/shopService.js');
 function index(req, res) {
  ensureSession(req.session);
@@ -436,7 +435,7 @@ app.use(cookieParser())
         <li>Pre-Processor der JavaScript generiert</li>
     </ul>
     <h2>TSLint und Prettier</h2>
-    <b>TSLint:</b> Tool für die statische analyse von TypeScript, ist deprecated durch ESLint ersetzten
+    <b>TSLint:</b> Tool für die statische Analyse von TypeScript, ist deprecated durch ESLint ersetzten
     <b>Prettier: </b> Ist ein Code Formator, hilft einen konsistenten Code Style im gesamten Projekt durchzusetzen, z.B.
     Semicolons, Quotes oder Tab size
     <h2>Syntax</h2>
@@ -471,7 +470,7 @@ class Counter {
   }
 }
 class SportsCar {
-  //Verkürzte Syntax zu Initialisierung von Properties im Konstruktor
+  //Verkürzte Syntax zur Initialisierung von Properties im Konstruktor
   constructor(
   public make: string,
   public color: SportsCarColor,
@@ -482,9 +481,7 @@ interface IPoint {
   readonly x: number;
   readonly y: number;
 }
-  interface ILikableItem {
-  likes?: number;
-}
+interface ILikableItem { likes?: number; }
 class DescribableItem {
   constructor(
     public description: string
@@ -516,14 +513,14 @@ interface CalcRequest extends Request {
             </ul>
     </ul>
     <h2>Interfaces</h2> Eine Klasse darf mehr als ein Interface implementieren
-    <h2>Structural Typing</h2> Typ Idetifikation wird über Struktur des Typ gemacht und nicht über den Namen des Typ.
+    <h2>Structural Typing</h2> Typ Identifikation wird über Struktur des Typ gemacht und nicht über den Namen des Typ.
     
 
     <h1>Security</h1>
     <h2>Vokabular</h2>
     <ul>
       <li><strong>Vulnerability</strong>: Verwundbarkeit</li>
-      <li><strong>Attack Vector</strong>: Angriffsvorgehen</li>
+      <li><strong>Attack Vector (AV)</strong>: Angriffsvorgehen</li>
       <li><strong>Malicious Code</strong>: Angriffcode, Schadcode</li>
       <li><strong>Injection Attack</strong>: Code wird System zur Ausführung untergeschoben</li>
       <li><strong>XSS: Cross Site Scripting</strong>: Im Browser des Opfers wird eingeschleustes JS ausgeführt</li>
@@ -545,7 +542,7 @@ interface CalcRequest extends Request {
     
     <h2>Broken Authentication</h2>
     <ul>
-      <li><strong>Vulnerability</strong>: PW oder Token wird nicht verschlüsselt übertragen</li>
+      <li><strong>Vulnerability</strong>: PW oder Token wird unverschlüsselt übertragen</li>
       <li><strong>AV</strong>: Network Sniffing Software</li>
       <li><strong>Mitigation</strong>: TLS, Auth-Service, <i>PW-based Auth nicht selbst implementieren</i>, keine geheimen Informationen in Query params</li>
       <br />
@@ -571,7 +568,7 @@ interface CalcRequest extends Request {
 
     <h2>Passwordless Login</h2>
     <span>
-      Nutzer erhalten (one-time) "magic-link" per EMail, Code genügend lange dass brute-force attacks verhindert sind
+      Nutzer erhalten (one-time) "magic-link" per EMail, Code genügend lange dass Brute-Force attacks verhindert sind
     </span>
 
     <h2>Should I operate my own password-based Auth-Service?</h2>
