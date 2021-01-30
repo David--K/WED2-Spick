@@ -423,6 +423,22 @@ function ensureSession(session) {
 }
 module.exports = {index, add, remove, bestellung};</code></pre>
     <h2>Handlebars: </h2>
+    <pre class="code"><code class="escapeHtml">{{#if author}}
+    <h1>{{firstName}}{{lastName}}</h1>
+{{/if}}
+{{#unless license}}
+    <h3 class="warning">WARNING no license</h3>
+{{/unless}}
+{{#each people}}
+    <li>{{this}}</li>
+{{/each}}
+{{#each array}}
+    {{@root.foo}}
+    {{#if @first}}First!{{/if}}
+    {{@index}}
+    {{@key}}
+    {{#if @last}}Last!{{/if}}
+{{/each}}</code></pre>
     <h1>TypeScript</h1>
     TypeScript hilft mittels "Statischer Analyse"
     <ul>
@@ -438,7 +454,7 @@ module.exports = {index, add, remove, bestellung};</code></pre>
     <b>Prettier: </b> Ist ein Code Formator, hilft einen konsistenten Code Style im gesamten Projekt durchzusetzen, z.B. Semicolons, Quotes oder Tab size
     <h2>Syntax</h2>
     <b>Basis-Typen:</b> boolean, number, string (sowie null und undefined)
-    <pre class="code"><code class="language-javascript">// Array declaration
+    <pre class="code"><code class="language-javascript" >// Array declaration
 let myNumArray: number[] = [1, 2, 3];
 let myTupel: [number, string] = [1, 'abcd']
 // jedem value kann ein value mit 
@@ -516,8 +532,11 @@ interface CalcRequest extends Request {
     
 </div>
 
-<script src="./node_modules/prismjs/prism.js"></script>
+
 <script src="./titleColorAssigner.js"></script>
+<script src="./node_modules/prismjs/prism.js"></script>
+
+<script src="./htmlEscapingInCodeElement.js"></script>
 
 </body>
 </html>
