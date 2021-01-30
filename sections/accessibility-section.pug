@@ -37,9 +37,9 @@ b Perosnen mit Lern- und Aufmerksamekeitsstörungen:
     |  32% der Seiten im Internet disable Zoom
     |     UIs mit fixen Breiten sind nicht Zoombar. Zoom sollte immer möglich sein und zusammengehörigkeit sollte weiterhin bestehen
 
-+para('Animationen (Warum Anomationen abgestellt werden müssen)' )
++para('Animationen' )
     |  Animationen sollte abstellbar sein, 
-    |     das Verringert Ablenkung bei Konzentrationstörung und das Auslösen von Epilepsie und Migräne.
+    |  das Verringert Ablenkung bei Konzentrationstörung und das Auslösen von Epilepsie und Migräne.
 
 +para('Media: ')
     | Bilder sollen immer einen Alt-Text haben. 50% aller Seiten stellen keine Alt Tags zur verfügung.
@@ -49,6 +49,25 @@ b Perosnen mit Lern- und Aufmerksamekeitsstörungen:
     |  Fragmentierung der Nutzerbasis (NVDA 72%, JAWS 61%, VoiceOver 47%). 
     b Empfehlungen: 
     |  Keine Headings-Level auslassen, Semantic Elements richtig nutzen, 
-    |     Skip-Links am Anfang der Seite (“Links zur Barrierefreiheit” / “Zu den Hauptinhalten“).
+    |  Skip-Links am Anfang der Seite (“Links zur Barrierefreiheit” / “Zu den Hauptinhalten“).
 
-+para('Accessibility von Formularen und Tabellen beurteilen und optimieren: ')
++para('WIA-ARIA (Web Accessibility Initiative – Accessibile RIA): ') 
+    |  Erlaubt eine optimierte Abbildung des DOM Trees in den Accessibility Tree.
+    b MDN: 
+    |  Developers should prefer using the correct semantic HTML element over using ARIA
++para('Tables: ')
+    |  Tables sollte mit Heading für Rows und Columns ausgestattet sein (th oder ARIA columnheader, rowheader). 
+    b Probleme
+    |  2 Tabellen werden verwendet, sehen aber aus wie eine einzige, 
+    |  Screenreader liest Tabellen einzeln vor, 
+    |  relation vom Inhalt zu Titel kann nicht hergestellt werden.
+    b Weitere Fehler
+    |  umkehren der Schreibrichtung, 
+    |  Hover Effekt funktioniert nur, wenn man Maus verwenden kann 
+    |  Gestylte Elemente (z.B.: div, span als Button), 
+    |  Tabellen für Layout
+    b Tricks um Accesibility zu ermöglichen / verbessern
+    |  beschreibende HTML Elemente hinzufügen aber in der UI mit CSS verstecken, 
+    |  Navigation zuerst, Bereiche Gruppieren, Semantic Markup nutzen 
+    |  Headings in korrekter Reihenfolge, Regionen mit "invisible headern" versehen, 
+    |  Tabellen verwenden für Daten, Form mit label Element für input Elemente (HTML 5 Validation nutzen).

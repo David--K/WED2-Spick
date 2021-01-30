@@ -3,10 +3,8 @@ h1 Node
 +para('Application - app.js: ')
     pre.code.line-numbers
         code.language-javascript
-            |const express = require('express');
-            |const path = require('path');
-            |const session = require('express-session');
-            |const app = express();
+            |const express = require('express'); const path = require('path');
+            |const session = require('express-session'); const app = express();
             |// view engine setup
             |app.set('views', path.join(__dirname, 'views'));
             |app.set('view engine', 'hbs');
@@ -35,9 +33,7 @@ h1 Node
             |const Datastore = require('nedb');
             |const db = new Datastore({filename: './shop.db', autoload: true});
             |class Item {
-            |   constructor(name, preis) {
-            |     this.name = name;
-            |     this.preis = preis;}}
+            |   constructor(name, preis) {this.name = name; this.preis = preis;}}
             |   function all(callback) {db.find({}, callback);}
             |   function get(id, callback) {db.find({_id: id}, callback);}
             |module.exports = {all, get};

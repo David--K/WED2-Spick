@@ -283,7 +283,7 @@ describe("A new bank account", function() {
               <li>Errativ Test: Test funktionieren manchmal und manchmal nicht</li>
               <li>Es gibt keine Tests</li>
             </p>
-      <h1>Sass (Syntactically Awesome Style Sheet)</h1>
+      <h1>Sass (Syntactically Awesome Style Sheet) & Build Tools</h1>
             <p><span class="para-title">Alternativen: </span> Less, stylus
             </p>
             <p><span class="para-title">Aufgabe und Einsatzbereich: </span>
@@ -299,7 +299,7 @@ describe("A new bank account", function() {
                   cssnano (CSS minifier), postcss-sass (erlaubt es mit Sass zu arbeiten, kompiliert Sass nicht)<b>Einsatzbereiche: </b> Fügt automatisch vendor prefixes CSS rules hinzu (-webkit-,-ms-), 
                   Konvertiert modernes CSS in CSS das alle Browser verstehen
             </p>
-            <p><span class="para-title">Web Build Tools: </span>«Build Tools» automatisieren die Erstellung von App-Bundels für Test und Deployment<b>Features: </b> Code Splitting ("Tree Shaking"), Hashing, Non-JS Resource loading-optimization<b>Tools: </b>WebPack, Rollup, Parcel
+            <p><span class="para-title">Web Build Tools: </span>«Build Tools» automatisieren die Erstellung von App-Bundels für Test und Deployment <b>Features: </b> Code Splitting ("Tree Shaking"), Hashing, Non-JS Resource loading-optimization<b>Tools: </b>WebPack, Rollup, Parcel
                   X-Browser module-loading optimization, Transformation (minification, compression, ciritcal CSS)
             </p>
             <p><span class="para-title">Beispiele: </span><b>.scss</b> files müssen <b>{}</b> und <b>;</b> verwenden <b>.sass</b> Files nicht
@@ -395,10 +395,8 @@ body{width: properWidht($width);}</code></pre>
     <div class="page">
       <h1>Node</h1>
             <p><span class="para-title">Application - app.js: </span>
-              <pre class="code line-numbers"><code class="language-javascript">const express = require('express');
-const path = require('path');
-const session = require('express-session');
-const app = express();
+              <pre class="code line-numbers"><code class="language-javascript">const express = require('express'); const path = require('path');
+const session = require('express-session'); const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -423,9 +421,7 @@ module.exports = router;</code></pre>
               <pre class="code line-numbers"><code class="language-javascript">const Datastore = require('nedb');
 const db = new Datastore({filename: './shop.db', autoload: true});
 class Item {
-  constructor(name, preis) {
-    this.name = name;
-    this.preis = preis;}}
+  constructor(name, preis) {this.name = name; this.preis = preis;}}
   function all(callback) {db.find({}, callback);}
   function get(id, callback) {db.find({_id: id}, callback);}
 module.exports = {all, get};</code></pre>
@@ -491,11 +487,12 @@ app.use(cookieParser())
       </h1>
       <h1>TypeScript</h1>
       <p>TypeScript hilft mittels "Statischer Analyse" :</p>
-      <ul></ul>
-      <li>Typos zu entdecken, Static Typing umzusetzen</li>
-      <li>Erlaubt Spezifikation von Typen für Variablen, Funktionsparameter, Funktionswerten</li>
-      <li>erweitern der JS Syntax um optionale Typ-Annotation und mehr (z.B. Decorators)</li>
-      <li>Pre-Processor der JavaScript generiert</li>
+      <ul>
+        <li>Typos zu entdecken | Static Typing umzusetzen</li>
+        <li>Spezifikation von Typen für Variablen, Funktionsparameter, Funktionswerten</li>
+        <li>Erweitern der JS Syntax um optionale Typ-Annotation und mehr (z.B. Decorators)</li>
+        <li>Pre-Processor der JavaScript generiert</li>
+      </ul>
             <p><span class="para-title">TSLint und Prettier: </span><b>TSLint:</b> Tool für die statische Analyse von TypeScript, ist deprecated durch ESLint ersetzten<b>Prettier: </b> Ist ein Code Formator, hilft einen konsistenten Code Style im gesamten Projekt durchzusetzen, z.B.
                   Semicolons, Quotes oder Tab size
             </p>
@@ -509,9 +506,8 @@ enum StrColor {Red = "red", Green = "green"};
 type StrLitColor = "red" | "green";
 let c: Color = Color.Green; // enum verwenden
 let myTupel2: [Color, number] = [Color.Green, 1];
-function add(n1: number, n2: number): number;
-//function Parameter
-numFun: (prevRes: number, current: number) => number
+function add(n1: number, n2: number): number; //function mit types
+numFun: (prevRes: number, current: number) => number //function Parameter
 class Counter {
   private _doors: number;
   public static readonly WOOD_FACTORS = {'oak': 80, 'pine': 20};
@@ -520,8 +516,7 @@ class Counter {
   set doors(newDoorCount: number) {
     this._doors = newDoorCount;}
   get doors() {
-    return this._doors;}
-}
+    return this._doors;}   }
 class SportsCar {
   //Verkürzte Syntax zur Initialisierung von Properties im Konstruktor
   constructor(
@@ -531,22 +526,18 @@ class SportsCar {
 }
 interface IPoint {
   readonly x: number;
-  readonly y: number;
-}
+  readonly y: number;   }
 interface ILikableItem { likes?: number; }
 class DescribableItem {
   constructor(
     public description: string
-  ){}
-}
+  ){}   }
 class PointOfInterest extends DescribableItem implements IPoint, ILikableItem {
   constructor(public x: number, public y: number, description: string, public likes?:number) {
     super(description);
-  }
-}
+  }   }
 interface CalcRequest extends Request {// Express types
-  body: {num1?: string; num2?: string}
-}</code></pre>
+  body: {num1?: string; num2?: string}   }</code></pre>
             </p>
             <p><span class="para-title">Regeln: </span>
               <ul></ul>
@@ -632,13 +623,10 @@ interface CalcRequest extends Request {// Express types
             </p><img src="../assets/AuthServiceDesicionTree.PNG" alt="AuthServiceDesicionTree">
             <p><span class="para-title">How to keep Express Apps secure: </span>
               <ul></ul>
-              <li>Enable TSL / SSL</li>
-              <li>Check for known vulnerabilities</li>
+              <li>Enable TSL / SSL | Check for known vulnerabilities</li>
               <li>encode all untrusted data sent to an application (HTML, CSS, JS, URL)</li>
               <li>Test for parameter pollution (ensure that app can handle array values for form query-parameters)</li>
-              <li>Add Helmet to set sane defaults</li>
-              <li>Use CSURF against CSRF</li>
-              <li>Use Safe-Regex</li>
+              <li>Add Helmet to set sane defaults | Use CSURF against CSRF | Use Safe-Regex</li>
               <li>Don't use the default session cookie name, use generic cookie names</li>
             </p>
             <p><span class="para-title">Helmet: </span><span>11 security modules preventing a variety of attacks against an Express application</span>
@@ -691,20 +679,73 @@ interface CalcRequest extends Request {// Express types
                32% der Seiten im Internet disable Zoom
                   UIs mit fixen Breiten sind nicht Zoombar. Zoom sollte immer möglich sein und zusammengehörigkeit sollte weiterhin bestehen
             </p>
-            <p><span class="para-title">Animationen (Warum Anomationen abgestellt werden müssen)</span>
+            <p><span class="para-title">Animationen</span>
                Animationen sollte abstellbar sein, 
-                  das Verringert Ablenkung bei Konzentrationstörung und das Auslösen von Epilepsie und Migräne.
+               das Verringert Ablenkung bei Konzentrationstörung und das Auslösen von Epilepsie und Migräne.
             </p>
             <p><span class="para-title">Media: </span>Bilder sollen immer einen Alt-Text haben. 50% aller Seiten stellen keine Alt Tags zur verfügung.
             </p>
             <p><span class="para-title">Screen Reader: </span><b>Herausforderung: </b> Fragmentierung der Nutzerbasis (NVDA 72%, JAWS 61%, VoiceOver 47%). <b>Empfehlungen: </b> Keine Headings-Level auslassen, Semantic Elements richtig nutzen, 
-                  Skip-Links am Anfang der Seite (“Links zur Barrierefreiheit” / “Zu den Hauptinhalten“).
+               Skip-Links am Anfang der Seite (“Links zur Barrierefreiheit” / “Zu den Hauptinhalten“).
             </p>
-            <p><span class="para-title">Accessibility von Formularen und Tabellen beurteilen und optimieren: </span>
+            <p><span class="para-title">WIA-ARIA (Web Accessibility Initiative – Accessibile RIA): </span>
+                Erlaubt eine optimierte Abbildung des DOM Trees in den Accessibility Tree.<b>MDN: </b> Developers should prefer using the correct semantic HTML element over using ARIA
             </p>
-      <h1>TODO</h1>
-      <h1>Internalisation</h1>
-      <h1>Web DevOps</h1>
+            <p><span class="para-title">Tables: </span> Tables sollte mit Heading für Rows und Columns ausgestattet sein (th oder ARIA columnheader, rowheader). <b>Probleme</b> 2 Tabellen werden verwendet, sehen aber aus wie eine einzige, 
+               Screenreader liest Tabellen einzeln vor, 
+               relation vom Inhalt zu Titel kann nicht hergestellt werden.<b>Weitere Fehler</b> umkehren der Schreibrichtung, 
+               Hover Effekt funktioniert nur, wenn man Maus verwenden kann 
+               Gestylte Elemente (z.B.: div, span als Button), 
+               Tabellen für Layout<b>Tricks um Accesibility zu ermöglichen / verbessern</b> beschreibende HTML Elemente hinzufügen aber in der UI mit CSS verstecken, 
+               Navigation zuerst, Bereiche Gruppieren, Semantic Markup nutzen 
+               Headings in korrekter Reihenfolge, Regionen mit "invisible headern" versehen, 
+               Tabellen verwenden für Daten, Form mit label Element für input Elemente (HTML 5 Validation nutzen).
+            </p>
+      <h1>Internalization</h1>
+      <p>Vorbereitung von Programmen so dass Lokalisierung (L10N) möglich ist</p>
+            <p><span class="para-title">Lokalisierung: </span>Sprachliche und weitere Anpassung an eine Sprachregion
+            </p>
+            <p><span class="para-title">Übersetzung: </span>Übersetzung von Texten oder Textfragmenten oder Wörtern
+            </p>
+            <p><span class="para-title">Locale: </span>String der eine Sprachregion bestimmt
+            </p>
+            <p><span class="para-title">Wichtigste Interkulturelle Unterschiede</span>
+              Unterschiedliche Alphabete und Zahlen
+              Andere Schreibweise von Adressen, 
+              Andere Farbsymbolik, 
+              Unterschiedliche Zahlenformate (US: 1,234.56, CH: 1`234.56), 
+              Unterschiedliche Positionspräferenzen
+            </p>
+            <p><span class="para-title">i18n Objects: </span>
+              <ul> 
+                <li><b>Intl.Collator (Konstruktor): </b>Sprachsensitiver Stringvergleich, z.B. in Deutsch wird ä mit a sortiert, in Schweden mit z.
+                  <pre class="code"><code class="language-javascript">const compareGerman = new Intl.Collator('de').compare('ä', 'z');</code></pre>
+                </li>
+                <li><b>Intl.DateTimeFormat (Konstruktor): </b>Datum und Zeiten sprachsensitiv formatieren
+                  <pre class="code"><code class="language-javascript">new Intl.DateTimeFormat('en-US').format(date));
+const options1 = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+console.log(new Intl.DateTimeFormat('de-CH', options1).format(date));</code></pre>
+                </li>
+                <li><b>Intl.RelativeTimeFormat (Konstruktor): </b>Relative Zeitangaben sprachsensitiv formatieren
+                  <pre class="code"><code class="language-javascript">const rtf2 = new Intl.RelativeTimeFormat('de-ch’, {numeric: 'auto', style: 'short' });
+console.log(rtf2.format(2, 'day'));//output: "übermorgen"
+console.log(rtf2.format(1, 'week'));//output: "nächste Woche"</code></pre>
+                </li>
+                <li><b>Intl.NumberFormat (Konstruktor): </b>Zahlen sprachsensitiv formatieren
+                  <pre class="code"><code class="language-javascript">console.log(new Intl.NumberFormat('de-CH').format(number));</code></pre>
+                </li>
+                <li><b>Intl.PluralRules (Konstruktor): </b>Mit Pluralsprachregeln pluralsensitiv interpolieren
+                  <pre class="code"><code class="language-javascript">var westernPr = new Intl.PluralRules('de-CH');
+console.log(westernPr.select(1)); // → 'one' CH, US English, ...
+console.log(westernPr.select(2)); // → 'other' CH, US English, ...</code></pre>
+                </li>
+                <li><b>Intl.ListFormat (Konstruktor): </b>Aufzählungen (und/oder verknüpft) sprachsensitiv formatieren
+                  <pre class="code"><code class="language-javascript">const formatterEn =
+new Intl.ListFormat('en', {style: 'long’,type: 'conjunction'});
+console.log(formatterEn.format(colorsEn));// Logs "rd, bl, and orng"</code></pre>
+                </li>
+              </ul>
+            </p>
     </div>
     <script src="../htmlEscapingInCodeElement.js"></script>
     <script src="../titleColorAssigner.js"></script>

@@ -119,14 +119,10 @@ img(src='../assets/AuthServiceDesicionTree.PNG' alt='AuthServiceDesicionTree')
 
 +para('How to keep Express Apps secure: ')
     ul
-    li Enable TSL / SSL
-    li Check for known vulnerabilities
+    li Enable TSL / SSL | Check for known vulnerabilities
     li encode all untrusted data sent to an application (HTML, CSS, JS, URL)
-    li
-        | Test for parameter pollution (ensure that app can handle array values for form query-parameters)
-    li Add Helmet to set sane defaults
-    li Use CSURF against CSRF
-    li Use Safe-Regex
+    li Test for parameter pollution (ensure that app can handle array values for form query-parameters)
+    li Add Helmet to set sane defaults | Use CSURF against CSRF | Use Safe-Regex
     li Don't use the default session cookie name, use generic cookie names
 
 +para('Helmet: ')
