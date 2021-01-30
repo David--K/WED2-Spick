@@ -1,15 +1,11 @@
-// Array declaration
 let myNumArray: number[] = [1, 2, 3];
 let myTupel: [number, string] = [1, 'abcd']
-// jedem value kann ein value mit 
-// einem beliebigen Typ zugeweisen werden
+// jedem value kann ein value mit einem beliebigen Typ zugeweisen werden
 let myNotInferredTupel = [1, 'abcd'];
-// enum declaration
-enum Color {Red, Green, Blue};
+enum Color {Red, Green, Blue};// enum declaration
 enum StrColor {Red = "red", Green = "green"};
 type StrLitColor = "red" | "green";
-// enum verwenden
-let c: Color = Color.Green;
+let c: Color = Color.Green; // enum verwenden
 let myTupel2: [Color, number] = [Color.Green, 1];
 function add(n1: number, n2: number): number;
 //function Parameter
@@ -18,21 +14,17 @@ class Counter {
   private _doors: number;
   public static readonly WOOD_FACTORS = {'oak': 80, 'pine': 20};
   constructor({doors = 2}: {doors?: number} = {}) {
-    this.doors = doors; // Fehler wenn doors nicht gesetzt wird, wäre korrekt in JS
-  }
+    this.doors = doors;/*Fehler wenn doors nicht gesetzt, korrekt in JS*/}
   set doors(newDoorCount: number) {
-    this._doors = newDoorCount;
-  }
+    this._doors = newDoorCount;}
   get doors() {
-  return this._doors;
-  }
+    return this._doors;}
 }
 class SportsCar {
   //Verkürzte Syntax zur Initialisierung von Properties im Konstruktor
   constructor(
   public make: string,
   public color: SportsCarColor,
-  public gears: number,
   ) { //kein code nötig }
 }
 interface IPoint {
@@ -50,7 +42,6 @@ class PointOfInterest extends DescribableItem implements IPoint, ILikableItem {
     super(description);
   }
 }
-// Express types
-interface CalcRequest extends Request {
+interface CalcRequest extends Request {// Express types
   body: {num1?: string; num2?: string}
 }

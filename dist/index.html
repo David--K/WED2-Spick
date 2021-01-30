@@ -216,40 +216,38 @@
               <li><b>Teardown:</b> Zurücksetzen z.B. von mocks</li>
             </p>
             <p><span class="para-title">Beispiele: </span>
-              <pre class="code"><code class="language-javascript">const chai = require('chai');
-const sinon = require("sinon");
-const proxyquire = require("proxyquire");
-const expect = chai.expect;
+              <pre class="code"><code class="language-javascript">const chai = require('chai'); const sinon = require("sinon");
+const proxyquire = require("proxyquire"); const expect = chai.expect;
 function stub(v) {return v*2;}
 const currencyConverter = proxyquire("../cc", { convert: stub });
 describe("A new bank account", function() {
-beforeEach(function() {
-   this.account = new BankAccount();
-   clock = sinon.useFakeTimers(constantNow); // stub/fake Date
-   this.converter = new currencyConverter("mysecret");
-   this.accountAWithdrawSpy=sinon.spy(this.accountA,"withdraw");
-});
-afterEach(function() {
-   clock.restore();
-})
-it("is initialized by a balance of 0", function() {
-   expect(this.account.balance).to.equal(0);
-});
-it("should convert correct", function() {
-   this.account.add(20);
-   expect(converter(this.account.balance)).to.equal(40);
-});
-it("correctly calls withdrawal", function() {
-   this.transaction.execute();
-   sinon.assert.calledWith(this.accountAWithdrawSpy,
-   transactionAmount);
-   //expect(this.accountAWithdrawSpy
-   //.calledWith(transactionAmount)).to.be.true;
-   });
-it("should not allow a withdraw", function() {
-   expect(this.account.withdraw(50)).to.equal(false);
-   expect(this.account.balance).to.throw(new NoMoneyError("No money"));
-});
+  beforeEach(function() {
+      this.account = new BankAccount();
+      clock = sinon.useFakeTimers(constantNow); // stub/fake Date
+      this.converter = new currencyConverter("mysecret");
+      this.accountAWithdrawSpy=sinon.spy(this.accountA,"withdraw");
+  });
+  afterEach(function() {
+      clock.restore();
+  })
+  it("is initialized by a balance of 0", function() {
+      expect(this.account.balance).to.equal(0);
+  });
+  it("should convert correct", function() {
+      this.account.add(20);
+      expect(converter(this.account.balance)).to.equal(40);
+  });
+  it("correctly calls withdrawal", function() {
+      this.transaction.execute();
+      sinon.assert.calledWith(this.accountAWithdrawSpy,
+      transactionAmount);
+      //expect(this.accountAWithdrawSpy
+      //.calledWith(transactionAmount)).to.be.true;
+      });
+  it("should not allow a withdraw", function() {
+      expect(this.account.withdraw(50)).to.equal(false);
+      expect(this.account.balance).to.throw(new NoMoneyError("No money"));
+  });
 });</code></pre>
             </p>
             <p><span class="para-title">Chai Chains: </span>
@@ -492,30 +490,24 @@ app.use(cookieParser())
 {{/each}}</code></pre>
       </h1>
       <h1>TypeScript</h1>
-      <p>TypeScript hilft mittels "Statischer Analyse"</p>
+      <p>TypeScript hilft mittels "Statischer Analyse" :</p>
       <ul></ul>
-      <li>Typos zu entdecken</li>
-      <li>Static Typing</li>
+      <li>Typos zu entdecken, Static Typing umzusetzen</li>
       <li>Erlaubt Spezifikation von Typen für Variablen, Funktionsparameter, Funktionswerten</li>
       <li>erweitern der JS Syntax um optionale Typ-Annotation und mehr (z.B. Decorators)</li>
-      <li>Intelisense und Checking in Editoren</li>
       <li>Pre-Processor der JavaScript generiert</li>
             <p><span class="para-title">TSLint und Prettier: </span><b>TSLint:</b> Tool für die statische Analyse von TypeScript, ist deprecated durch ESLint ersetzten<b>Prettier: </b> Ist ein Code Formator, hilft einen konsistenten Code Style im gesamten Projekt durchzusetzen, z.B.
                   Semicolons, Quotes oder Tab size
             </p>
             <p><span class="para-title">Syntax: </span><b>Basis-Typen:</b> boolean, number, string (sowie null und undefined)
-                    <pre class="code"><code class="language-javascript">// Array declaration
-let myNumArray: number[] = [1, 2, 3];
+                    <pre class="code"><code class="language-javascript">let myNumArray: number[] = [1, 2, 3];
 let myTupel: [number, string] = [1, 'abcd']
-// jedem value kann ein value mit 
-// einem beliebigen Typ zugeweisen werden
+// jedem value kann ein value mit einem beliebigen Typ zugeweisen werden
 let myNotInferredTupel = [1, 'abcd'];
-// enum declaration
-enum Color {Red, Green, Blue};
+enum Color {Red, Green, Blue};// enum declaration
 enum StrColor {Red = "red", Green = "green"};
 type StrLitColor = "red" | "green";
-// enum verwenden
-let c: Color = Color.Green;
+let c: Color = Color.Green; // enum verwenden
 let myTupel2: [Color, number] = [Color.Green, 1];
 function add(n1: number, n2: number): number;
 //function Parameter
@@ -524,21 +516,17 @@ class Counter {
   private _doors: number;
   public static readonly WOOD_FACTORS = {'oak': 80, 'pine': 20};
   constructor({doors = 2}: {doors?: number} = {}) {
-    this.doors = doors; // Fehler wenn doors nicht gesetzt wird, wäre korrekt in JS
-  }
+    this.doors = doors;/*Fehler wenn doors nicht gesetzt, korrekt in JS*/}
   set doors(newDoorCount: number) {
-    this._doors = newDoorCount;
-  }
+    this._doors = newDoorCount;}
   get doors() {
-  return this._doors;
-  }
+    return this._doors;}
 }
 class SportsCar {
   //Verkürzte Syntax zur Initialisierung von Properties im Konstruktor
   constructor(
   public make: string,
   public color: SportsCarColor,
-  public gears: number,
   ) { //kein code nötig }
 }
 interface IPoint {
@@ -556,8 +544,7 @@ class PointOfInterest extends DescribableItem implements IPoint, ILikableItem {
     super(description);
   }
 }
-// Express types
-interface CalcRequest extends Request {
+interface CalcRequest extends Request {// Express types
   body: {num1?: string; num2?: string}
 }</code></pre>
             </p>
