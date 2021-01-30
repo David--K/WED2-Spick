@@ -99,6 +99,10 @@ code {
   overflow: hidden !important;
 }
 
+code[class*="language-"]{
+  text-shadow: 0 0 transparent !important;
+}
+
 .header {
   align-self: flex-start;
   justify-self: flex-start;
