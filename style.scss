@@ -26,7 +26,13 @@ body {
   border: 0.1px solid black;
 }
 
-@mixin noLineBreak{
+@media print {
+  .container {
+    border: 0;
+  }
+}
+
+@mixin noLineBreak {
   + h2::before {
     content: '';
     white-space: normal;
@@ -34,7 +40,6 @@ body {
 }
 
 .page {
-
   * {
     margin-block-start: 0;
     margin-block-end: 0;
@@ -63,16 +68,15 @@ body {
     white-space: pre;
   }
 
-  > h1{
-    @include noLineBreak
+  > h1 {
+    @include noLineBreak;
   }
-  > ul{
-    @include noLineBreak
+  > ul {
+    @include noLineBreak;
   }
-  > pre{
-    @include noLineBreak
+  > pre {
+    @include noLineBreak;
   }
-
 }
 
 code {
