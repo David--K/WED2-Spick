@@ -1,6 +1,7 @@
 /node_modules/*
-*.css
+style.css
 *.map
 .idea/*
 *.pdf
 .vscode
+/sections/dist/*

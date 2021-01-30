@@ -1,6 +1,4 @@
-
-<h1>CSS Grid</h1>
-<pre class="code"><code class="language-css">#grid-container {
+#grid-container {
     display: grid; //inline-grid: inline | grid: block-level
     width: 100px;
     grid-template-columns: 1fr 60px minmax(10px, 200px);
@@ -31,4 +29,4 @@
     justify-self: auto | normal | start;}
   nav { grid-area: nav; }
   .side-toc { grid-area: toc; }
-  footer {grid-area: footer;}</code></pre>
+  footer {grid-area: footer;}
