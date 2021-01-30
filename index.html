@@ -278,6 +278,7 @@ describe("A new bank account", function() {
     besser wartbaren Code zu schreiben. Weniger Copy & Paste, Modularisierung, Wiederverwendung
     <b>Output: </b> ist immer CSS
     <h2>Einheiten</h2>Können mit folgenden Operatoren <b>+, -, *, /, und %</b> verwendet werden.
+    Berechnungen werden wie in Physik, z.B. px*px = px^2 (Error), 2px / 1px = 2
     <h2>PostCSS</h2>
     <h2>Webbuildtools Context und Features</h2>
     <h2>Kategorien</h2>
@@ -315,21 +316,16 @@ h1 {
 .message   
   color: green</code></pre>
     <h2>@mixin und @include</h2> immer zuoberst, weniger CSS-Selektoren als @extend, Verständlicher, Falls Parameter benötigt
-    <pre class="code"><code class="language-css">@mixin babo {
-  color: blue
-}
+    <pre class="code"><code class="language-css">@mixin babo {color: blue}
 @mixin bratte {
   @include babo
-  li {
-    color: red}}
+  li {color: red}}
 @mixin rtl($property, $ltr-value, $rtl-value) {
   #{$property}: $ltr-value;
   [dir=rtl] & {
-    #{$property}: $rtl-value;}
-nav ul {
-  @include bratte;}
-.sidebar {
-  @include rtl(float, left, right)}
+    #{$property}: $rtl-value;}}
+nav ul {@include bratte;}
+.sidebar {@include rtl(float, left, right)}
 @include breakpoint(30em) { /*breakpoint ist ein mixin das @content verwendet*/
   .box {
     @include border-radius(0px);
@@ -343,9 +339,7 @@ nav ul li { color: red;}
 .sidebar { float: left;}
 [dir=rtl] .sidebar { float: right;}
 /*breakpoint*/
-@media screen and (min-width: 30em) {
-  .box {border-radius: 0px;}
-}</code></pre>
+@media screen and (min-width: 30em) {.box {border-radius: 0px;}}</code></pre>
     <h2>Verwendung von & (parent)</h2>
     <pre class="code"><code class="language-css">@mixin hover() {
   &:hover{
@@ -354,6 +348,22 @@ nav ul li { color: red;}
 .box {@include hover();}</code></pre>
 Wird zu folgendem CSS: 
     <pre class="code"><code class="language-css">.box:hover {background: red;}</code></pre>
+    <h2>Functions</h2>
+    <pre class="code"><code class="language-css">@function properWidht($para){
+  @if($para >= 100 and $para <= 500) {@return $para / 10);}
+  @else{@return $para;}
+}
+body{width: properWidht($width);}</code></pre>
+    <h2>Loops</h2>
+    <pre class="code"><code class="language-css">$breakpoints: 30em 46em ; /*list*/
+@each $point in $breakpoints {
+  @media all and (max-width : $point) {
+    body{
+      @if $point > 40em {width: $width;}
+      @else{width: $width * 2;}
+    }}}</code></pre>
+    daraus wird folgender CSS-Code
+    <pre class="code"><code class="language-css">media all and (max-width: 30em) {body {width: 4px;}} /*für jeden list entry*/</code></pre>
 </div>
 
 
