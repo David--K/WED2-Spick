@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WED Zusammenfassung</title>
     <link href="./node_modules/prismjs/themes/prism.css" rel="stylesheet"/>
+    <link href="./lib/prism-line-numbers.css" rel="stylesheet"/>
+
     <link href="./style.css" rel="stylesheet"/>
 </head>
 <body>
@@ -333,7 +335,7 @@ nav ul li { color: red;}
 <div class="container page">
     <h1>Node</h1>
     <h2>Application - app.js:</h2>
-    <pre class="code"><code class="language-javascript">const express = require('express');
+    <pre class="code line-numbers"><code class="language-javascript">const express = require('express');
 const path = require('path');
 const session = require('express-session');
 const app = express();
@@ -347,7 +349,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', require('./routes/index'));
 module.exports = app;</code></pre>
     <h2>Routes - routes/index.js:</h2>
-    <pre class="code"><code class="language-javascript">const express = require('express');
+    <pre class="code line-numbers"><code class="language-javascript">const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/shopController')
 router.get('/', controller.index);
@@ -356,7 +358,7 @@ router.post('/remove', controller.remove);
 router.post('/bestellung', controller.bestellung);
 module.exports = router;</code></pre>
     <h2>Services - services/shopService.js</h2>
-    <pre class="code"><code class="language-javascript">const Datastore = require('nedb');
+    <pre class="code line-numbers"><code class="language-javascript">const Datastore = require('nedb');
 const db = new Datastore({filename: './data/shop.db', autoload: true});
 class Item {
  constructor(name, preis) {
@@ -368,7 +370,7 @@ function get(id, callback) {
  db.find({_id: id}, callback);}
 module.exports = {all, get};</code></pre>
     <h2>Controllers - controllers/shopController.js</h2>
-    <pre class="code"><code class="language-javascript">const shop = require('../services/shopService.js');
+    <pre class="code line-numbers"><code class="language-javascript">const shop = require('../services/shopService.js');
 function index(req, res) {
  ensureSession(req.session);
  shop.all((err, items)
@@ -402,7 +404,7 @@ function ensureSession(session) {
  session.warenkorb = {};}}
 module.exports = {index, add, remove, bestellung};</code></pre>
     <h1>Cookies: </h1>
-    <pre class="code"><code class="language-javascript">var cookieParser = require('cookie-parser')
+    <pre class="code line-numbers"><code class="language-javascript">var cookieParser = require('cookie-parser')
 app.use(cookieParser())
 /*read Cookies*/ console.log('Cookies: ', req.cookies)
 /*write Cookies*/ res.cookie('name', 'tobi', { domain: '.example.com', path: '/admin', secure: true })
@@ -572,12 +574,12 @@ interface CalcRequest extends Request {
     </span>
 
     <h2>Should I operate my own password-based Auth-Service?</h2>
-    <img src="/assets/AuthServiceDesicionTree.PNG" alt="AuthServiceDesicionTree" />
+    <img src="./assets/AuthServiceDesicionTree.PNG" alt="AuthServiceDesicionTree" />
 </div>
-
+<script src="./htmlEscapingInCodeElement.js"></script>
 <script src="./titleColorAssigner.js"></script>
 <script src="./node_modules/prismjs/prism.js"></script>
-<script src="./htmlEscapingInCodeElement.js"></script>
+<script src="./node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js"></script>
 
 </body>
 </html>
