@@ -275,7 +275,7 @@ describe("A new bank account", function() {
     <h1>Sass (Syntactically Awesom Style Sheet)</h1>
     <h2>Alternativen: Less, stylus</h2>
     <h2>Aufgabe und Einsatzbereich</h2>
-    CSS Präprozessoern sind nicht an die Limitation von CSS gebunden und ermöglichen es (potentiell) 
+    CSS Präprozessoern sind nicht an die Limitation von CSS gebunden und ermöglichen es (potentiell)
     besser wartbaren Code zu schreiben. Weniger Copy & Paste, Modularisierung, Wiederverwendung
     <b>Output: </b> ist immer CSS
     <h2>Einheiten</h2>Können mit folgenden Operatoren <b>+, -, *, /, und %</b> verwendet werden.
@@ -319,7 +319,7 @@ nav ul {
   @include rtl(float, left, right)}
 </code></pre>
     wird in folgendes CSS umgewandelt
-  <pre class="code"><code class="language-css">nav ul {
+    <pre class="code"><code class="language-css">nav ul {
   color: blue;}
 nav ul li {
   color: red;}
@@ -379,7 +379,9 @@ function get(id, callback) {
 module.exports = {all, get};
         </code></pre>
     <h2>Controllers - controllers/noteController.js</h2>
-    <pre class="code"><code class="language-javascript">function index(req, res) {
+    <pre class="code"><code class="language-javascript">const shop = require('../services/shopService.js');
+
+function index(req, res) {
  ensureSession(req.session);
  shop.all((err, items)
  const warenkorb = req.session.warenkorb;
@@ -422,7 +424,13 @@ function ensureSession(session) {
  }
 }
 module.exports = {index, add, remove, bestellung};</code></pre>
-    <h2>Handlebars: </h2>
+    <h1>Cookies: </h1>
+    <pre class="code"><code class="language-javascript">var cookieParser = require('cookie-parser')
+app.use(cookieParser())
+/*read Cookies*/ console.log('Cookies: ', req.cookies)
+/*write Cookies*/ res.cookie('name', 'tobi', { domain: '.example.com', path: '/admin', secure: true })
+/*or*/res.cookie('rememberme', '1', { expires: new Date(Date.now() + 900000), httpOnly: true })</code></pre>
+    <h1>Handlebars: </h1>
     <pre class="code"><code class="escapeHtml">{{#if author}}
     <h1>{{firstName}}{{lastName}}</h1>
 {{/if}}
@@ -442,19 +450,20 @@ module.exports = {index, add, remove, bestellung};</code></pre>
     <h1>TypeScript</h1>
     TypeScript hilft mittels "Statischer Analyse"
     <ul>
-      <li>Typos zu entdecken</li>
-      <li>Static Typing</li>
-      <li>Erlaubt Spezifikation von Typen für Variablen, Funktionsparameter, Funktionswerten</li>
-      <li>erweitern der JS Syntax um optionale Typ-Annotation und mehr (z.B. Decorators)</li>
-      <li>Intelisense und Checking in Editoren</li>
-      <li>Pre-Processor der JavaScript generiert</li>
+        <li>Typos zu entdecken</li>
+        <li>Static Typing</li>
+        <li>Erlaubt Spezifikation von Typen für Variablen, Funktionsparameter, Funktionswerten</li>
+        <li>erweitern der JS Syntax um optionale Typ-Annotation und mehr (z.B. Decorators)</li>
+        <li>Intelisense und Checking in Editoren</li>
+        <li>Pre-Processor der JavaScript generiert</li>
     </ul>
     <h2>TSLint und Prettier</h2>
     <b>TSLint:</b> Tool für die statische analyse von TypeScript, ist deprecated durch ESLint ersetzten
-    <b>Prettier: </b> Ist ein Code Formator, hilft einen konsistenten Code Style im gesamten Projekt durchzusetzen, z.B. Semicolons, Quotes oder Tab size
+    <b>Prettier: </b> Ist ein Code Formator, hilft einen konsistenten Code Style im gesamten Projekt durchzusetzen, z.B.
+    Semicolons, Quotes oder Tab size
     <h2>Syntax</h2>
     <b>Basis-Typen:</b> boolean, number, string (sowie null und undefined)
-    <pre class="code"><code class="language-javascript" >// Array declaration
+    <pre class="code"><code class="language-javascript">// Array declaration
 let myNumArray: number[] = [1, 2, 3];
 let myTupel: [number, string] = [1, 'abcd']
 // jedem value kann ein value mit 
@@ -514,22 +523,24 @@ interface CalcRequest extends Request {
 }</code></pre>
     <h2>Regeln</h2>
     <ul>
-      <li>any kann beliebiger Wert zugewiesen werden</li>
-      <li>
-        TypeScript findet Type heraus, falls Typ nicht deklariert, 
-        es kann nur noch der Typ des ersten zugewiesenen value verwendet werden.
-      </li>
-      <li>StrictNullChecks: 
-        <ul>
-          <li>Fehler wenn nonnullable value null zugewiesen wird, ohne strict mode kein Fehler</li>
-          <li><b>Kein</b> Fehler wenn nullable value undefined zugewiesen wird aber falls null zugewiesen wird schon</li>
-          <li>Fehler bei zuvielen Parametern in strict und in nicht strict mode</li>
-          <li>Fehler bei falschem Typ von zugewiesenem Wert in strict und in nicht strict mode</li>
-        </ul>
+        <li>any kann beliebiger Wert zugewiesen werden</li>
+        <li>
+            TypeScript findet Type heraus, falls Typ nicht deklariert,
+            es kann nur noch der Typ des ersten zugewiesenen value verwendet werden.
+        </li>
+        <li>StrictNullChecks:
+            <ul>
+                <li>Fehler wenn nonnullable value null zugewiesen wird, ohne strict mode kein Fehler</li>
+                <li><b>Kein</b> Fehler wenn nullable value undefined zugewiesen wird aber falls null zugewiesen wird
+                    schon
+                </li>
+                <li>Fehler bei zuvielen Parametern in strict und in nicht strict mode</li>
+                <li>Fehler bei falschem Typ von zugewiesenem Wert in strict und in nicht strict mode</li>
+            </ul>
     </ul>
     <h2>Interfaces</h2> Eine Klasse darf mehr als ein Interface implementieren
     <h2>Structural Typing</h2> Typ Idetifikation wird über Struktur des Typ gemacht und nicht über den Namen des Typ.
-    
+
 </div>
 
 <script src="./titleColorAssigner.js"></script>
