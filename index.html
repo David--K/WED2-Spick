@@ -218,29 +218,23 @@ describe("A new bank account", function() {
   afterEach(function() {
     clock.restore();
   })
-  it("is initialized by a balance of 0",
-  function() {
+  it("is initialized by a balance of 0", function() {
     expect(this.account.balance).to.equal(0);
   });
-  it("should convert correct",
-  function() {
+  it("should convert correct", function() {
     this.account.add(20);
     expect(converter(this.account.balance)).to.equal(40);
   });
-  it("correctly calls withdrawal",
-  function() {
+  it("correctly calls withdrawal", function() {
     this.transaction.execute();
     sinon.assert.calledWith(this.accountAWithdrawSpy,
      transactionAmount);
     //expect(this.accountAWithdrawSpy
     //.calledWith(transactionAmount)).to.be.true;
     });
-  it("should not allow a withdraw",
-   function() {
-    expect(this.account.withdraw(50))
-    .to.equal(false);
-    expect(this.account.balance).to
-    .throw(new NoMoneyError("No money"));
+  it("should not allow a withdraw", function() {
+    expect(this.account.withdraw(50)).to.equal(false);
+    expect(this.account.balance).to.throw(new NoMoneyError("No money"));
   });
 });</code></pre>
     <h2>Chai Chains:</h2>
@@ -281,8 +275,15 @@ describe("A new bank account", function() {
     <b>Output: </b> ist immer CSS
     <h2>Einheiten</h2>Können mit folgenden Operatoren <b>+, -, *, /, und %</b> verwendet werden.
     Berechnungen werden wie in Physik, z.B. px*px = px^2 (Error), 2px / 1px = 2
-    <h2>PostCSS</h2>
-    <h2>Webbuildtools Context und Features</h2>
+    <h2>PostCSS: </h2>besteht aus: Parser der "abstract syntax tree" erstellt, Klassen die den Baum beinhalten, 
+    Pluign Architektur, Stringifyer <b>Plugins:</b>precss (für Sass-like features variables, nesting, mixin),
+    cssnano (CSS minifier), postcss-sass (erlaubt es mit Sass zu arbeiten, aber kompiliert Sass nicht)
+    <b>Einsatzbereiche: </b> Fügt automatisch vendor prefixes CSS rules hinzu (-webkit-,-ms-), 
+    Konvertiert modernes CSS in CSS das alle Browser verstehen
+    <h2>Webbuildtools Context und Features</h2>«Build Tools» automatisieren die Erstellung von App-Bundels für Test und Deployment
+    <b>Features: </b> Code Splitting ("Tree Shaking"), Hashing, Non-JS Resource loading-optimization
+    <b>Tools: </b>WebPack, Rollup, Parcel
+    X-Browser module-loading optimization, Transformation (minification, compression, ciritcal CSS)
     <h2>Kategorien</h2>
     <h2>Beispiele</h2> <b>.scss</b> files müssen <b>{}</b> und <b>;</b> verwenden <b>.sass</b> Files nicht
     <h2>Spezielle Zeichen: </h2> <b>$</b> Variablen, <b>&</b> Referezen auf Parent, <b>%</b> Placeholder, 
@@ -329,9 +330,7 @@ h1 {
 nav ul {@include bratte;}
 .sidebar {@include rtl(float, left, right)}
 @include breakpoint(30em) { /*breakpoint ist ein mixin das @content verwendet*/
-  .box {
-    @include border-radius(0px);
-  }
+  .box {@include border-radius(0px);}
 }</code></pre>
     wird in folgendes CSS umgewandelt
     <pre class="code"><code class="language-css">/*bratte und babo*/
@@ -343,10 +342,7 @@ nav ul li { color: red;}
 /*breakpoint*/
 @media screen and (min-width: 30em) {.box {border-radius: 0px;}}</code></pre>
     <h2>Verwendung von & (parent)</h2>
-    <pre class="code"><code class="language-css">@mixin hover() {
-  &:hover{
-    background: red;
-  }}
+    <pre class="code"><code class="language-css">@mixin hover() {&:hover{background: red;}}
 .box {@include hover();}</code></pre>
 Wird zu folgendem CSS: 
     <pre class="code"><code class="language-css">.box:hover {background: red;}</code></pre>
@@ -366,6 +362,9 @@ body{width: properWidht($width);}</code></pre>
     }}}</code></pre>
     daraus wird folgender CSS-Code
     <pre class="code"><code class="language-css">media all and (max-width: 30em) {body {width: 4px;}} /*für jeden list entry*/</code></pre>
+    <h2>Maps</h2>
+    <pre class="code"><code class="language-css">$colors: (grey: #404145, yellow: #ecaf2d);
+@each $name, $hex in $colors { //z.B. name=grey, hex=#404145</code></pre>
 </div>
 
 
