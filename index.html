@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WED Zusammenfassung</title>
     <link href="./node_modules/prismjs/themes/prism.css" rel="stylesheet"/>
+    <link href="./lib/prism-line-numbers.css" rel="stylesheet"/>
+
     <link href="./style.css" rel="stylesheet"/>
 </head>
 <body>
@@ -365,7 +367,7 @@ Wird zu folgendem CSS:
 <div class="container page">
     <h1>Node</h1>
     <h2>Application - app.js:</h2>
-    <pre class="code"><code class="language-javascript">const express = require('express');
+    <pre class="code line-numbers"><code class="language-javascript">const express = require('express');
 const path = require('path');
 const session = require('express-session');
 const app = express();
@@ -379,7 +381,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', require('./routes/index'));
 module.exports = app;</code></pre>
     <h2>Routes - routes/index.js:</h2>
-    <pre class="code"><code class="language-javascript">const express = require('express');
+    <pre class="code line-numbers"><code class="language-javascript">const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/shopController')
 router.get('/', controller.index);
@@ -388,7 +390,7 @@ router.post('/remove', controller.remove);
 router.post('/bestellung', controller.bestellung);
 module.exports = router;</code></pre>
     <h2>Services - services/shopService.js</h2>
-    <pre class="code"><code class="language-javascript">const Datastore = require('nedb');
+    <pre class="code line-numbers"><code class="language-javascript">const Datastore = require('nedb');
 const db = new Datastore({filename: './data/shop.db', autoload: true});
 class Item {
  constructor(name, preis) {
@@ -400,7 +402,7 @@ function get(id, callback) {
  db.find({_id: id}, callback);}
 module.exports = {all, get};</code></pre>
     <h2>Controllers - controllers/shopController.js</h2>
-    <pre class="code"><code class="language-javascript">const shop = require('../services/shopService.js');
+    <pre class="code line-numbers"><code class="language-javascript">const shop = require('../services/shopService.js');
 function index(req, res) {
  ensureSession(req.session);
  shop.all((err, items)
@@ -434,7 +436,7 @@ function ensureSession(session) {
  session.warenkorb = {};}}
 module.exports = {index, add, remove, bestellung};</code></pre>
     <h1>Cookies: </h1>
-    <pre class="code"><code class="language-javascript">var cookieParser = require('cookie-parser')
+    <pre class="code line-numbers"><code class="language-javascript">var cookieParser = require('cookie-parser')
 app.use(cookieParser())
 /*read Cookies*/ console.log('Cookies: ', req.cookies)
 /*write Cookies*/ res.cookie('name', 'tobi', { domain: '.example.com', path: '/admin', secure: true })
@@ -605,11 +607,38 @@ interface CalcRequest extends Request {
 
     <h2>Should I operate my own password-based Auth-Service?</h2>
     <img src="./assets/AuthServiceDesicionTree.PNG" alt="AuthServiceDesicionTree" />
-</div>
 
+    <h2>How to keep Express Apps secure</h2>
+    <ul>
+      <li>Enable TSL / SSL</li>
+      <li>Check for known vulnerabilities</li>
+      <li>encode all untrusted data sent to an application (HTML, CSS, JS, URL)</li>
+      <li>Test for parameter pollution (ensure that app can handle array values for form query-parameters)</li>
+      <li>Add Helmet to set sane defaults</li>
+      <li>Use CSURF against CSRF</li>
+      <li>Use Safe-Regex</li>
+      <li>Don't use the default session cookie name, use generic cookie names</li>
+    </ul>
+
+    <h2>Helmet</h2>
+    <span>11 security modules preventing a variety of attacks against an Express application</span>
+    <ul>
+      <li><strong>helmet-csp</strong>: enables content-security-policy HTTP header, defines the trusted origins of contents (scripts, images, etc.)</li>
+      <li><strong>dns-prefetch-control</strong>: DNS Prefetching = speeding up loading times, disabling it can limit potential data leakage about types of service an application uses</li>
+      <li><strong>frameguard</strong>: enables X-Frame-Options HTTP header, website cannot render another site</li>
+      <li><strong>hpkp</strong>: enables public key pinning headers, prevent man-in-the-middle attchs with fored certs</li>
+      <li><strong>hsts</strong>: enables strict-transport-security header which forces subsequent connections to the server to use HTTPS once a client has initially connected with HTTPS</li>
+      <li><strong>ienoopen</strong>: enables the x-download-options HTTP header with the configuration of noopen to prevent IE users from executing downloads within an app's context</li>
+      <li><strong>nocache</strong>: enables four HTTP headers: cache-control, pragma, expires, surrogate-control with defaults that block the client caching old versions of site resources</li>
+      <li><strong>dont-sniff-mimetype</strong>: enables the x-content-type-options HTTP header to stop clients from sniffing the MIME-type of a response outside of the content-type that is declared</li>
+      <li><strong>referrer-policy</strong>: allows for control over the referrer HTTP header from your application, allowing no referrer information, referrer information for the same origin or full referrer information</li>
+      <li><strong>x-xss-protection</strong>: enables the X-XSS-Protection HTTP header preventing some XSS attacks in modern browsers</li>      
+    </ul>
+</div>
+<script src="./htmlEscapingInCodeElement.js"></script>
 <script src="./titleColorAssigner.js"></script>
 <script src="./node_modules/prismjs/prism.js"></script>
-<script src="./htmlEscapingInCodeElement.js"></script>
+<script src="./node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js"></script>
 
 </body>
 </html>
