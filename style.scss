@@ -136,6 +136,23 @@ body {
   }
 }
 
+
+span {
+  &.para-title {
+    font-size: 0.9em;
+    font-weight: bolder;
+    justify-self: center;
+    color: black;
+    background-color: rosybrown;
+    width: 100%;
+    display: inline;
+  }
+}
+
+img {
+  width: 100%;
+}
+
 .page {
   * {
     margin-block-start: 0;
@@ -162,7 +179,7 @@ body {
 
   h2::before {
     content: '\A';
-    white-space: pre;
+    //white-space: pre;
   }
 
   > h1 {
@@ -175,10 +192,6 @@ body {
 
   > pre {
     @include noLineBreak;
-  }
-
-  > img {
-    width: 100%;
   }
 }
 

@@ -1,0 +1,49 @@
+include ../mixins.pug
+
+h1 TypeScript
+p TypeScript hilft mittels "Statischer Analyse"
+ul
+li Typos zu entdecken
+li Static Typing
+li
+    | Erlaubt Spezifikation von Typen für Variablen, Funktionsparameter, Funktionswerten
+li erweitern der JS Syntax um optionale Typ-Annotation und mehr (z.B. Decorators)
+li Intelisense und Checking in Editoren
+li Pre-Processor der JavaScript generiert
+
++para('TSLint und Prettier: ')
+    b TSLint:
+    |  Tool für die statische Analyse von TypeScript, ist deprecated durch ESLint ersetzten
+    b Prettier: 
+    |  Ist ein Code Formator, hilft einen konsistenten Code Style im gesamten Projekt durchzusetzen, z.B.
+    |     Semicolons, Quotes oder Tab size
+
++para('Syntax: ')
+    b Basis-Typen:
+    |  boolean, number, string (sowie null und undefined)
+    +code('language-javascript')
+        include ./base-types.ts
+            
+
++para('Regeln: ')
+    ul
+    li any kann beliebiger Wert zugewiesen werden
+    li
+        | TypeScript findet Type heraus, falls Typ nicht deklariert,
+        | es kann nur noch der Typ des ersten zugewiesenen value verwendet werden.
+    li
+        | StrictNullChecks:
+        ul
+        li Fehler wenn nonnullable value null zugewiesen wird, ohne strict mode kein Fehler
+        li
+            b Kein
+            |  Fehler wenn nullable value undefined zugewiesen wird aber falls null zugewiesen wird
+            |                     schon
+        li Fehler bei zuvielen Parametern in strict und in nicht strict mode
+        li Fehler bei falschem Typ von zugewiesenem Wert in strict und in nicht strict mode
+
++para('Interfaces: ')
+    |  Eine Klasse darf mehr als ein Interface implementieren
+
++para('Structural Typing: ')
+    |  Typ Identifikation wird über Struktur des Typ gemacht und nicht über den Namen des Typ.

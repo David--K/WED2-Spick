@@ -3,3 +3,4 @@
 *.map
 .idea/*
 *.pdf
+.vscode

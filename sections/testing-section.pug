@@ -1,0 +1,134 @@
+include ../mixins.pug
+h1 Testing
++para('TDD: ')
+    | Test anything that might break, New Code is quilty until proven innocent,
+    |     Write at least as much test code as production code
+    |     Run all testc before check-in to repository
+
++para('Unit Tests: ')
+    | Getestet werden einzelne "Units": Klassen, Module (meist ein File)
+    |     Automation relativ einfach, 
+    b Herausforderung:
+    |  Isolation der Units, asynchrone Operationen,
+    |     Testdatengenerierung (z.B. Fuzzing)
+
++para('System Tests: ')
+    |     Getestet wird das Zusammenspiel aller Systemkomponenten in der Zielumgebung
+    |     Automation meist nur in Teilen möglich.
+    b Herausforderungen
+    | : Realistische aber vorhersagbare Umgebung
+    b Weitere System Tests:
+    | Load Tests, Performance Tests, Endurance Tests, Chaos Tests, Security Tests,
+    |     Usability Tests
+
++para('Integration Tests: ')
+    | Getestet wird das Zusammenspiel 2 oder mehr "Units"
+    |     (E2E: Integration über alle Layer), Automation meist möglich
+    b Herausforderungen:
+    |  Isolation der Units, asynchrone Operationen, Simulation Browser &amp;
+    |     Benutzerinteraktion, Test mit Datenbank, Testdatengenerierung (z.B. Fuzzing)
+
++para('(Visuelle) Regression Tests: ')
+    |     Getestet wird ob Veränderungen im Code zu (unerwarteten) Änderungen im Verhalten (oder UI)
+    |     führen. Automation möglich mit speziellen Tools
+
++para('Test-Runner: ')
+    | Ein Rahmen der Tests entgegennimmt, ausführt und die Resultate
+    |     anzeigt.
+    b Beispiele:
+    |  Jest, Mocha, Jasmin
+
++para('Assertion-Libraries: ')
+    |     Code zur Ausführung einzelner Tests
+    b Beispiele: 
+    |  Assert, Chai, Expect.js
+
++para('Mocking-Library: ')
+    |     Separierung von Units / Erstellung von Mocks etc.
+    b Beispiele: 
+    | Expect.js, Proxyquire, Sinon.js
+
++para('Phasen eines Tests: ')
+    ul
+    li
+        b Setup:
+        |  beforeEach Initialization, selbe Ausgangslage für alle Tests
+    li
+        b Exercise:
+        |  Aufruf einer Funktion (mit return value)
+    li
+        b Verify:
+        |  Überprüfen von Annahmen
+    li
+        b Teardown:
+        |  Zurücksetzen z.B. von mocks
+
++para('Beispiele: ')
+    pre.code
+        code.language-javascript
+            |const chai = require('chai');
+            |const sinon = require("sinon");
+            |const proxyquire = require("proxyquire");
+            |const expect = chai.expect;
+            |function stub(v) {return v*2;}
+            |const currencyConverter = proxyquire("../cc", { convert: stub });
+            |describe("A new bank account", function() {
+            |beforeEach(function() {
+            |    this.account = new BankAccount();
+            |    clock = sinon.useFakeTimers(constantNow); // stub/fake Date
+            |    this.converter = new currencyConverter("mysecret");
+            |    this.accountAWithdrawSpy=sinon.spy(this.accountA,"withdraw");
+            |});
+            |afterEach(function() {
+            |    clock.restore();
+            |})
+            |it("is initialized by a balance of 0", function() {
+            |    expect(this.account.balance).to.equal(0);
+            |});
+            |it("should convert correct", function() {
+            |    this.account.add(20);
+            |    expect(converter(this.account.balance)).to.equal(40);
+            |});
+            |it("correctly calls withdrawal", function() {
+            |    this.transaction.execute();
+            |    sinon.assert.calledWith(this.accountAWithdrawSpy,
+            |    transactionAmount);
+            |    //expect(this.accountAWithdrawSpy
+            |    //.calledWith(transactionAmount)).to.be.true;
+            |    });
+            |it("should not allow a withdraw", function() {
+            |    expect(this.account.withdraw(50)).to.equal(false);
+            |    expect(this.account.balance).to.throw(new NoMoneyError("No money"));
+            |});
+            |});
+
++para('Chai Chains: ')
+    ul
+    li .to, .be, .been, .is, .that, .which, .and, .not
+    li .true, .false, .undefined, .NaN, .exist,
+    li
+        | .equal(
+        | &lt;value&gt;), .deep.equal(
+        | &lt;value&gt;)
+    li
+        | .includes([…
+        | &lt;value&gt;]), .any.keys, .all.keys
+    li
+        | .a(
+        | &lt;baseType&gt;), instanceOf(
+        | &lt;class&gt;)
+    li throws()
+
++para('Test Doubles: ')
+    | Abhängigkeiten möglichst lose, für tests Doubles verwenden
+    ul
+    li Stub &amp; Fake: liefern vorbestimmten Wert
+    li Spy &amp; Mock: Helfen einen überprüfbaren Content zu generieren
+
++para('Test-Smells: ')
+    ul
+    li Hard-to-Test Code: Schlecht geschriebener Code
+    li Production Bugs: Zuviele Bugs während testing oder in prod
+    li Fragile Test: Tests verhalten sich verschieden auf unterschieldichen Systemen
+    li Errativ Test: Test funktionieren manchmal und manchmal nicht
+    li Es gibt keine Tests

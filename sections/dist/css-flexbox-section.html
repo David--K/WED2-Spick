@@ -1,0 +1,31 @@
+
+<h1>CSS Flexbox</h1>
+<p><span class="para-title">Facts: </span>Alle Elemente Verhalten sich wie "inline blocks" (erlaubt margin (left &amp; right) und paddding, erlaubt andere Elemente auf der gelichen Zeile, erlaubt <b>width </b>und<b> height </b>
+</p>
+<p><span class="para-title">flex-grow: </span>Entspricht dem Verhältnis wie der leere Platz verteilt wird. Default: 0 (nicht grösser werden)
+</p>
+<p><span class="para-title">flex-shrink: </span>Entspricht dem Verhältnis wie die Elemente kleiner werden, wenn zu wenig PLatz vorhanden ist, Default: 0
+</p>
+<p><span class="para-title">flex-basis: </span>
+  Alternative: content p Ist initialer Wert für Grösse eines flex item. flex-direction: row -A value steht für
+  width,
+  column -&gt; value steht für Breite
+</p>
+<p><span class="para-title">flex-wrap: </span>Problem: zuviele Elemente in einer Reihe
+</p>
+<p><span class="para-title">(flex-order) order: </span>Werden in aufsteigender Reihenfolge dargestellt, Default: 0
+</p>
+<pre class="code"><code class="language-css">.container {
+   display: flex;
+   flex-direction: row|row-reverse|column|column-reverse;
+   flex-wrap: wrap;
+   flex-flow: [flex-direction] [flex-wrap];
+   align-items: stretch;
+   /*nur sinvoll bei fixer Item Grösse*/
+   justify-content: center;}
+   .item {
+   flex-grow: 1;
+   flex-shrink: 1; 
+   flex-basis: 20px;
+   flex: [flex-grow] [flex-shrink] [flex-basis];}
+   .baboItem { order: -1; }</code></pre>

@@ -1,0 +1,54 @@
+include ../mixins.pug
+
+h1 Accessibility
+|     21% der Schweiz sind betroffen. 
+b Blinde Personen: 
+|  Gut strukturierte Dokumente, 
+|     Beschreibungstexte für visuelle Elemente, Bedienung über Tastatur möglich.
+b Sehbehinderte Personen: 
+|  Gute Kontraste, Gut vergrösserbares Layout, Trennung von Inhalt und Layout
+b Hörbehinderte Personen: 
+|  Text-Alternativen für auditive Elemente, visuelles Feedback für alle Aktionen, 
+|     einfache geschriebene Texte
+b Personen mit motorischen Einschränkungen: 
+| Grosszügige Schaltflächen, Bedienung über Tastatur möglich, 
+|     Keine ungewollten automatischen Aktionen
+b Perosnen mit Lern- und Aufmerksamekeitsstörungen: 
+|  Einfach geschriebene Texte, Gut lesbare Schriftarten, 
+|     Keine ablenkenden Elemente
+
++para('Farbenblindheit: ')
+    |  Webseiten könne mit Simulationen überprüft werden.
+    |     Zur Sicherheit 
+    b Mehrfachcodierung
+    |  verwenden: Farbe und Form, Farbe und Icon, Farbe und Text.
+
++para('Farbkontrast: ')
+    |  Wichtig für Personen 50+. Text und Texthintergrund möglichst "grossen" Unterschied.
+    |     Kann mit 
+    b Lighthouse
+    |  überprüft werden, Color Picker schlägt beste Farben vor.
+
++para('Optimierung von Farbblindheit vs Optimierung des Farbkontrast: ')
+
++para('Chrome Accessibility Check in Kontext und Handlungsempfehlung: ')
+
++para('Zoombarkeit :')
+    |  32% der Seiten im Internet disable Zoom
+    |     UIs mit fixen Breiten sind nicht Zoombar. Zoom sollte immer möglich sein und zusammengehörigkeit sollte weiterhin bestehen
+
++para('Animationen (Warum Anomationen abgestellt werden müssen)' )
+    |  Animationen sollte abstellbar sein, 
+    |     das Verringert Ablenkung bei Konzentrationstörung und das Auslösen von Epilepsie und Migräne.
+
++para('Media: ')
+    | Bilder sollen immer einen Alt-Text haben. 50% aller Seiten stellen keine Alt Tags zur verfügung.
+
++para('Screen Reader: ')
+    b Herausforderung: 
+    |  Fragmentierung der Nutzerbasis (NVDA 72%, JAWS 61%, VoiceOver 47%). 
+    b Empfehlungen: 
+    |  Keine Headings-Level auslassen, Semantic Elements richtig nutzen, 
+    |     Skip-Links am Anfang der Seite (“Links zur Barrierefreiheit” / “Zu den Hauptinhalten“).
+
++para('Accessibility von Formularen und Tabellen beurteilen und optimieren: ')

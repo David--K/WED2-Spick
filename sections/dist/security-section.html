@@ -1,0 +1,102 @@
+
+<h1>Security</h1>
+<p><span class="para-title">Vokabular: </span>
+  <ul></ul>
+  <li><strong>Vulnerability</strong>: Verwundbarkeit</li>
+  <li><strong>Attack Vector (AV)</strong>: Angriffsvorgehen</li>
+  <li><strong>Malicious Code</strong>: Angriffcode, Schadcode</li>
+  <li><strong>Injection Attack</strong>: Code wird System zur Ausführung untergeschoben</li>
+  <li><strong>XSS: Cross Site Scripting</strong>: Im Browser des Opfers wird eingeschleustes JS ausgeführt</li>
+</p>
+<p><span class="para-title">XSS Mitigation: </span>
+  <ul></ul>
+  <li><strong>Input Sanitization</strong>: Bereinigung von UserInput, <i></i>do not implement your own
+    sanitization
+  </li>
+  <li><strong>CSP</strong>: Content Security Policy im Header setzen (e.g. nur Secure Domain + REST Service darf
+                kontaktiert werden)
+  </li>
+  <li><strong>HTTPOnly Flag</strong> bei Cookies setzen</li>
+</p>
+<p><span class="para-title">JS Code Injection Mitigation: </span>
+  <ul></ul>
+  <li><strong>KEINE</strong> Verwendung von eval, setTimeOut, setInterval, besser parseInt + JSON.parse nutzen</li>
+  <li><strong>Reduzieren</strong>: Global Scopes und Variablen</li>
+  <li><strong>Node</strong> nicht als root process starten; x-powered-by header information abbestellen</li>
+</p>
+<p><span class="para-title">Broken Authentication: </span>
+  <ul></ul>
+  <li><strong>Vulnerability</strong>: PW oder Token wird unverschlüsselt übertragen</li>
+  <li><strong>AV</strong>: Network Sniffing Software</li>
+  <li><strong>Mitigation</strong>: TLS, Auth-Service, <i>PW-based Auth nicht selbst implementieren</i>, keine
+                geheimen Informationen in Query params
+  </li><br/>
+  <li><strong>Vulnerability</strong>: Session Timeout zu lange</li>
+  <li><strong>AV</strong>: Opfer nutzt public PC, vergisst Logout</li>
+  <li><strong>Mitigation</strong>: Session Timeout sinnvoll setzen</li><br/>
+  <li><strong>Vulnerability</strong>: CSRF, Formular + POST handler nicht geschützt, es wird nicht sichergestellt,
+                dass das form vom Server generiert wurde
+  </li>
+  <li><strong>AV</strong>: Attacker brint Opfer dazu mit gültiger Session auf Seite mit gefälschtem form zu gehen
+                & zu submitten
+  </li>
+  <li><strong>Mitigation</strong>: forms mit CSRF Token versehen, Gültigkeit wird bei POST Req geprüft | in
+                Express mit csurf lib:
+    <pre class="code"><code class="language-javascript">const csrf = require("csurf"); app.use(csrf({cooke: true}));</code></pre>
+  </li>
+</p>
+<p><span class="para-title">Broken Access Control: </span>
+  <ul></ul>
+  <li><strong>Vulnerability</strong>: User-ID ist nur über URL codiert</li>
+  <li><strong>AV</strong>: Attacker loggt sich ein & verändert URL</li>
+  <li><strong>Mitigation</strong>: bei Anzeige von Seiten sicherstellen, dass aktuell eingeloggter User berechtigt
+                ist
+  </li><br/>
+  <li><strong>Vulnerability</strong>: Replay Attack</li>
+  <li><strong>AV</strong>: Erneutes Senden von Formularen ist möglich & werden mehrfach verarbeitet</li>
+  <li><strong>Mitigation</strong>: One-Time CSRF Token</li>
+</p>
+<p><span class="para-title">Passwordless Login: </span>Nutzer erhalten (one-time) "magic-link" per EMail, Code genügend lange dass Brute-Force attacks verhindert sind
+</p>
+<p><span class="para-title">Should I operate my own password-based Auth-Service? </span>
+</p><img src="../assets/AuthServiceDesicionTree.PNG" alt="AuthServiceDesicionTree"/>
+<p><span class="para-title">How to keep Express Apps secure: </span>
+  <ul></ul>
+  <li>Enable TSL / SSL</li>
+  <li>Check for known vulnerabilities</li>
+  <li>encode all untrusted data sent to an application (HTML, CSS, JS, URL)</li>
+  <li>Test for parameter pollution (ensure that app can handle array values for form query-parameters)</li>
+  <li>Add Helmet to set sane defaults</li>
+  <li>Use CSURF against CSRF</li>
+  <li>Use Safe-Regex</li>
+  <li>Don't use the default session cookie name, use generic cookie names</li>
+</p>
+<p><span class="para-title">Helmet: </span><span>11 security modules preventing a variety of attacks against an Express application</span>
+  <ul></ul>
+  <li><strong>helmet-csp</strong>: enables content-security-policy HTTP header, defines the trusted origins of
+                contents (scripts, images, etc.)
+  </li>
+  <li><strong>dns-prefetch-control</strong>: DNS Prefetching = speeding up loading times, disabling it can limit
+                potential data leakage about types of service an application uses
+  </li>
+  <li><strong>frameguard</strong>: enables X-Frame-Options HTTP header, website cannot render another site</li>
+  <li><strong>hpkp</strong>: enables public key pinning headers, prevent man-in-the-middle attchs with fored certs</li>
+  <li><strong>hsts</strong>: enables strict-transport-security header which forces subsequent connections to the
+                server to use HTTPS once a client has initially connected with HTTPS
+  </li>
+  <li><strong>ienoopen</strong>: enables the x-download-options HTTP header with the configuration of noopen to
+                prevent IE users from executing downloads within an app's context
+  </li>
+  <li><strong>nocache</strong>: enables four HTTP headers: cache-control, pragma, expires, surrogate-control with
+                defaults that block the client caching old versions of site resources
+  </li>
+  <li><strong>dont-sniff-mimetype</strong>: enables the x-content-type-options HTTP header to stop clients from
+                sniffing the MIME-type of a response outside of the content-type that is declared
+  </li>
+  <li><strong>referrer-policy</strong>: allows for control over the referrer HTTP header from your application,
+                allowing no referrer information, referrer information for the same origin or full referrer information
+  </li>
+  <li><strong>x-xss-protection</strong>: enables the X-XSS-Protection HTTP header preventing some XSS attacks in
+                modern browsers
+  </li>
+</p>

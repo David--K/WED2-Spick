@@ -1,0 +1,172 @@
+include ../mixins.pug
+
+h1 Sass (Syntactically Awesome Style Sheet)
++para('Alternativen: ')
+    |  Less, stylus
+
++para('Aufgabe und Einsatzbereich: ')
+    |     CSS Präprozessoern sind nicht an die Limitation von CSS gebunden und ermöglichen es (potentiell)
+    |     besser wartbaren Code zu schreiben. Weniger Copy &amp; Paste, Modularisierung, Wiederverwendung
+    b Output: 
+    |  ist immer CSS
+
++para('Einheiten: ')
+    | Können mit folgenden Operatoren 
+    b +, -, *, /, und %
+    |  verwendet werden.
+    |     Berechnungen werden wie in Physik, z.B. px*px = px^2 (Error), 2px / 1px = 2
+
++para('PostCSS: ')
+    | besteht aus: Parser der "abstract syntax tree" erstellt,
+    |     Pluign Architektur, Stringifyer 
+    b Plugins:
+    | precss (für Sass-like features variables, nesting, mixin),
+    |     cssnano (CSS minifier), postcss-sass (erlaubt es mit Sass zu arbeiten, kompiliert Sass nicht)
+    b Einsatzbereiche: 
+    |  Fügt automatisch vendor prefixes CSS rules hinzu (-webkit-,-ms-), 
+    |     Konvertiert modernes CSS in CSS das alle Browser verstehen
+
++para('Web Build Tools: ')
+    | «Build Tools» automatisieren die Erstellung von App-Bundels für Test und Deployment
+    b Features: 
+    |  Code Splitting ("Tree Shaking"), Hashing, Non-JS Resource loading-optimization
+    b Tools: 
+    | WebPack, Rollup, Parcel
+    |     X-Browser module-loading optimization, Transformation (minification, compression, ciritcal CSS)
+
++para('Beispiele: ')
+    b .scss
+    |  files müssen 
+    b {}
+    |  und 
+    b ;
+    |  verwenden 
+    b .sass
+    |  Files nicht
+
++para('Spezielle Zeichen: ')
+    b $
+    |  Variablen, 
+    b &amp;
+    |  Referezen auf Parent, 
+    b %
+    |  Placeholder,
+    b @
+    |  Steuerzeichen, Directives z.B. @if @else @function, 
+    b \#{}
+    |  Interpolation Einsetzen, z.B. p.\#{$name}
+
++para('Nesting: ')
+    pre.code
+        code.language-css
+            |nav {ul {
+            |    padding: 0;
+            |    > li { /*only direct child*/
+            |    color: red
+            |    &[type="link"] { /*& gets replaced with parent*/
+            |        color: yellow;
+            |}}}}
+
++para('@use, @import ')
+    strong immer
+    |  zuoberst von File
+    pre.code
+        code.language-css
+            |//file: _colors.scss
+            |@use 'colors'; /*erlaubt alle Variabeln aus diesem File*/ 
+            |//file: _normalize.scss
+            |@import "normalize"; /*importiert/merged, normalize oben*/
+            |h1 {
+            |color: colors.$header-color}
+
+
++para('@extend ')
+    |  weniger CSS-Code als Mixin,
+    pre.code
+        code.language-css
+            |%shared { /*abstrakte Basis-Klasse erscheint nicht im generierten CSS*/
+            |    padding: 10px;}
+            |    .text {
+            |    font-size: 1.5em;}
+            |    .message {
+            |    @extend %shared;
+            |    @extend .text;
+            |    color: green;}
+    |     daraus wird folgendes css:
+    pre.code
+        code.language-css
+            |.message /*any other selector extending shared*/
+            |padding: 10px
+            |.message   
+            |color: green
+
++para('@mixin und @include ')
+    |  immer zuoberst, weniger CSS-Selektoren als @extend, Verständlicher, Falls Parameter
+    |     benötigt
+    pre.code
+        code.language-css
+            |@mixin babo {color: blue}
+            |@mixin bratte {
+            |@include babo
+            |li {color: red}}
+            |@mixin rtl($property, $ltr-value, $rtl-value) {
+            |#{$property}: $ltr-value;
+            |[dir=rtl] & {
+            |    #{$property}: $rtl-value;}}
+            |nav ul {@include bratte;}
+            |.sidebar {@include rtl(float, left, right)}
+            |@include breakpoint(30em) { /*breakpoint ist ein mixin das @content verwendet*/
+            |.box {@include border-radius(0px);}
+            |}
+    |     wird in folgendes CSS umgewandelt
+    pre.code
+        code.language-css
+            |/*bratte und babo*/
+            |nav ul { color: blue;}
+            |nav ul li { color: red;}
+            |/*rtl*/
+            |.sidebar { float: left;}
+            |[dir=rtl] .sidebar { float: right;}
+            |/*breakpoint*/
+            |@media screen and (min-width: 30em) {.box {border-radius: 0px;}}
+
+
++para('Verwendung von & (parent) ')
+    pre.code
+        code.language-css
+            |@mixin hover() {&amp;:hover{background: red;}}
+            |.box {@include hover();}
+    |     Wird zu folgendem CSS:
+    pre.code
+        code.language-css
+            |.box:hover {background: red;}
+
++para('Functions: ')
+    pre.code
+        code.language-css
+            |@function properWidht($para){
+            |@if($para &gt;= 100 and $para &lt;= 500) {@return $para / 10);}
+            |@else{@return $para;}
+            |}
+            |body{width: properWidht($width);}
+
++para('Loops: ')
+    pre.code
+        code.language-css
+            |$breakpoints: 30em 46em ; /*list*/
+            |@each $point in $breakpoints {
+            |@media all and (max-width : $point) {
+            |    body{
+            |    @if $point &gt; 40em {width: $width;}
+            |    @else{width: $width * 2;}
+            |    }}}
+    |     daraus wird folgender CSS-Code
+    pre.code
+        code.language-css
+            |media all and (max-width: 30em) {body {width: 4px;}} /*für jeden list entry*/
+
++para('Maps: ')
+    pre.code
+        code.language-css
+            |$colors: (grey: #404145, yellow: #ecaf2d);
+            |@each $name, $hex in $colors { //z.B. name=grey, hex=#404145

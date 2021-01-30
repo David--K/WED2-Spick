@@ -1,0 +1,42 @@
+include ../mixins.pug
+h1 CSS Flexbox
+
++para('Facts: ')
+    | Alle Elemente Verhalten sich wie "inline blocks" (erlaubt margin (left &amp; right) und paddding, erlaubt andere Elemente auf der gelichen Zeile, erlaubt 
+    b width 
+    | und
+    b  height 
+
++para('flex-grow: ')
+    | Entspricht dem Verhältnis wie der leere Platz verteilt wird. Default: 0 (nicht grösser werden)
+
++para('flex-shrink: ')
+    | Entspricht dem Verhältnis wie die Elemente kleiner werden, wenn zu wenig PLatz vorhanden ist, Default: 0
+
++para('flex-basis: ')
+    | Alternative: content p Ist initialer Wert für Grösse eines flex item. flex-direction: row -A value steht für
+    | width,
+    | column -&gt; value steht für Breite
+
++para('flex-wrap: ')
+    | Problem: zuviele Elemente in einer Reihe
+
++para('(flex-order) order: ')
+    | Werden in aufsteigender Reihenfolge dargestellt, Default: 0
+
+pre.code
+    code.language-css
+        |.container {
+        |    display: flex;
+        |    flex-direction: row|row-reverse|column|column-reverse;
+        |    flex-wrap: wrap;
+        |    flex-flow: [flex-direction] [flex-wrap];
+        |    align-items: stretch;
+        |    /*nur sinvoll bei fixer Item Grösse*/
+        |    justify-content: center;}
+        |    .item {
+        |    flex-grow: 1;
+        |    flex-shrink: 1; 
+        |    flex-basis: 20px;
+        |    flex: [flex-grow] [flex-shrink] [flex-basis];}
+        |    .baboItem { order: -1; }

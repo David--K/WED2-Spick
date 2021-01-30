@@ -1,0 +1,7 @@
+
+<h1>Cookies:</h1>
+<pre class="code line-numbers"><code class="language-javascript">var cookieParser = require('cookie-parser')
+app.use(cookieParser())
+/*read Cookies*/ console.log('Cookies: ', req.cookies)
+/*write Cookies*/ res.cookie('name', 'tobi', { domain: '.example.com', path: '/admin', secure: true })
+/*or*/res.cookie('rememberme', '1', { expires: new Date(Date.now() + 900000), httpOnly: true })</code></pre>

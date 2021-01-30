@@ -1,0 +1,106 @@
+
+<h1>Sass (Syntactically Awesome Style Sheet)</h1>
+<p><span class="para-title">Alternativen: </span> Less, stylus
+</p>
+<p><span class="para-title">Aufgabe und Einsatzbereich: </span>
+      CSS Präprozessoern sind nicht an die Limitation von CSS gebunden und ermöglichen es (potentiell)
+      besser wartbaren Code zu schreiben. Weniger Copy &amp; Paste, Modularisierung, Wiederverwendung<b>Output: </b> ist immer CSS
+</p>
+<p><span class="para-title">Einheiten: </span>Können mit folgenden Operatoren <b>+, -, *, /, und %</b> verwendet werden.
+      Berechnungen werden wie in Physik, z.B. px*px = px^2 (Error), 2px / 1px = 2
+</p>
+<p><span class="para-title">PostCSS: </span>
+  besteht aus: Parser der "abstract syntax tree" erstellt,
+      Pluign Architektur, Stringifyer <b>Plugins:</b>precss (für Sass-like features variables, nesting, mixin),
+      cssnano (CSS minifier), postcss-sass (erlaubt es mit Sass zu arbeiten, kompiliert Sass nicht)<b>Einsatzbereiche: </b> Fügt automatisch vendor prefixes CSS rules hinzu (-webkit-,-ms-), 
+      Konvertiert modernes CSS in CSS das alle Browser verstehen
+</p>
+<p><span class="para-title">Web Build Tools: </span>«Build Tools» automatisieren die Erstellung von App-Bundels für Test und Deployment<b>Features: </b> Code Splitting ("Tree Shaking"), Hashing, Non-JS Resource loading-optimization<b>Tools: </b>WebPack, Rollup, Parcel
+      X-Browser module-loading optimization, Transformation (minification, compression, ciritcal CSS)
+</p>
+<p><span class="para-title">Beispiele: </span><b>.scss</b> files müssen <b>{}</b> und <b>;</b> verwenden <b>.sass</b> Files nicht
+</p>
+<p><span class="para-title">Spezielle Zeichen: </span><b>$</b> Variablen, <b>&amp;</b> Referezen auf Parent, <b>%</b> Placeholder,<b>@</b> Steuerzeichen, Directives z.B. @if @else @function, <b>#{}</b> Interpolation Einsetzen, z.B. p.#{$name}
+</p>
+<p><span class="para-title">Nesting: </span>
+  <pre class="code"><code class="language-css">nav {ul {
+   padding: 0;
+   > li { /*only direct child*/
+   color: red
+   &[type="link"] { /*& gets replaced with parent*/
+       color: yellow;
+}}}}</code></pre>
+</p>
+<p><span class="para-title">@use, @import </span><strong>immer</strong> zuoberst von File
+  <pre class="code"><code class="language-css">//file: _colors.scss
+@use 'colors'; /*erlaubt alle Variabeln aus diesem File*/ 
+//file: _normalize.scss
+@import "normalize"; /*importiert/merged, normalize oben*/
+h1 {
+color: colors.$header-color}</code></pre>
+</p>
+<p><span class="para-title">@extend </span> weniger CSS-Code als Mixin,
+  <pre class="code"><code class="language-css">%shared { /*abstrakte Basis-Klasse erscheint nicht im generierten CSS*/
+   padding: 10px;}
+   .text {
+   font-size: 1.5em;}
+   .message {
+   @extend %shared;
+   @extend .text;
+   color: green;}</code></pre>    daraus wird folgendes css:
+  <pre class="code"><code class="language-css">.message /*any other selector extending shared*/
+padding: 10px
+.message   
+color: green</code></pre>
+</p>
+<p><span class="para-title">@mixin und @include </span>
+   immer zuoberst, weniger CSS-Selektoren als @extend, Verständlicher, Falls Parameter
+      benötigt
+  <pre class="code"><code class="language-css">@mixin babo {color: blue}
+@mixin bratte {
+@include babo
+li {color: red}}
+@mixin rtl($property, $ltr-value, $rtl-value) {
+: $ltr-value;
+[dir=rtl] & {
+   : $rtl-value;}}
+nav ul {@include bratte;}
+.sidebar {@include rtl(float, left, right)}
+@include breakpoint(30em) { /*breakpoint ist ein mixin das @content verwendet*/
+.box {@include border-radius(0px);}
+}</code></pre>    wird in folgendes CSS umgewandelt
+  <pre class="code"><code class="language-css">/*bratte und babo*/
+nav ul { color: blue;}
+nav ul li { color: red;}
+/*rtl*/
+.sidebar { float: left;}
+[dir=rtl] .sidebar { float: right;}
+/*breakpoint*/
+@media screen and (min-width: 30em) {.box {border-radius: 0px;}}</code></pre>
+</p>
+<p><span class="para-title">Verwendung von &amp; (parent) </span>
+  <pre class="code"><code class="language-css">@mixin hover() {&amp;:hover{background: red;}}
+.box {@include hover();}</code></pre>    Wird zu folgendem CSS:
+  <pre class="code"><code class="language-css">.box:hover {background: red;}</code></pre>
+</p>
+<p><span class="para-title">Functions: </span>
+  <pre class="code"><code class="language-css">@function properWidht($para){
+@if($para &gt;= 100 and $para &lt;= 500) {@return $para / 10);}
+@else{@return $para;}
+}
+body{width: properWidht($width);}</code></pre>
+</p>
+<p><span class="para-title">Loops: </span>
+  <pre class="code"><code class="language-css">$breakpoints: 30em 46em ; /*list*/
+@each $point in $breakpoints {
+@media all and (max-width : $point) {
+   body{
+   @if $point &gt; 40em {width: $width;}
+   @else{width: $width * 2;}
+   }}}</code></pre>    daraus wird folgender CSS-Code
+  <pre class="code"><code class="language-css">media all and (max-width: 30em) {body {width: 4px;}} /*für jeden list entry*/</code></pre>
+</p>
+<p><span class="para-title">Maps: </span>
+  <pre class="code"><code class="language-css">$colors: (grey: #404145, yellow: #ecaf2d);
+@each $name, $hex in $colors { //z.B. name=grey, hex=#404145</code></pre>
+</p>

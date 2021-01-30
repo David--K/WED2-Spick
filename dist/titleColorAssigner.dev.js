@@ -1,7 +1,10 @@
+"use strict";
+
 function titleColorAssigner(selector, colors) {
-  let colorIndex = 0;
+  var colorIndex = 0;
   document.querySelectorAll(selector).forEach(function (span) {
     span.style.background = colors[colorIndex];
+
     if (colorIndex === colors.length - 1) {
       colorIndex = 0;
     } else {
@@ -10,7 +13,7 @@ function titleColorAssigner(selector, colors) {
   });
 }
 
-window.addEventListener("load", () => {
+window.addEventListener("load", function () {
   titleColorAssigner("span.para-title", ["yellow", "aqua", "magenta"]);
   titleColorAssigner("h1", ["darksalmon", "burlywood", "chocolate"]);
 });

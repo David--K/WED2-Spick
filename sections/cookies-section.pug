@@ -1,0 +1,9 @@
+include ../mixins.pug
+h1 Cookies:
+pre.code.line-numbers
+    code.language-javascript
+        |var cookieParser = require('cookie-parser')
+        |app.use(cookieParser())
+        |/*read Cookies*/ console.log('Cookies: ', req.cookies)
+        |/*write Cookies*/ res.cookie('name', 'tobi', { domain: '.example.com', path: '/admin', secure: true })
+        |/*or*/res.cookie('rememberme', '1', { expires: new Date(Date.now() + 900000), httpOnly: true })

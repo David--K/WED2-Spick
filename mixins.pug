@@ -1,0 +1,9 @@
+mixin para(name)
+    p
+        span.para-title= name
+        block
+
+mixin code(language)
+    pre.code
+        code(class=language)
+            block
