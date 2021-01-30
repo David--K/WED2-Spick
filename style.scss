@@ -3,34 +3,39 @@
   margin: 0 0 0 0;
 }
 
-$a4-width: 29.7cm;
-$a4-height: 209.6mm;
+$a4-width-print: 29.7cm;
+$a4-height-print: 209.6mm;
 
-$text-font-size: 8px;
+$text-font-size-print: 8px;
+$text-font-size_view: 16px;
 $code-font-size: 0.85em;
 
 body {
   margin: 0;
-  font-size: $text-font-size;
+  font-size: $text-font-size-view;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .container {
   overflow: hidden;
-  column-count: 4;
-  column-fill: auto;
-  column-gap: 0.1em;
-  max-width: $a4-width;
-  height: $a4-height;
+  max-width: 100%;
+  height: 100%;
   box-sizing: border-box;
-
-  //TODO Remove me before printing!
-  border: 0.1px solid black;
 }
 
 @media print {
   .container {
-    border: 0;
+    max-width: $a4-width-print;
+    height: $a4-height-print;
+    column-count: 4;
+    column-fill: auto;
+    column-gap: 0.1em;
+  }
+
+  body {
+    margin: 0;
+    font-size: $text-font-size-print;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
 }
 
@@ -48,7 +53,7 @@ body {
   }
 
   > h1 {
-    font-size: 10px;
+    font-size: 1.1em;
     font-weight: bold;
     color: black;
     background-color: darksalmon;
@@ -56,7 +61,7 @@ body {
   }
 
   > h2 {
-    font-size: 9px;
+    font-size: 0.9em;
     font-weight: bolder;
     justify-self: center;
     color: black;
