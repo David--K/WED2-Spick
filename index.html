@@ -594,7 +594,7 @@ interface CalcRequest extends Request {
       <li><strong>AV</strong>: Opfer nutzt public PC, vergisst Logout</li>
       <li><strong>Mitigation</strong>: Session Timeout sinnvoll setzen</li>
       <br />
-      <li><strong>Vulnerability</strong>: CSRF, Formular + post handler nicht geschützt, es wird nicht sichergestellt, dass das form vom Server generiert wurde</li>
+      <li><strong>Vulnerability</strong>: CSRF, Formular + POST handler nicht geschützt, es wird nicht sichergestellt, dass das form vom Server generiert wurde</li>
       <li><strong>AV</strong>: Attacker brint Opfer dazu mit gültiger Session auf Seite mit gefälschtem form zu gehen & zu submitten</li>
       <li><strong>Mitigation</strong>: forms mit CSRF Token versehen, Gültigkeit wird bei POST Req geprüft | in Express mit csurf lib: <pre class="code"><code class="language-javascript">const csrf = require("csurf"); app.use(csrf({cooke: true}));</code></pre> </li>
     </ul>
