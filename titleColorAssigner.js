@@ -10,7 +10,7 @@ function titleColorAssigner(selector, colors) {
   });
 }
 
-window.onload = () => {
+window.addEventListener("load", () => {
   titleColorAssigner("h2", ["yellow", "aqua", "magenta"]);
   titleColorAssigner("h1", ["darksalmon", "burlywood", "chocolate"]);
-};
+});
