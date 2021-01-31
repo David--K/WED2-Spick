@@ -15,49 +15,41 @@ p
     | Andere Farbsymbolik, 
     | Unterschiedliche Zahlenformate (US: 1,234.56, CH: 1`234.56), 
     | Unterschiedliche Positionspräferenzen
-+para('i18n Objects: ')
-    ul 
-        li
-            b Intl.Collator (Konstruktor): 
-            | Sprachsensitiver Stringvergleich, z.B. in Deutsch wird ä mit a sortiert, in Schweden mit z.
-            pre.code
-                code.language-javascript
-                    | const compareGerman = new Intl.Collator('de').compare('ä', 'z');
-        li
-            b Intl.DateTimeFormat (Konstruktor): 
-            | Datum und Zeiten sprachsensitiv formatieren
-            pre.code
-                code.language-javascript
-                    | new Intl.DateTimeFormat('en-US').format(date));
-                    | const options1 = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
-                    | console.log(new Intl.DateTimeFormat('de-CH', options1).format(date));
-        li
-            b Intl.RelativeTimeFormat (Konstruktor): 
-            | Relative Zeitangaben sprachsensitiv formatieren
-            pre.code
-                code.language-javascript
-                    | const rtf2 = new Intl.RelativeTimeFormat('de-ch’, {numeric: 'auto', style: 'short' });
-                    | console.log(rtf2.format(2, 'day'));//output: "übermorgen"
-                    | console.log(rtf2.format(1, 'week'));//output: "nächste Woche"
-        li
-            b Intl.NumberFormat (Konstruktor): 
-            | Zahlen sprachsensitiv formatieren
-            pre.code
-                code.language-javascript
-                    | console.log(new Intl.NumberFormat('de-CH').format(number));
-        li
-            b Intl.PluralRules (Konstruktor): 
-            | Mit Pluralsprachregeln pluralsensitiv interpolieren
-            pre.code
-                code.language-javascript
-                    | var westernPr = new Intl.PluralRules('de-CH');
-                    | console.log(westernPr.select(1)); // → 'one' CH, US English, ...
-                    | console.log(westernPr.select(2)); // → 'other' CH, US English, ...
-        li
-            b Intl.ListFormat (Konstruktor): 
-            | Aufzählungen (und/oder verknüpft) sprachsensitiv formatieren
-            pre.code
-                code.language-javascript
-                    | const formatterEn =
-                    | new Intl.ListFormat('en', {style: 'long’,type: 'conjunction'});
-                    | console.log(formatterEn.format(colorsEn));// Logs "rd, bl, and orng"
++para('Intl.Collator (Konstruktor): ')
+    | Sprachsensitiver Stringvergleich, z.B. in Deutsch wird ä mit a sortiert, in Schweden mit z.
+    pre.code
+        code.language-javascript
+            | const compareGerman = new Intl.Collator('de').compare('ä', 'z');
++para('Intl.DateTimeFormat (Konstruktor): ')
+    | Datum und Zeiten sprachsensitiv formatieren
+    pre.code
+        code.language-javascript
+            | new Intl.DateTimeFormat('en-US').format(date));
+            | const options1={weekday:'long',year:'numeric',month:'long',day:'numeric'};
+            | console.log(new Intl.DateTimeFormat('de-CH', options1).format(date));
++para('Intl.RelativeTimeFormat (Konstruktor): ')
+    | Relative Zeitangaben sprachsensitiv formatieren
+    pre.code
+        code.language-javascript
+            | const rtf2 = new Intl.RelativeTimeFormat('de-ch’, {numeric: 'auto', style: 'short' });
+            | console.log(rtf2.format(2, 'day'));//output: "übermorgen"
+            | console.log(rtf2.format(1, 'week'));//output: "nächste Woche"
++para('Intl.NumberFormat (Konstruktor): ')
+    | Zahlen sprachsensitiv formatieren
+    pre.code
+        code.language-javascript
+            | console.log(new Intl.NumberFormat('de-CH').format(number));
++para('Intl.PluralRules (Konstruktor): ')
+    | Mit Pluralsprachregeln pluralsensitiv interpolieren
+    pre.code
+        code.language-javascript
+            | var westernPr = new Intl.PluralRules('de-CH');
+            | console.log(westernPr.select(1)); // → 'one' CH, US English, ...
+            | console.log(westernPr.select(2)); // → 'other' CH, US English, ...
++para('Intl.ListFormat (Konstruktor): ')
+    | Aufzählungen (und/oder verknüpft) sprachsensitiv formatieren
+    pre.code
+        code.language-javascript
+            | const formatterEn =
+            | new Intl.ListFormat('en', {style: 'long’,type: 'conjunction'});
+            | console.log(formatterEn.format(colorsEn));// Logs "rd, bl, and orng"
