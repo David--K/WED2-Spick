@@ -13,12 +13,17 @@ html(lang='en')
         div.wrapper
             div.noDisplay.headerMenuWrapper
                 div.headerMenuContent
-                    p
+                    p.switchText
                         | Print
                         label.switch
                             input#layoutSwitch(type='checkbox')
                             span.slider.round
                         | View
+                    div.navMenuWrapperMobile
+                        div#burgerMenu.container
+                            div.bar1
+                            div.bar2
+                            div.bar3
             div.view
                 div.noDisplay.navMenuWrapper
                     ul#navMenuPlaceholder

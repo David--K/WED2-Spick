@@ -4,8 +4,10 @@ window.addEventListener("load", () => {
   const LAYOUT_PRINT = "print";
   const LAYOUT_KEY = "data-layout";
 
-  let targetElement = document.getElementsByTagName("body")[0];
-  let layoutSwitch = document.getElementById("layoutSwitch");
+  const targetElement = document.getElementsByTagName("body")[0];
+  const layoutSwitch = document.getElementById("layoutSwitch");
+  const burgerButton = document.getElementById("burgerMenu");
+  const navBar = document.getElementsByClassName("navMenuWrapper")[0];
 
   function setLayout(cssTag) {
     localStorage.setItem(LAYOUT_KEY, cssTag);
@@ -23,5 +25,10 @@ window.addEventListener("load", () => {
     } else {
       setLayout(LAYOUT_PRINT);
     }
+  })
+  burgerButton.addEventListener("click", (e) => {
+    let isDisplay = navBar.style.display === "block";
+    navBar.style.display = isDisplay? "none" : "block";
+    burgerButton.classList.toggle("change");
   })
 })
