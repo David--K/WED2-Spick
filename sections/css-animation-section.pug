@@ -4,13 +4,12 @@ h1 CSS Animation
 +para('Transition Properties: ')
     pre.code
         code.language-css
-            |/*which property to change */
-            |transition-property: prop-name | all | none;
+            |transition-property: prop-name | all | none;/*which property to change */
             |/*how long the transition should take in s or ms*/
             |transition-duration: 5ms | 3s;
             |/*manner in which the transition accelerates*/
             |transition-timing-function: ease|linear|ease-in|ease-out|ease-in-out|step-start|step-end|steps(...)|cubic-bezier(#,#,#,#);
-            |/*whether there should be a pause before starting and the duration of said pause*/
+            |/*if there should be a pause before starting, the duration of said pause*/
             |transition-delay: 0.2s;
             |/*shorthand transition property: prop dur timing-function delay*/
             |transition: background-color .3s ease-in 0.2s;
