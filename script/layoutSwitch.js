@@ -30,8 +30,7 @@ window.addEventListener("load", () => {
     let isDisplay = navBar.style.display === "block";
     navBar.style.display = isDisplay? "none" : "block";
     burgerButton.classList.toggle("change");
-  })
-})
+  });
 
   let currentLayout = localStorage.getItem(LAYOUT_KEY);
   window.addEventListener("beforeprint", function(event) {
