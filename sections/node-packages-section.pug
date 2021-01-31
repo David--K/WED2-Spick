@@ -4,7 +4,7 @@ h1 Node (fs, url, http, path)
 +para('fs: ')
     pre.code
         code.language-javascript
-            | let fs = require('fs‘);
+            | const fs = require('fs‘);
             | let path = "test.txt";
             | let server = http.createServer(function (req, res) {/*Ohne Streams*/
             |   fs.readFile(__dirname + '/d.txt',(err, data) => {res.end(data);});
@@ -13,3 +13,24 @@ h1 Node (fs, url, http, path)
             |   let stream = fs.createReadStream(__dirname + '/d.txt');
             |   stream.pipe(res);
             | });
++para('path: ')
+    pre.code
+        code.language-javascript
+            | const path = require('path');
+            | path.join([...paths: string]): string
+            | path.normalize(path: string): string //normalizes by resolving '..', '.'
+            | path.resolve([...paths: string]): string
+            | path.parse(path:string): {dir: string, root: string, base: string, name: string, ext: string} //Gegenteil path.format(pathObject)
++para('url: ')
+    pre.code
+        code.language-javascript
+            | const url = require('url');
+            | const myURL = new URL('/foo', 'https://example.org:81/');//https://example.org/foo
+            | myUrl.href; /*https://example.com:81/foo*/ myUrl.host; /*example.org:81*/
++para('http: ')
+    pre.code
+        code.language-javascript
+            | import http from 'http'; /*oder*/ const http = require('http');
+            | const server = http.createServer(app); server.listen(port);
+            | server.on('error', (error) => {/*do Something*/}));
+            | server.on('listening', () => {log("listening on" + server.address());)}));

@@ -1,32 +1,28 @@
 #grid-container {
-    display: grid; /*grid (block-level), inline-grid (inline)*/
-    width: 100px;
-    grid-template-columns: 1fr 60px minmax(10px, 200px);
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: 
-      'nav nav nav nav'
-      'toc item item .'
-      'toc item item .'
-      'footer footer footer footer';
-    align-items: auto|normal|start|end|center|stretch|baseline;
-    justify-items: auto|normal|start|end|center|stretch|baseline; }
+  display: grid; /*grid (block-level), inline-grid (inline)*/
+  width: 100px;
+  grid-template-columns: 1fr 60px minmax(10px, 200px);
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 
+    'nav nav nav nav'
+    'toc item item .'
+    'toc item item .'
+    'footer footer footer footer';
+  align-items: auto|normal|start|end|center|stretch|baseline;
+  justify-items: auto|normal|start|end|center|stretch|baseline; }
 .item {
-  /*Shorthand for 'grid-row-start' and 'grid-row-end'.
-    span Anzahl columns von 1*/
-    grid-row: 1 / span 2;
-    grid-column: 1 
-    gap: 10px;
-  /*Is a shorthand property for the grid-row-start,
-    grid-column-start, grid-row-end,
-    and grid-column-end in that order.
-    Each value is separated by a /.*/
-    grid-area: 2 / 1 / span 2 / span 3;
-  /*Es kann auch ein Name vergeben werden, der dann in grid-template-areas gebraucht werden kann*/
-    grid-area: item;
+/*Kurz für 'grid-row-start' and 'grid-row-end',span: Anzahl von und mit 1*/
+  grid-row: 1 / span 2;
+  grid-column: 1 
+  gap: 10px;
+  /*Kurz für: grid-row-start, grid-column-start, grid-row-end, grid-column-end in that order. Values seperated by: "/".*/
+  grid-area: 2 / 1 / span 2 / span 3;
+  /*Oder mit Name aus grid-template-areas*/
+  grid-area: item;
   /*inherits align-items if defined overwrites align-items value*/
-    align-self: center; 
+  align-self: center; 
   /*inherits justify-items if defined overwrites justify-items value*/
-    justify-self: auto | normal | start; }
+  justify-self: auto | normal | start; }
 nav { grid-area: nav; }
 .side-toc { grid-area: toc; }
 footer { grid-area: footer; }
