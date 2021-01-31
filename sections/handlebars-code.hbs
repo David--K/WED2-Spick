@@ -1,11 +1,11 @@
 {{#if author}}
-    <h1>{{firstName}}{{lastName}}</h1>
+    &lt;h1&gt;{{firstName}}{{lastName}}&lt;/h1&gt;
 {{/if}}
 {{#unless license}}
-    <h3 class="warning">WARNING no license</h3>
+    &lt;h3&gt; class="warning">WARNING no license&lt;/h3&gt;
 {{/unless}}
 {{#each people}}
-    <li>{{this}}</li>
+    &lt;li&gt;{{this}}&lt;/li&gt;
 {{/each}}
 {{#each array}}
     {{@root.foo}}
