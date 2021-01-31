@@ -1,0 +1,15 @@
+include ../mixins.pug
+
+h1 Node (fs, url, http, path)
++para('fs: ')
+    pre.code
+        code.language-javascript
+            | let fs = require('fs‘);
+            | let path = "test.txt";
+            | let server = http.createServer(function (req, res) {/*Ohne Streams*/
+            |   fs.readFile(__dirname + '/d.txt',(err, data) => {res.end(data);});
+            | });
+            | let server = http.createServer((req, res) => {/*Mit Streams*/
+            |   let stream = fs.createReadStream(__dirname + '/d.txt');
+            |   stream.pipe(res);
+            | });
