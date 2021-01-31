@@ -85,19 +85,17 @@ h1 Sass (Syntactically Awesome Style Sheet) & Build Tools
         code.language-css
             |%shared { /*abstrakte Basis-Klasse erscheint nicht im generierten CSS*/
             |    padding: 10px;}
-            |    .text {
+            |.text {
             |    font-size: 1.5em;}
-            |    .message {
+            |.message {
             |    @extend %shared;
             |    @extend .text;
             |    color: green;}
     |     daraus wird folgendes css:
     pre.code
         code.language-css
-            |.message /*any other selector extending shared*/
-            |padding: 10px
-            |.message   
-            |color: green
+            |.message /*any other selector extending shared*/ { padding: 10px; }
+            |.message  { color: green; }
 
 +para('@mixin und @include ')
     |  immer zuoberst, weniger CSS-Selektoren als @extend, Verständlicher, Falls Parameter
@@ -106,12 +104,12 @@ h1 Sass (Syntactically Awesome Style Sheet) & Build Tools
         code.language-css
             |@mixin babo {color: blue}
             |@mixin bratte {
-            |@include babo
-            |li {color: red}}
+            |   @include babo
+            |   li {color: red}}
             |@mixin rtl($property, $ltr-value, $rtl-value) {
-            |#{$property}: $ltr-value;
-            |[dir=rtl] & {
-            |    #{$property}: $rtl-value;}}
+            |   \#{$property}: $ltr-value;
+            |   [dir=rtl] & {
+            |       \#{$property}: $rtl-value;}}
             |nav ul {@include bratte;}
             |.sidebar {@include rtl(float, left, right)}
             |@include breakpoint(30em) { /*breakpoint ist ein mixin das @content verwendet*/
@@ -143,29 +141,29 @@ h1 Sass (Syntactically Awesome Style Sheet) & Build Tools
 +para('Functions: ')
     pre.code
         code.language-css
-            |@function properWidht($para){
-            |@if($para &gt;= 100 and $para &lt;= 500) {@return $para / 10);}
-            |@else{@return $para;}
+            |@function properWidth($para){
+            |   @if($para &gt;= 100 and $para &lt;= 500) { @return $para / 10); }
+            |   @else { @return $para; }
             |}
-            |body{width: properWidht($width);}
+            |body{ width: properWidth($width); }
 
 +para('Loops: ')
     pre.code
         code.language-css
-            |$breakpoints: 30em 46em ; /*list*/
+            |$breakpoints: 30em 46em; /*list*/
             |@each $point in $breakpoints {
             |@media all and (max-width : $point) {
-            |    body{
-            |    @if $point &gt; 40em {width: $width;}
-            |    @else{width: $width * 2;}
+            |    body {
+            |       @if $point &gt; 40em { width: $width; }
+            |       @else { width: $width * 2; }
             |    }}}
     |     daraus wird folgender CSS-Code
     pre.code
         code.language-css
-            |media all and (max-width: 30em) {body {width: 4px;}} /*für jeden list entry*/
+            |media all and (max-width: 30em) { body { width: 4px; }} /*für jeden list entry*/
 
 +para('Maps: ')
     pre.code
         code.language-css
             |$colors: (grey: #404145, yellow: #ecaf2d);
-            |@each $name, $hex in $colors { //z.B. name=grey, hex=#404145
+            |@each $name, $hex in $colors { /*z.B. name=grey, hex=#404145 */ }
