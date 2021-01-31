@@ -23,5 +23,15 @@ window.addEventListener("load", () => {
     } else {
       setLayout(LAYOUT_PRINT);
     }
-  })
-})
+  });
+
+  let currentLayout = localStorage.getItem(LAYOUT_KEY);
+  window.addEventListener("beforeprint", function(event) {
+    currentLayout = localStorage.getItem(LAYOUT_KEY);
+    setLayout(LAYOUT_PRINT);
+  });
+
+  window.addEventListener("afterprint", function(event) {
+    setLayout(currentLayout);
+  });
+});
