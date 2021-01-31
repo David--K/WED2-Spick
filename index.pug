@@ -8,6 +8,7 @@ html(lang='en')
     link(href='./style/prism-line-numbers.css' rel='stylesheet')
     link(href='./style/style.css' rel='stylesheet')
     script(src='./script/layoutSwitch.js')
+    script(src='./script/dynamicNavCreator.js')
   body(layout='print')
     .noDisplay
       p
@@ -15,6 +16,7 @@ html(lang='en')
         label.switch
           input#layoutSwitch(type='checkbox')
           span.slider.round
+      ul#navMenuPlaceholder
     // 
     // Page No. 1
     // 
@@ -26,7 +28,7 @@ html(lang='en')
       include ./sections/testing-section.pug
       include ./sections/sass-section.pug
       include ./sections/node-packages-section.pug
-      
+
     // 
     // Page No. 2
     // 
