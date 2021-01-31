@@ -202,7 +202,7 @@
             </p>
             <p><span class="para-title">Test-Runner: </span>
               Ein Rahmen der Tests entgegennimmt, ausführt und die Resultate
-                  anzeigt.<b>Beispiele:</b> Jest, Mocha, Jasmin
+                  anzeigt.<b>Beispiele: </b> Jest, Mocha, Jasmin
             </p>
             <p><span class="para-title">Assertion-Libraries: </span>    Code zur Ausführung einzelner Tests<b>Beispiele: </b> Assert, Chai, Expect.js
             </p>
@@ -215,7 +215,7 @@
               <li><b>Verify:</b> Überprüfen von Annahmen</li>
               <li><b>Teardown:</b> Zurücksetzen z.B. von mocks</li>
             </p>
-            <p><span class="para-title">Beispiele: </span>
+            <p><span class="para-title">Beispiele (Test Runner: Mocha): </span>
               <pre class="code"><code class="language-javascript">const chai = require('chai'); const sinon = require("sinon");
 const proxyquire = require("proxyquire"); const expect = chai.expect;
 function stub(v) {return v*2;}
@@ -388,12 +388,24 @@ body{width: properWidht($width);}</code></pre>
               <pre class="code"><code class="language-css">$colors: (grey: #404145, yellow: #ecaf2d);
 @each $name, $hex in $colors { //z.B. name=grey, hex=#404145</code></pre>
             </p>
+      <h1>Node (fs, url, http, path)</h1>
+            <p><span class="para-title">fs: </span>
+              <pre class="code"><code class="language-javascript">let fs = require('fs‘);
+let path = "test.txt";
+let server = http.createServer(function (req, res) {/*Ohne Streams*/
+  fs.readFile(__dirname + '/d.txt',(err, data) => {res.end(data);});
+});
+let server = http.createServer((req, res) => {/*Mit Streams*/
+  let stream = fs.createReadStream(__dirname + '/d.txt');
+  stream.pipe(res);
+});</code></pre>
+            </p>
     </div>
     <!-- -->
     <!-- Page No. 2-->
     <!-- -->
     <div class="page">
-      <h1>Node</h1>
+      <h1>Node Beispiel</h1>
             <p><span class="para-title">Application - app.js: </span>
               <pre class="code line-numbers"><code class="language-javascript">const express = require('express'); const path = require('path');
 const session = require('express-session'); const app = express();
