@@ -1,7 +1,7 @@
 # WED 2 Spick 
 run the following commands: 
 - `` npm i``
-- build: `` npm run sass``
+- build: `` npm run build``
 - development: `` npm run work ``
 - open [./dist/index.html](./dist/index.html) in the browser
 
