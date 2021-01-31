@@ -84,13 +84,13 @@ h1 Sass (Syntactically Awesome Style Sheet) & Build Tools
     pre.code
         code.language-css
             |%shared { /*abstrakte Basis-Klasse erscheint nicht im generierten CSS*/
-            |    padding: 10px;}
+            |    padding: 10px; }
             |.text {
-            |    font-size: 1.5em;}
+            |    font-size: 1.5em; }
             |.message {
             |    @extend %shared;
             |    @extend .text;
-            |    color: green;}
+            |    color: green; }
     |     daraus wird folgendes css:
     pre.code
         code.language-css
@@ -98,8 +98,7 @@ h1 Sass (Syntactically Awesome Style Sheet) & Build Tools
             |.message  { color: green; }
 
 +para('@mixin und @include ')
-    |  immer zuoberst, weniger CSS-Selektoren als @extend, Verständlicher, Falls Parameter
-    |     benötigt
+    |  immer zuoberst, weniger CSS-Selektoren als @extend, Verständlicher, Falls Parameter benötigt
     pre.code
         code.language-css
             |@mixin babo {color: blue}
