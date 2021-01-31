@@ -1,8 +1,9 @@
 # WED 2 Spick 
 run the following commands: 
 - `` npm i``
-- `` npm run sass``
+- build: `` npm run sass``
+- development: `` npm run work ``
+- open [./dist/index.html](./dist/index.html) in the browser
 
-Der Spick verwendet ein flexbox ``column wrap`` Layout, folgendes muss beachtet werden: 
-- Für den Druck ist es wichtig, das die Breite der Columns fix und in cm gesetzt sind.
-- Wenn eine Spalte die maximale Höhe übersteigt rutscht das unterste Element in die nächste Column, das macht den Druck kaputt, Breiten müssen dann entsprechend angepasst werden oder Elements gelöscht werden.
+Folgendes muss für den Druck beachtet werden: 
+- Wenn eine Spalte die maximale Höhe übersteigt rutscht das unterste Element in die nächste Column, das macht den Druck kaputt. Inhalt muss dann angepasst werden um wieder in den vorgegeben Platz zu passen. 
