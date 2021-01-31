@@ -34,19 +34,47 @@ body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   margin: 0;
 
-  &[layout="view"] {
+  &[data-layout="view"] {
     font-size: $text-font-size-view;
+    overflow:hidden;
+    .wrapper{
+      display:flex;
+      flex-direction: column;
+      height:100vh;
+      .headerMenuWrapper{
+        height:5vh;
+      }
+      .view{
+        height:90vh;
+        display:flex;
+        flex-direction:row;
+        .navMenuWrapper{
+          width:20%;
+        }
+        .pageWrapper{
+          display:flex;
+          flex-direction:column;
+          width:75%;
+          margin-left:5%;
+          overflow:auto;
 
-    .page {
-      overflow: hidden;
-      max-width: 100%;
-      height: 100%;
-      box-sizing: border-box;
+          > .page:not(:first-child){
+            border-top: solid rgba(0,0,0,0.1) 3em;
+          }
+
+          .page {
+            height:fit-content;
+            max-width: 100%;
+            width:auto;
+            box-sizing: border-box;
+          }
+        }
+      }
     }
   }
 
 
-  &[layout="print"] {
+  &[data-layout="print"] {
     font-size: $text-font-size-print;
 
     .page {
@@ -56,6 +84,10 @@ body {
       column-count: 4;
       column-fill: auto;
       column-gap: 0.1em;
+    }
+
+    .navMenuWrapper{
+      display:none;
     }
   }
 

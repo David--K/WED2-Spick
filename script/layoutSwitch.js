@@ -2,7 +2,7 @@ window.addEventListener("load", () => {
 
   const LAYOUT_VIEW = "view";
   const LAYOUT_PRINT = "print";
-  const LAYOUT_KEY = "layout";
+  const LAYOUT_KEY = "data-layout";
 
   let targetElement = document.getElementsByTagName("body")[0];
   let layoutSwitch = document.getElementById("layoutSwitch");
@@ -10,7 +10,7 @@ window.addEventListener("load", () => {
   function setLayout(cssTag) {
     localStorage.setItem(LAYOUT_KEY, cssTag);
     targetElement.setAttribute(LAYOUT_KEY, cssTag);
-    layoutSwitch.checked = cssTag == LAYOUT_VIEW;
+    layoutSwitch.checked = cssTag === LAYOUT_VIEW;
   }
 
   if (localStorage.getItem(LAYOUT_KEY) !== undefined) {

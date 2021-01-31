@@ -1,47 +1,44 @@
 doctype html
 html(lang='en')
-  head
-    meta(charset='UTF-8')
-    meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    title WED Zusammenfassung
-    link(href='./style/prism.css' rel='stylesheet')
-    link(href='./style/prism-line-numbers.css' rel='stylesheet')
-    link(href='./style/style.css' rel='stylesheet')
-    script(src='./script/layoutSwitch.js')
-    script(src='./script/dynamicNavCreator.js')
-  body(layout='print')
-    .noDisplay
-      p
-        | Change Layout
-        label.switch
-          input#layoutSwitch(type='checkbox')
-          span.slider.round
-      ul#navMenuPlaceholder
-    // 
-    // Page No. 1
-    // 
-    .page
-      include ./sections/css-grid-section.pug
-      include ./sections/css-flexbox-section.pug
-      include ./sections/user-centered-design-section.pug
-      include ./sections/css-animation-section.pug
-      include ./sections/testing-section.pug
-      include ./sections/sass-section.pug
-      include ./sections/node-packages-section.pug
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        title WED Zusammenfassung
+        link(href='./style/prism.css' rel='stylesheet')
+        link(href='./style/prism-line-numbers.css' rel='stylesheet')
+        link(href='./style/style.css' rel='stylesheet')
+        script(src='./script/layoutSwitch.js')
+        script(src='./script/dynamicNavCreator.js')
+    body(data-layout='print')
+        div.wrapper
+            div.noDisplay.headerMenuWrapper
+                p
+                    | Change Layout
+                    label.switch
+                        input#layoutSwitch(type='checkbox')
+                        span.slider.round
+            div.view
+                div.noDisplay.navMenuWrapper
+                    ul#navMenuPlaceholder
+                div.pageWrapper
+                    .page
+                        include ./sections/css-grid-section.pug
+                        include ./sections/css-flexbox-section.pug
+                        include ./sections/user-centered-design-section.pug
+                        include ./sections/css-animation-section.pug
+                        include ./sections/testing-section.pug
+                        include ./sections/sass-section.pug
+                        include ./sections/node-packages-section.pug
+                    .page
+                        include ./sections/node-section.pug
+                        include ./sections/cookies-section.pug
+                        include ./sections/handlebars-section.pug
+                        include ./sections/typescript-section.pug
+                        include ./sections/security-section.pug
+                        include ./sections/accessibility-section.pug
+                        include ./sections/internalization-section.pug
 
-    // 
-    // Page No. 2
-    // 
-    .page
-      include ./sections/node-section.pug
-      include ./sections/cookies-section.pug
-      include ./sections/handlebars-section.pug
-      include ./sections/typescript-section.pug
-      include ./sections/security-section.pug
-      include ./sections/accessibility-section.pug     
-      include ./sections/internalization-section.pug
-
-    script(src='./script/htmlEscapingInCodeElement.js')
-    script(src='./script/titleColorAssigner.js')
-    script(src='./script/prism.js')
-    script(src='./script/prism-line-numbers.js')
+        script(src='./script/htmlEscapingInCodeElement.js')
+        script(src='./script/titleColorAssigner.js')
+        script(src='./script/prism.js')
+        script(src='./script/prism-line-numbers.js')
