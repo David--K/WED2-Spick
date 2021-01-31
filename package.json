@@ -8,8 +8,9 @@
     "sass": "sass ./style/style.scss ./dist/style/style.css",
     "sass:watch": "sass --watch ./style/style.scss ./dist/style/style.css",
     "pug": "pug ./index.pug -o ./dist",
+    "cpy-sources": "copy-files-from-to --when-file-exists overwrite",
     "pug:watch": "pug --watch ./index.pug -o ./dist && npm --watch",
-    "build": "npm run sass && npm run pug && copy-files-from-to",
+    "build": "npm run sass && npm run pug && npm run cpy-sources",
     "work": "npm-run-all --parallel build sass:watch pug:watch"
   },
   "copyFiles": [
