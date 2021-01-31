@@ -8,8 +8,8 @@ window.addEventListener("load", () => {
         let anchorId = `${i}_${h1Text}`;
 
 
-        var li = document.createElement("li");
-        var a = document.createElement("a");
+        let li = document.createElement("li");
+        let a = document.createElement("a");
         a.href = `#${anchorId}`;
         a.innerText = h1Text;
         li.appendChild(a);

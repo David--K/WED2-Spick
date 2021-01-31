@@ -12,11 +12,13 @@ html(lang='en')
     body(data-layout='print')
         div.wrapper
             div.noDisplay.headerMenuWrapper
-                p
-                    | Change Layout
-                    label.switch
-                        input#layoutSwitch(type='checkbox')
-                        span.slider.round
+                div.headerMenuContent
+                    p
+                        | Print
+                        label.switch
+                            input#layoutSwitch(type='checkbox')
+                            span.slider.round
+                        | View
             div.view
                 div.noDisplay.navMenuWrapper
                     ul#navMenuPlaceholder
@@ -37,6 +39,9 @@ html(lang='en')
                         include ./sections/security-section.pug
                         include ./sections/accessibility-section.pug
                         include ./sections/internalization-section.pug
+            div.noDisplay.footerWrapper
+                div.footerContent
+                    p WED2 Spick © Moritz Michael Schiesser | David Petra Kühnhanss | Benny Joe Villiger
 
         script(src='./script/htmlEscapingInCodeElement.js')
         script(src='./script/titleColorAssigner.js')
