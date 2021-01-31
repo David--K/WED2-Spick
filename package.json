@@ -15,9 +15,12 @@
     "work": "npm-run-all --parallel build scripts-assets-style:watch sass:watch pug:watch"
   },
   "watch": {
-    "cpy-sources": 
-    { 
-      "patterns": ["script", "assets", "style"],
+    "cpy-sources": {
+      "patterns": [
+        "script",
+        "assets",
+        "style"
+      ],
       "ignore": "*.scss,/dist",
       "unOnChangeOnly": true
     }

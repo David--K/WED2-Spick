@@ -1,0 +1,15 @@
+include ../mixins.pug
+
+h1 Meadia Queries: 
+pre.code
+    code.language-css
+        | @media not|only screen|print and (mediafeature and|or|not mediafeature){}
+        | @media ( [ width | min-width | max-width ] : 375px){/*CSS*/}
+        | @media ( [ height | min-height | max-height ] : 667px) {/*CSS*/}
+        | @media (orientation: landscape) {/*CSS*/}
++para('Typische Trigger Punkte:')
+    |  480px / 30em : Smartphones, 768px / 48em : Tablets, 992px / 62em : Desktops
+    b  Viewport: 
+    pre.code
+        code.language-html
+            | &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
