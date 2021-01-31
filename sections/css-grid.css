@@ -1,5 +1,5 @@
 #grid-container {
-    display: grid; //inline-grid: inline | grid: block-level
+    display: grid; /*grid (block-level), inline-grid (inline)*/
     width: 100px;
     grid-template-columns: 1fr 60px minmax(10px, 200px);
     grid-template-rows: 1fr 1fr;
@@ -9,8 +9,8 @@
       'toc item item .'
       'footer footer footer footer';
     align-items: auto|normal|start|end|center|stretch|baseline;
-    justify-items: auto|normal|start|end|center|stretch|baseline;}
-  .item {
+    justify-items: auto|normal|start|end|center|stretch|baseline; }
+.item {
   /*Shorthand for 'grid-row-start' and 'grid-row-end'.
     span Anzahl columns von 1*/
     grid-row: 1 / span 2;
@@ -26,7 +26,7 @@
   /*inherits align-items if defined overwrites align-items value*/
     align-self: center; 
   /*inherits justify-items if defined overwrites justify-items value*/
-    justify-self: auto | normal | start;}
-  nav { grid-area: nav; }
-  .side-toc { grid-area: toc; }
-  footer {grid-area: footer;}
+    justify-self: auto | normal | start; }
+nav { grid-area: nav; }
+.side-toc { grid-area: toc; }
+footer { grid-area: footer; }

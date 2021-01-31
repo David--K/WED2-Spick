@@ -23,7 +23,7 @@
     <div class="page">
       <h1>CSS Grid</h1>
             <pre class="code"><code class="language-css">#grid-container {
-    display: grid; //inline-grid: inline | grid: block-level
+    display: grid; /*grid (block-level), inline-grid (inline)*/
     width: 100px;
     grid-template-columns: 1fr 60px minmax(10px, 200px);
     grid-template-rows: 1fr 1fr;
@@ -33,8 +33,8 @@
       'toc item item .'
       'footer footer footer footer';
     align-items: auto|normal|start|end|center|stretch|baseline;
-    justify-items: auto|normal|start|end|center|stretch|baseline;}
-  .item {
+    justify-items: auto|normal|start|end|center|stretch|baseline; }
+.item {
   /*Shorthand for 'grid-row-start' and 'grid-row-end'.
     span Anzahl columns von 1*/
     grid-row: 1 / span 2;
@@ -50,10 +50,10 @@
   /*inherits align-items if defined overwrites align-items value*/
     align-self: center; 
   /*inherits justify-items if defined overwrites justify-items value*/
-    justify-self: auto | normal | start;}
-  nav { grid-area: nav; }
-  .side-toc { grid-area: toc; }
-  footer {grid-area: footer;}</code></pre>
+    justify-self: auto | normal | start; }
+nav { grid-area: nav; }
+.side-toc { grid-area: toc; }
+footer { grid-area: footer; }</code></pre>
       <h1>CSS Flexbox</h1>
             <p><span class="para-title">Facts: </span>Alle Elemente Verhalten sich wie "inline blocks" (erlaubt margin (left &amp; right) und paddding, erlaubt andere Elemente auf der gelichen Zeile, erlaubt <b>width </b>und<b> height </b>
             </p>
@@ -135,33 +135,30 @@
             </p>
       <h1>CSS Animation</h1>
             <p><span class="para-title">Transition Properties: </span>
-              <pre class="code"><code class="language-css">.ex{
-   /*which property to change */
-   transition-property: prop-name | all | none;
-   /*how long the transition should take in s or ms*/
-   transition-duration: 5ms | 3s;
-   /*manner in which the transition accelerates*/
-   transition-timing-function: ease|linear|ease-in|ease-out|ease-in-out|step-start|step-end|steps(...)|cubic-bezier(#,#,#,#);
-   /*whether there should be a pause before starting and the duration of said pause*/
-   transition-delay: 0.2s;
-   /*shorthand transition property: prop dur timing-function delay*/
-   transition: background-color .3s ease-in 0.2s;
-   /*transitioning multiple properties*/
-   transition: background-color .3s ease-out 1s,
-               color 2s ease-in,
-               letter-spacing .2s ease-out;
-   /*defining same duration, timing and delay for all transitions*/
-   transition: all .2s ease-in-out;
-   }</code></pre>
+              <pre class="code"><code class="language-css">/*which property to change */
+transition-property: prop-name | all | none;
+/*how long the transition should take in s or ms*/
+transition-duration: 5ms | 3s;
+/*manner in which the transition accelerates*/
+transition-timing-function: ease|linear|ease-in|ease-out|ease-in-out|step-start|step-end|steps(...)|cubic-bezier(#,#,#,#);
+/*whether there should be a pause before starting and the duration of said pause*/
+transition-delay: 0.2s;
+/*shorthand transition property: prop dur timing-function delay*/
+transition: background-color .3s ease-in 0.2s;
+/*transitioning multiple properties*/
+transition: background-color .3s ease-out 1s,
+            color 2s ease-in,
+            letter-spacing .2s ease-out;
+/*defining same duration, timing and delay for all transitions*/
+transition: all .2s ease-in-out;</code></pre>
             </p>
             <p><span class="para-title">Transforms: </span>
-              <pre class="code"><code class="language-css">.ex{
-   /*changes shape, rotation of elements (func() funcX() funcY())*/
-   transform: rotate()|translate()|scale()|skew()|none;
-   /*point around which an element is transformed, defined by horizontal and vertical offsets*/
-   transform-origin: %|length|left|center|right|top|bottom;
-   /*translate() function is used as the value of transform to render an element at a new location*/
-   transform: translate(90px, 60px) | translate(20%);}</code></pre>
+              <pre class="code"><code class="language-css">/*changes shape, rotation of elements (func() funcX() funcY())*/
+transform: rotate()|translate()|scale()|skew()|none;
+/*point around which an element is transformed, defined by horizontal and vertical offsets*/
+transform-origin: %|length|left|center|right|top|bottom;
+/*translate() function is used as the value of transform to render an element at a new location*/
+transform: translate(90px, 60px) | translate(20%);</code></pre>
             </p>
             <p><span class="para-title">Keyframes: </span>
               <pre class="code"><code class="language-css">@keyframes wiggleAnimation {
@@ -177,9 +174,8 @@
             </p>
       <h1>Testing</h1>
             <p><span class="para-title">TDD: </span>
-              Test anything that might break, New Code is quilty until proven innocent,
-                  Write at least as much test code as production code
-                  Run all testc before check-in to repository
+              Test anything that might break, New Code is guilty until proven innocent,
+              write at least as much test code as production code, run all testc before check-in to repository
             </p>
             <p><span class="para-title">Unit Tests: </span>
               Getestet werden einzelne "Units": Klassen, Module (meist ein File)
