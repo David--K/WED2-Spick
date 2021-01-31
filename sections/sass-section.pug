@@ -73,11 +73,10 @@ h1 Sass (Syntactically Awesome Style Sheet) & Build Tools
     pre.code
         code.language-css
             |//file: _colors.scss
-            |@use 'colors'; /*erlaubt alle Variabeln aus diesem File*/ 
+            |@use 'colors'; /*empfohlen, neuer als @import, importiert mit namespace*/ 
             |//file: _normalize.scss
             |@import "normalize"; /*importiert/merged, normalize oben*/
-            |h1 {
-            |color: colors.$header-color}
+            |h1 {color: colors.$header-color}
 
 
 +para('@extend ')
