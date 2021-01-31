@@ -10,7 +10,6 @@ $text-font-size-print: 8px;
 $text-font-size_view: 16px;
 $code-font-size: 0.85em;
 
-
 @media print {
   .noDisplay {
     display: none !important;
@@ -29,7 +28,6 @@ $code-font-size: 0.85em;
     font-size: $text-font-size-print !important;
   }
 }
-
 
 body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -285,7 +283,6 @@ body {
 
   .noDisplay {
     font-size: 16px;
-
     p {
       vertical-align: middle;
       line-height: 1em;
@@ -357,6 +354,72 @@ body {
   }
 }
 
+.color-selection {
+  height: 15px;
+  align-content: center;
+  font-weight: bold;
+  margin-top: 5px;
+  cursor: not-allowed;
+  font-size: 11px;
+  text-align: center;
+}
+
+.selectColor {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  height: 25px;
+  vertical-align: bottom;
+}
+
+%settingsButton {
+  background: white;
+  border: 1px solid ;
+  height: 35px;
+  cursor: pointer;
+  font-size: 11px;
+  color: #056169;
+  width: 100%;
+  align-self: center;
+  font-weight: bold;
+}
+
+.addColor {
+  @extend %settingsButton;
+}
+
+.colorSelectionText {
+  margin-left: 10px;
+  font-size: 14px;
+  color: #444242;
+}
+
+.applySettings{
+  @extend %settingsButton;
+  margin-top: 2px;
+}
+
+.settings {
+  border-left: 1px solid darkgray;
+  margin: 25px;
+
+  >div {
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  #applyStyleSettings {
+    background: forestgreen;
+    border: none;
+    color: white;
+  }
+
+  #resetStyleSettings {
+    background: firebrick;
+    border: none;
+    color: white;
+  }
+}
 
 @mixin noLineBreak {
   + h2::before {
@@ -364,7 +427,6 @@ body {
     white-space: normal;
   }
 }
-
 
 span {
   &.para-title {
@@ -441,7 +503,7 @@ code {
   overflow: hidden !important;
 }
 
-code[class*="language-"] {
+code[class*='language-'] {
   text-shadow: 0 0 transparent !important;
 }
 

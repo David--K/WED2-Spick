@@ -1,0 +1,22 @@
+.settings
+    div
+        label.colorSelectionText(for="h1_colors")
+            |Farben für Haupttitel
+        input.selectColor#h1Colors(type="color", name="h1_colors")
+        button.addColor#addh1Color
+            |zu Haupttitel-Farbauswahl hinzufügen
+        div#h1ColorlistPlaceholder
+
+    div
+        label.colorSelectionText(for="h2_colors")
+            |Farben für Untertitel
+        input.selectColor#h2Colors(type="color", name="h2_colors")
+        button.addColor#addh2Color
+            |zu Untertitel-Farbauswahl hinzufügen
+        div#h2ColorlistPlaceholder
+
+    div
+        button.applySettings#applyStyleSettings
+            |Einstellungen anwenden
+        button.applySettings#resetStyleSettings
+            |Einstellungen zurücksetzen
