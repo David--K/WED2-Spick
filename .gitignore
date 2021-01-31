@@ -6,4 +6,4 @@ style.css
 *.pdf
 .vscode
 /sections/dist/*
-/dist/index.html
+/dist/*
