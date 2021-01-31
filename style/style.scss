@@ -44,7 +44,7 @@ body {
       height: 100vh;
 
       .headerMenuWrapper {
-        height: 7vh;
+        height: 4em;
 
         .headerMenuContent {
           margin-left: 1em;
@@ -58,10 +58,11 @@ body {
 
         .navMenuWrapper {
           width: 20vh;
+          overflow: auto;
 
           ul {
             padding: 0;
-            margin-top:0;
+            margin-top: 0;
             margin-left: 1em;
             list-style-type: none;
             background-color: #f1f1f1;
@@ -103,9 +104,10 @@ body {
           }
         }
       }
-      .footerWrapper{
-        .footerContent{
-          margin-left:1em;
+
+      .footerWrapper {
+        .footerContent {
+          margin-left: 1em;
         }
       }
     }
@@ -134,14 +136,14 @@ body {
 
     p {
       vertical-align: middle;
-      line-height: 34px;
+      line-height: 2em;
     }
 
     .switch {
       position: relative;
       display: inline-block;
-      width: 60px;
-      height: 34px;
+      width: 4em;
+      height: 2em;
       margin-left: 0.5em;
       margin-right: 0.5em;
     }
@@ -169,10 +171,10 @@ body {
     .slider:before {
       position: absolute;
       content: "";
-      height: 26px;
-      width: 26px;
-      left: 4px;
-      bottom: 4px;
+      height: 1.5em;
+      width: 1.5em;
+      left: 0.25em;
+      bottom: 0.25em;
       background-color: white;
       -webkit-transition: .4s;
       transition: .4s;
@@ -195,7 +197,7 @@ body {
 
   /* Rounded sliders */
   .slider.round {
-    border-radius: 34px;
+    border-radius: 2em;
   }
 
   .slider.round:before {
