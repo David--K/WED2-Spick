@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "sass ./style.scss ./dist/style.css",
-    "sass:watch": "sass --watch ./style.scss ./dist/style.css",
+    "sass": "sass ./style/style.scss ./dist/style/style.css",
+    "sass:watch": "sass --watch ./style/style.scss ./dist/style/style.css",
     "pug": "pug ./index.pug -o ./dist",
     "pug:watch": "pug --watch ./index.pug -o ./dist && npm --watch",
     "build": "npm run sass && npm run pug && copy-files-from-to",
@@ -14,32 +14,28 @@
   },
   "copyFiles": [
     {
-      "from": "./titleColorAssigner.js",
-      "to": "./dist/titleColorAssigner.js"
+      "from": "./script/**",
+      "to": "./dist/script/"
     },
     {
-      "from": "./layoutSwitch.js",
-      "to": "./dist/layoutSwitch.js"
-    },
-    {
-      "from": "./htmlEscapingInCodeElement.js",
-      "to": "./dist/htmlEscapingInCodeElement.js"
+      "from": "./assets/**",
+      "to": "./dist/assets/"
     },
     {
       "from": "./node_modules/prismjs/themes/prism.css",
-      "to": "./dist/prism.css"
+      "to": "./dist/style/prism.css"
     },
     {
-      "from": "./lib/prism-line-numbers.css",
-      "to": "./dist/prism-line-numbers.css"
+      "from": "./style/prism-line-numbers.css",
+      "to": "./dist/style/prism-line-numbers.css"
     },
     {
       "from": "./node_modules/prismjs/prism.js",
-      "to": "./dist/prism.js"
+      "to": "./dist/script/prism.js"
     },
     {
       "from": "./node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js",
-      "to": "./dist/prism-line-numbers.js"
+      "to": "./dist/script/prism-line-numbers.js"
     }
   ],
   "dependencies": {
