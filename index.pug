@@ -4,14 +4,14 @@ html(lang='en')
     meta(charset='UTF-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     title WED Zusammenfassung
-    link(href='../node_modules/prismjs/themes/prism.css' rel='stylesheet')
-    link(href='../lib/prism-line-numbers.css' rel='stylesheet')
-    link(href='../style.css' rel='stylesheet')
-    script(src='../layoutSwitch.js')
+    link(href='./prism.css' rel='stylesheet')
+    link(href='.prism-line-numbers.css' rel='stylesheet')
+    link(href='./style.css' rel='stylesheet')
+    script(src='./layoutSwitch.js')
   body(layout='print')
     .noDisplay
       p
-        | Change Layout 
+        | Change Layout
         label.switch
           input#layoutSwitch(type='checkbox')
           span.slider.round
@@ -38,7 +38,7 @@ html(lang='en')
       include ./sections/accessibility-section.pug     
       include ./sections/internalization-section.pug
 
-    script(src='../htmlEscapingInCodeElement.js')
-    script(src='../titleColorAssigner.js')
-    script(src='../node_modules/prismjs/prism.js')
-    script(src='../node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js')
+    script(src='./htmlEscapingInCodeElement.js')
+    script(src='./titleColorAssigner.js')
+    script(src='./prism.js')
+    script(src='./prism-line-numbers.js')
