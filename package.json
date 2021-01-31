@@ -10,8 +10,17 @@
     "pug": "pug ./index.pug -o ./dist",
     "cpy-sources": "copy-files-from-to --when-file-exists overwrite",
     "pug:watch": "pug --watch ./index.pug -o ./dist && npm --watch",
+    "scripts-assets-style:watch": "npm-watch cpy-sources",
     "build": "npm run sass && npm run pug && npm run cpy-sources",
-    "work": "npm-run-all --parallel build sass:watch pug:watch"
+    "work": "npm-run-all --parallel build scripts-assets-style:watch sass:watch pug:watch"
+  },
+  "watch": {
+    "cpy-sources": 
+    { 
+      "patterns": ["script", "assets", "style"],
+      "ignore": "*.scss,/dist",
+      "unOnChangeOnly": true
+    }
   },
   "copyFiles": [
     {
@@ -42,6 +51,7 @@
   "dependencies": {
     "copy-files-from-to": "^3.2.0",
     "npm-run-all": "^4.1.5",
+    "npm-watch": "^0.7.0",
     "prismjs": "1.23.0",
     "pug": "^3.0.0",
     "pug-cli": "^1.0.0-alpha6"

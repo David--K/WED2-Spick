@@ -1,5 +1,5 @@
 window.addEventListener("load", () => {
-
+  
   const LAYOUT_VIEW = "view";
   const LAYOUT_PRINT = "print";
   const LAYOUT_KEY = "data-layout";
